@@ -15,8 +15,7 @@ knitr::opts_chunk$set(echo = FALSE)
 
 ```
 
-I am an Associate Professor of Economics @ Imperial College Business School
-[Imperial College Business School](https://www.imperial.ac.uk/people/r.martin), London (Europe). I also direct the Growth Programme at the [Centre for Economic Performance](http://cep.lse.ac.uk/_new/staff/person.asp?id=739) @ the London School of Economics.
+I am an Associate Professor of Economics at [Imperial College Business School](https://www.imperial.ac.uk/people/r.martin), London (Europe). I also direct the Growth Programme at the [Centre for Economic Performance](http://cep.lse.ac.uk/_new/staff/person.asp?id=739) at the London School of Economics.
 
 In my research I focus on things that help to increase economic productivity without compromising the natural environment. I am also concerned about the effects and causes of online mis-information and the re-emergence of bigotism. Some of my other passions include cycling (particularly in London) and windsurfing.
 

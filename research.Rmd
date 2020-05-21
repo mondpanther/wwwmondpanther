@@ -23,10 +23,14 @@ Industrial policy in the form of targeted support for specific sectors or techno
 
 ## Evaluation of Climate Change Policy
 
+Does climate policy do what it says on the tin?
+
 - [The impact of a carbon tax on manufacturing](https://www.sciencedirect.com/science/article/pii/S0047272714001078)
 
 
 ## What determines the direction of innovation?
+
+Innovation is the key driver of economic growth. However, not all technologies generate the same externalities. Therefore it is important to know the flavour of innovation in addition to the quantity.
 
 
 ## The causes and consequence of online mis-information

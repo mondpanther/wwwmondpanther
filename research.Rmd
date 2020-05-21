@@ -26,12 +26,14 @@ Industrial policy in the form of targeted support for specific sectors or techno
 Does climate policy do what it says on the tin?
 
 - [The impact of a carbon tax on manufacturing](https://www.sciencedirect.com/science/article/pii/S0047272714001078)
-
+- [Industry Compensation under Relocation Risk: A Firm-Level Analysis of the EU Emissions Trading Scheme](https://www.aeaweb.org/articles?id=10.1257/aer.104.8.2482)
 
 ## What determines the direction of innovation?
 
 Innovation is the key driver of economic growth. However, not all technologies generate the same externalities. Therefore it is important to know the flavour of innovation in addition to the quantity.
 
+- [Environmental Preferences and Technological Choices: Is Market Competition Clean or Dirty?](http://cep.lse.ac.uk/_new/publications/abstract.asp?index=6964)
+- [Carbon Taxes, Path Dependency, and Directed Technical Change: Evidence from the Auto Industry](https://www.journals.uchicago.edu/doi/10.1086/684581)
 
 ## The causes and consequence of online mis-information
 

@@ -1,236 +1,80 @@
 ---
-title: "Is  clean growth an opportunity for developping countries?"
-output: html_document
+title: "Industrial policy strategies for seizing clean growth opportunities in developping economies"
+description: |
+  Proposal for a research agenda
+author: "Ralf Martin"     
+date: "`r Sys.Date()`"
+output: distill::distill_article
 editor_options: 
   chunk_output_type: inline
 ---
+
+
+
+
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
 
-Efforts for to transform the global economy from being mainly fossil fuel driven to a state with effectively net zero emissions will have to be mindful of growth. This applies to developed economies as we have experienced in recent years with the emergence of many so called populist politicians fueled in part by the financial crisis. 
+Efforts for to transform the global economy from being mainly fossil fuel driven to a state with effectively net zero emissions will have to be mindful of the impact on economic growth. If the transition to clean compromises growth  the political will for pursuing any meaningful climate policy will be in short supply. Worse it could further fuel extremist political movements as we have seen in recent years with repercussions beyond climate impacts.
+This applies in developed economies but even more so in developing economies. It is neither morally fair nor practically feasible to keep these economies at the low levels of per capita income and emissions many of them find themselves in at the moment.
 
-# Introduction
+At first glance, the need increase incomes would imply an inexorable trade-off between environmental and economic outcomes. Clearly, one potential strategy for development is to imitate leading economies including their reliance on cheap, tried and tested fossil fuel technologies. However, in ongoing research we have found that innovation spillovers for clean technologies are on the whole considerably larger for clean technologies than for dirty. Indeed, specific, clean technologies are among the most spillover intensive technology types that can be identified. This opens up the possibility that there is not really an inexorable trade-off but rather the space for an environmental and growth win-win with when transitioning to net zero carbon. However, because some of the potential wins arise via spillovers this will not happen via market forces alone. It also is important to note that not all clean technologies have the same external spillover benefit and not all technologies generate the same benefits to all countries.
 
-The COVID pandemic has led to a massive drop in economic activity across the globe. While there remains much uncertainty about the depth and the lenght, there is no doubt that we are dealing with a major global recession. In this paper we examine potential impacts that go beyond the immediate short run effect, however.
+This raises the question if developing countries are particularly well placed to develop an industrial strategy around clean technologies. Preliminary evidence suggests that this could be the case. Below we plot the share of clean innovation in total innovation (as measured by global patent data from PATSTAT). We find that many developing countries have a relatively high shares of clean innovation which could be indicative of a comparative advantage in clean technologies. We find a similar result within the UK where more backward regions then tend to more clean innovation intensive.
 
-The main driver of economic growth in the long run is the rate of innovation. Innovation in turn is driven by investments in R&D. The COVID pandemic is likely to lead to a re-alignment of where R&D resources are being focused. In particular public R&D support will increase for research related to the microbiology of viral infections as well as to related sciences and technologies most likely at the expense of other fields. While this is clearly desirable from a public health point of view, the impact on long run growth will depend on the social return to R&D investments in COVID related technologies compared to returns in technologies and sectors that see a reduction in spending due to the re-orientation.
-An important component of those social returns will come from innovation spillovers. Indeed, if R&D investments can move frictionless between sectors, spillovers are the only thing that matters on the margin for the impact of the re-orientation on growth.
+Could this be a coincidence or are there deeper structural reasons? The activity in peripheral regions is likely to be more dominated by recent market entrants. Entrants will have strong incentives to focus on new technologies if incumbents benefit from knowledge advantage in existing technologies and existing knowledge is not complementary with knowledge related to new technologies. Technologies might also vary in their level of entry costs. In this context it is instructive to see that COVID related technologies seem to be rather less associated with more backward regions withing the UK.
 
-There is also increasing concern about the implications of the pandemic for efforts to wean global economies off GHG gas emissions. As Acemoglu et al and Aghion et al have argued, the key to achieving a transition to a clean economy is that the clean knowledge capital stock is larger than the dirty knowledge capital stock. For that clean knowledge accumulation has to be higher than dirty knowledge accumulation. 
+Historically, some of the most spectacular growth stories were closely related to the emergence of new technological waves; e.g. the microelectronics in the case of Japan, Wireless and Networking Technologies in the case of Korea and China, web based business services and software in the case of India etc. 
 
-This implies that what matters is not necessarily the absolute rate of clean knowledge accumulation that matters but that it is larger than the rate for dirty knowledge accumulation. Hence, even if the pandemic slows down clean knowledge accumulation, it is not necessarily a problem as long as it slows down dirty knowledge accumulation by more. Again, an important factor that determines the relative response is via the spillover channel. Do spillovers from COVID related technologies more readily flow to clean or dirty technologies? If it is the former the pandemic could hasten the transition to a clean equilibrium. We examine this below.
+All of this calls for a research programme into if and how developing countries might be able to successfully ride the clean technology wave; not only or primarily as willing adopters of cutting edge technologies developed elsewhere but as leaders of the field.
 
+This will include theoretical into which characteristics of clean technologies might be particular suited in a developing country context. It will inclue
 
-
-# Data
-
-## Definition of technology classes
-
-
-# Methods
+This will include empirical work to measure and 
 
 
 
-# Results
 
-
-
-```{r read data }
+```{r read data ,include=FALSE}
 library(dplyr)
-#library(twextras)
+
 
 library(dbplyr)
 library(dplyr)
-library(RSQLite)
+
 library(readr)
 library(lubridate)
-library(remotes)
-#remotes::install_github("twolodzko/twextras")
 
-#df1=read.table("../Data/prep1_out1.dsv",sep=" ",header=TRUE)
 
-
-#df1=twextras::read_table("../Data/prep1_out1.dsv")
-#names(df1)
-
-#df1catx=twextras::read_table("../data/covidclasses.csv") %>% dplyr::rename(fam_id=docdb_family_id)
-#head(df1cat)
-#library(feather)
-library(arrow)
-beisresults="../../BEIS prank/results/"
-
-
-#devtools::install_github("wesm/feather/R")
-
-library(feather)
-#write_feather(mtcars, "mtcars.feather")
-#mtcars2 <- read_feather("mtcars.feather")
-
-
-
-gnome_all=read_feather(paste0(beisresults,"gnome_all_green_ip.feather"))
-
-
-library(fst)
-df1cat=fst::read_feather(paste0(beisresults,"cadid.feather"))
-df1cat=arrow::read_feather(paste0(beisresults,"cadid.feather"))
-df1cat=df1cat %>% dplyr::rename(Category=finalcat)
-
-
-allinnos=df1cat$fam_id %>% unique() %>% length()
-
-allcovidinnos= df1cat %>% filter(grepl("COVID",Category)) %>% distinct(fam_id) %>% nrow()
-
-
-
-
-allcleaninnos= df1cat %>% filter(grepl("Clean",Category)) %>% distinct(fam_id) %>% nrow()
-
-globalshares=df1cat %>% group_by(Category) %>%  dplyr::summarise(inno_sh=n()) %>% mutate(inno_sh=inno_sh/allinnos)
-
-
-df1cat$Category %>% table()
-
-
-
-#df1cat=df1cat%>%group_by(fam_id,Category)%>%dplyr::summarize(n=n())
-
-library(devtools)
-#devtools::install_github("hadley/multidplyr")
-library(multidplyr)
-
-library(multidplyr)
-library(dplyr, warn.conflicts = FALSE)
-library(data.table)
-library(dtplyr)
-library(dplyr, warn.conflicts = FALSE)
-
-
-#df1cat = df1cat %>% filter(grepl("COVID",Category))
-
-df1cat = df1cat %>% filter("COVID core"==Category | "COVID supporting"==Category | "Grey+Clean"==Category)
-                           
-df1cat = df1cat %>% group_by(fam_id,Category) %>% dplyr::summarize(n=n())
-
-
-df1cat$Category %>% unique()
-
-#df1cat=df1cat %>% partition(c("fam_id","Category")) %>% summarize(cnt = n()) %>% collect()
-
-
-
-
-
-  
-  
-#df1cat=df1cat%>%group_by(fam_id,)%>%dplyr::summarize(n=n())
-
-df1cat=df1cat %>% group_by(fam_id) %>% dplyr::mutate(n2=n())  # Just counting how big the family is
-
-#View(df1cat %>% filter(n2>1) %>% arrange(fam_id))
-
-
-df1cat %>% group_by(Category) %>% dplyr::summarise(min(n2),max(n2))
-
-
-
-#### get mapping from innos to nuts
-path_sql  = "../../patbis_ralf/prank_data.sqlite3"
-dbprank <- dbConnect(RSQLite::SQLite(), dbname = path_sql)
-fam2nuts=   tbl(dbprank, "fam2nuts") %>% collect()
-#fam2nuts=fam2nuts%>%group_by(fam_id) %>% dplyr::mutate(n=n())
-#max(fam2nuts$n)
-
-nuts2=fam2nuts %>% group_by(nuts) %>% dplyr::summarise(innos=n()) 
-
-df1catnuts = df1cat %>% merge(fam2nuts,by="fam_id")
-
-covid=df1catnuts %>% filter(grepl("COVID",Category)) %>% group_by(fam_id) %>% dplyr::summarise(n())  %>%
-      merge(fam2nuts,by="fam_id") %>% group_by(nuts) %>% dplyr::summarise(covidinnos=n())
-print("Note we define COVID as the sum of covid core and  supporting")
-      
-      
-
-
-clean=df1catnuts %>% filter(grepl("Clean",Category)) %>% group_by(fam_id) %>% dplyr::summarise(n())  %>%
-      merge(fam2nuts,by="fam_id") %>% group_by(nuts) %>% dplyr::summarise(cleaninnos=n())
-
-
-nutsdat=covid %>% merge(clean ,by="nuts")    
-#covidcore=df1catnuts %>% filter(Category==%>%grepl("COVID core",Category))
-#covidsupport=df1catnuts %>% filter(Category==%>%grepl("COVID support",Category))
-#### make nuts2 level data
-
-
-
-#### get the nuts data
-# Load nuts3 to nuts2 lookup
-
-nuts3dat <- read.csv("../../Clean Growth Report 2017/code/R example/R example/NUTS3productivity.csv", stringsAsFactors=FALSE)
-
-
-
-
-
-names(nuts3dat)
-library(dplyr)
-nuts3dat=nuts3dat[,c("geo_code","X2014")] %>%  as_tibble() %>%  mutate(nuts3=nuts3dat$geo_code,nuts2=substr(nuts3dat$geo_code,1,4))
-
-
-nuts2ids=nuts3dat %>% select(nuts2) %>% unique()
-
-nuts2dat=nutsdat %>% 
-       merge(nuts2ids,by.x="nuts",by.y="nuts2") %>% 
-       mutate(covidinnos_shares=covidinnos/sum(covidinnos)*100,cleaninnos_shares=cleaninnos/sum(cleaninnos)*100) %>% 
-       dplyr::rename(nuts2=nuts)  %>%
-       merge(nuts2,by.x="nuts2",by.y="nuts") %>%
-       mutate(covidOinnos=covidinnos/innos*100,innos_shares=innos/sum(innos)*100,cleanOinnos=cleaninnos/innos*100)  
-       
-
-
-
-
-nuts3dat=nuts3dat %>% merge(nuts2dat,by="nuts2")
+nuts3dat=read.csv("nuts3dat.csv")
+rta=read.csv("rta.csv")
 
 
 ```
 
 
 
-# Clean comparatave advantage around the world
-```{r}
 
 
-dfallclean=df1cat %>% filter(grepl("Clean",Category)) %>% distinct(fam_id) %>% mutate(allclean=1)
-#gnome_all=gnome_all %>% select(-allclean)
-gnome_all=gnome_all %>% left_join(dfallclean,by="fam_id") %>% mutate(allclean=ifelse(is.na(allclean),0,allclean),all=1)
-
-rta=gnome_all %>% group_by(ccode) %>% summarise_at(vars(allclean,all),sum) %>% mutate(cleansh=allclean/all*100) %>% filter(is.na(ccode)!=T)
-                                                                     
-                                                                     
+```{r scatter,echo=FALSE,eval=FALSE, include=FALSE}
+library(ggplot2)
+ggplot(rta,aes(x=all,y=cleanshw))+geom_point()+geom_smooth(method = "lm", se = T ) + theme_minimal()
 
 
-
-
-```
-
-
-
-```{r scatter,echo=FALSE}
-
-ggplot(rta,aes(x=all,y=cleansh))+geom_point()+geom_smooth(method = "lm", se = T ) + theme_minimal()
-
-
-ggplot(rta,aes(x=log(1+all),y=cleansh))+geom_point()+geom_smooth(method = "lm", se = T ) + theme_minimal()
+ggplot(rta,aes(x=log(1+all),y=cleanshw))+geom_point()+geom_smooth(method = "lm", se = T ) + theme_minimal()
 
 ggplot(rta,aes(x=log(all),y=cleansh))+geom_point()+geom_smooth(method = "lm", se = T ) + theme_minimal()
 
+
+lm(cleanshw~log(1+all),rta %>% filter(all>20)) %>%  summary()
+lm(cleanshw~all,rta %>% filter(all>20)) %>%  summary()
+
 ```
 
-```{r}
+```{r prepare globe,include=FALSE}
 
 
 library(plotly)
@@ -241,7 +85,7 @@ df[,2] <- log(df[,2])
 
 clook=read.csv("https://www.dropbox.com/s/3hb2kol78zgb4h0/ccodelook.csv?dl=1")
 
-df=df %>% left_join(clook,by=c("CODE"="ccode3")) %>% left_join(rta %>% filter(all>5),by="ccode") 
+df=df %>% left_join(clook,by=c("CODE"="ccode3")) %>% left_join(rta %>% filter(all>0),by="ccode") 
 # appearance
 
 #Set country boundaries as light grey
@@ -261,19 +105,80 @@ g <- list(
      showrivers = TRUE,
      rivercolor = '#99c0db')
 
-df=df %>% mutate(toplot=(cleansh/( sum(allclean,na.rm=T)/sum(all,na.rm=T)*100)-1)*100)
+df=df %>% mutate(toplot=(cleanshw/( sum(allclean,na.rm=T)/sum(all,na.rm=T)*100)-1)*100)
+df=df %>% mutate(toplot=cleanshw)
+
+
+
+
+drsimonj_colors <- c(
+  `red`        = "#d11141",
+  `green`      = "#00b159",
+  `blue`       = "#00aedb",
+  `orange`     = "#f37735",
+  `yellow`     = "#ffc425",
+  `light grey` = "#cccccc",
+  `dark grey`  = "#8c8c8c")
+drsimonj_cols <- function(...) {
+  cols <- c(...)
+
+  if (is.null(cols))
+    return (drsimonj_colors)
+
+  drsimonj_colors[cols]
+}
+
+drsimonj_palettes <- list(
+  `main`  = drsimonj_cols("blue", "green", "yellow"),
+
+  `cool`  = drsimonj_cols("blue", "green"),
+
+  `hot`   = drsimonj_cols("yellow", "orange", "red"),
+
+  `mixed` = drsimonj_cols("blue", "green", "yellow", "orange", "red"),
+
+  `grey`  = drsimonj_cols("light grey", "dark grey")
+)
+drsimonj_pal <- function(palette = "main", reverse = FALSE, ...) {
+  pal <- drsimonj_palettes[[palette]]
+
+  if (reverse) pal <- rev(pal)
+
+  colorRampPalette(pal, ...)
+}
+
+
+spet=drsimonj_pal("cool")(20)
+
+#library(inlmisc)
+#spet=inlmisc::GetTolColors(34, blind = "tritan")
+library(jcolors)
+
+spet=jcolors('pal11')
+```
+
+
+```{r globeprep,  fig.cap="Share of clean in total innovation",include=FALSE,message=FALSE,echo=FALSE}
+#library(dichromat)
+library(shiny)
 
 p <- plot_geo(df) %>%
-     add_trace(z = ~toplot, color = ~(toplot), colors = 'RdYlBu',
+     add_trace(z = ~toplot, color = ~(toplot), colors = spet,
      text = ~COUNTRY, locations = ~CODE, marker = list(line = l)) %>%
-     colorbar(title = 'RTA Cleantech') %>%
+     colorbar(title = 'Share of Cleantech Innovaion in %') %>%
      layout(title = '', geo = g)
-print(p)
+```
+
+
+```{r globe,  fig.cap="Share of clean in total innovation",echo=FALSE,message=FALSE}
+
+div(p)
+#print(p)
 
 ```
 
 
-```{r Map command, include=FALSE}
+```{r Map command, include=FALSE,message=FALSE,echo=FALSE}
 library("RSQLite")
 library("sqldf")
 library(haven)
@@ -284,6 +189,8 @@ library(maptools)
 library(rgdal)
 
 
+NUTS3 <- readOGR(dsn =path.expand("../../Clean Growth Report 2017/code/R example/R example"), layer = "nuts3_withid")
+
 
 nuts2_map<-function(vvv,lll,geoid,fstring="%2.0f"){
 
@@ -293,7 +200,6 @@ nuts2_map<-function(vvv,lll,geoid,fstring="%2.0f"){
   #C:\Users\Ralf Martin\Dropbox\Clean Growth Report 2017\code\R example\R example
 getwd()  
 
-NUTS3 <- readOGR(dsn =path.expand("../../Clean Growth Report 2017/code/R example/R example"), layer = "nuts3_withid")
 
 
 
@@ -312,13 +218,20 @@ index <- match(NUTS3$NUTS_ID, geoid)
 
 #summary(vvv)
 deciles=quantile(vvv, prob = c(0.1, 0.2, 0.3,0.4,0.5,0.6,0.7,0.8,0.9),na.rm=TRUE)
-print(deciles)
+#print(deciles)
 #length(NUTS3$NUTS_ID)
 NUTS3$X2015 <- vvv[index]
 
 
 # Defining colour options as a function
-clist=c("#053061","#2166ac","#4393c3","#92c5de","#d1e5f0","#fddbc7","#f4a582","#d6604d","#b2182b","#67001f")
+
+library(RColorBrewer)
+clist=brewer.pal(10, 'PRGn')
+
+#clist=c("#053061","#2166ac","#4393c3","#92c5de","#d1e5f0","#fddbc7","#f4a582","#d6604d","#b2182b","#67001f")
+
+
+
 color_prod <- function(x,dec) {
 
   
@@ -395,17 +308,6 @@ plot(UKnuts3, col=UKnuts3$col, border=NA)
   text(1:(length(col)-1) * rect_width, .2, labels = breaks, cex=0.5,srt=0)    
   text(1:1 * rect_width*5, 0.05, labels = lll, cex=0.5,srt=0)    
 
-  #<<<<< write to disk
-    #dev.copy(svg,paste0("../clean growth 2019/results/nuts2_maps",vvv,".svg")  )
-    #dev.off()
-    #dev.copy(jpeg,paste0("dropbox/clean growth report 2017/results/nuts2_maps",vvv,".jpeg")  )
-    #dev.off()
-    #dev.copy(pdf,paste0("dropbox/clean growth report 2017/results/nuts2_maps",vvv,".pdf")  )
-    #dev.off()
-    
-
-
-  #>>>>
 
 
 #>>>>>>>    
@@ -416,83 +318,39 @@ plot(UKnuts3, col=UKnuts3$col, border=NA)
 
 ```
 
-# Distribution of innovation (2004-14)
 
-```{r draw  innos map}
-
-nuts2_map(nuts3dat$innos_shares,"%",nuts3dat$nuts3,fstring="%2.2f")
-
-```
+```{r draw clean innos map,echo=FALSE, include=FALSE,echo=FALSE,message=FALSE}
 
 
-# Distribution of clean+grey innovation (2004-14)
+#gl_clean=filter(globalshares,Category=="Grey+Clean")$inno_sh 
+#gl_covid= 
 
-```{r draw clean innos map}
-
-nuts2_map(nuts3dat$cleaninnos_shares,"%",nuts3dat$nuts3,fstring="%2.2f")
-
-```
-
-
-# Clean Comparative advantage?
-
-```{r draw clean innos map,echo=FALSE}
-
-
-gl_clean=filter(globalshares,Category=="Grey+Clean")$inno_sh 
-gl_covid= 
-
-nuts3dat=nuts3dat %>% mutate(cleanOinnos=(cleaninnos_shares/innos_shares-1)*100,covidOinnos=(covidinnos_shares/innos_shares-1)*100,
-                             cleanRTA=(cleaninnos/innos/(allcleaninnos/allinnos) -1)*100 , 
-                             covidRTA=(covidinnos/innos/(allcovidinnos/allinnos) -1)*100  )
+nuts3dat=nuts3dat %>% mutate(cleanOinnos=(cleaninnos_shares/innos_shares-1)*100,covidOinnos=(covidinnos_shares/innos_shares-1)*100 )
 
 
 
 ```
 
 
-# Clean RTA
-```{r}
+
+```{r cleani,  fig.cap="Share of clean in total innovation", echo=FALSE, message=FALSE}
 nuts2_map(nuts3dat$cleanOinnos,"%",nuts3dat$nuts3,fstring="%2.2f")
 
 
-nuts2_map(nuts3dat$cleanRTA,"%",nuts3dat$nuts3,fstring="%2.2f")
 
 ```
 
-
-# Covid RTA
-```{r}
+```{r covi,  fig.cap="Share of COVID & COVID related in total innovation", echo=FALSE,message=FALSE}
 nuts2_map(nuts3dat$covidOinnos,"%",nuts3dat$nuts3,fstring="%2.2f")
 
 ```
 
-```{r}
+```{r scatti,  fig.cap="Share of COVID & COVID related in total innovation", echo=FALSE,message=FALSE}
 library(ggplot2)
 ggplot(nuts3dat, aes(x=innos_shares))+geom_point(aes(y=covidOinnos,color="RTA Covid"))+
    geom_point(aes(y=cleanOinnos,color="RTA Clean+Grey")) +theme_minimal()+
    geom_smooth(method = "lm", se = T,aes(y=covidOinnos,color="RTA Covid")) +
    geom_smooth(method = "lm", se = T,aes(y=cleanOinnos,color="RTA Clean+Grey"))+ylab("RTA")+xlab("Share of UK innovation")
-
-```
-
-
-# Distribution of COVID innovation across the UK (2004-2014)
-
-```{r draw covid innos map}
-
-nuts2_map(nuts3dat$covidinnos_shares,"%",nuts3dat$nuts3,fstring="%2.2f")
-
-```
-
-
-
-
-# Share of covid in total (2004-2014)
-
-```{r draw covid as share in innos map}
-
-nuts2_map(nuts3dat$covidOinnos,"%",nuts3dat$nuts3,fstring="%2.2f")
 
 ```
 

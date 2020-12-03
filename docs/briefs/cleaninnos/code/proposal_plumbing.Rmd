@@ -1,0 +1,190 @@
+---
+title: "Industrial policy strategies for seizing clean growth opportunities in developping economies"
+output: html_document
+editor_options: 
+  chunk_output_type: inline
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+
+
+```{r read data ,include=FALSE}
+library(dplyr)
+#library(twextras)
+
+library(dbplyr)
+library(dplyr)
+library(RSQLite)
+library(readr)
+library(lubridate)
+
+#remotes::install_github("twolodzko/twextras")
+
+#df1=read.table("../Data/prep1_out1.dsv",sep=" ",header=TRUE)
+
+
+#df1=twextras::read_table("../Data/prep1_out1.dsv")
+#names(df1)
+
+#df1catx=twextras::read_table("../data/covidclasses.csv") %>% dplyr::rename(fam_id=docdb_family_id)
+#head(df1cat)
+#library(feather)
+library(arrow)
+beisresults="../../BEIS prank/results/"
+
+gnome_all=arrow::read_feather(paste0(beisresults,"gnome_all_green_ip.feather"))
+
+
+
+df1cat=arrow::read_feather(paste0(beisresults,"cadid.feather"))
+df1cat=df1cat %>% dplyr::rename(Category=finalcat)
+
+
+allinnos=df1cat$fam_id %>% unique() %>% length()
+
+allcovidinnos= df1cat %>% filter(grepl("COVID",Category)) %>% distinct(fam_id) %>% nrow()
+
+
+
+
+allcleaninnos= df1cat %>% filter(grepl("Clean",Category)) %>% distinct(fam_id) %>% nrow()
+
+globalshares=df1cat %>% group_by(Category) %>%  dplyr::summarise(inno_sh=n()) %>% mutate(inno_sh=inno_sh/allinnos)
+
+
+df1cat$Category %>% table()
+
+
+
+#df1cat=df1cat%>%group_by(fam_id,Category)%>%dplyr::summarize(n=n())
+
+library(devtools)
+#devtools::install_github("hadley/multidplyr")
+library(multidplyr)
+
+library(multidplyr)
+library(dplyr, warn.conflicts = FALSE)
+library(data.table)
+library(dtplyr)
+library(dplyr, warn.conflicts = FALSE)
+
+
+#df1cat = df1cat %>% filter(grepl("COVID",Category))
+
+df1cat = df1cat %>% filter("COVID core"==Category | "COVID supporting"==Category | "Grey+Clean"==Category)
+                           
+df1cat = df1cat %>% group_by(fam_id,Category) %>% dplyr::summarize(n=n())
+
+
+df1cat$Category %>% unique()
+
+#df1cat=df1cat %>% partition(c("fam_id","Category")) %>% summarize(cnt = n()) %>% collect()
+
+
+
+
+
+  
+  
+#df1cat=df1cat%>%group_by(fam_id,)%>%dplyr::summarize(n=n())
+
+df1cat=df1cat %>% group_by(fam_id) %>% dplyr::mutate(n2=n())  # Just counting how big the family is
+
+#View(df1cat %>% filter(n2>1) %>% arrange(fam_id))
+
+
+df1cat %>% group_by(Category) %>% dplyr::summarise(min(n2),max(n2))
+
+
+
+#### get mapping from innos to nuts
+path_sql  = "../../patbis_ralf/prank_data.sqlite3"
+dbprank <- dbConnect(RSQLite::SQLite(), dbname = path_sql)
+fam2nuts=   tbl(dbprank, "fam2nuts") %>% collect()
+#fam2nuts=fam2nuts%>%group_by(fam_id) %>% dplyr::mutate(n=n())
+#max(fam2nuts$n)
+
+nuts2=fam2nuts %>% group_by(nuts) %>% dplyr::summarise(innos=n()) 
+
+df1catnuts = df1cat %>% merge(fam2nuts,by="fam_id")
+
+covid=df1catnuts %>% filter(grepl("COVID",Category)) %>% group_by(fam_id) %>% dplyr::summarise(n())  %>%
+      merge(fam2nuts,by="fam_id") %>% group_by(nuts) %>% dplyr::summarise(covidinnos=n())
+print("Note we define COVID as the sum of covid core and  supporting")
+      
+      
+
+
+clean=df1catnuts %>% filter(grepl("Clean",Category)) %>% group_by(fam_id) %>% dplyr::summarise(n())  %>%
+      merge(fam2nuts,by="fam_id") %>% group_by(nuts) %>% dplyr::summarise(cleaninnos=n())
+
+
+nutsdat=covid %>% merge(clean ,by="nuts")    
+#covidcore=df1catnuts %>% filter(Category==%>%grepl("COVID core",Category))
+#covidsupport=df1catnuts %>% filter(Category==%>%grepl("COVID support",Category))
+#### make nuts2 level data
+
+
+
+#### get the nuts data
+# Load nuts3 to nuts2 lookup
+
+nuts3dat <- read.csv("../../Clean Growth Report 2017/code/R example/R example/NUTS3productivity.csv", stringsAsFactors=FALSE)
+
+
+
+
+
+names(nuts3dat)
+library(dplyr)
+nuts3dat=nuts3dat[,c("geo_code","X2014")] %>%  as_tibble() %>%  mutate(nuts3=nuts3dat$geo_code,nuts2=substr(nuts3dat$geo_code,1,4))
+
+
+nuts2ids=nuts3dat %>% select(nuts2) %>% unique()
+
+nuts2dat=nutsdat %>% 
+       merge(nuts2ids,by.x="nuts",by.y="nuts2") %>% 
+       mutate(covidinnos_shares=covidinnos/sum(covidinnos)*100,cleaninnos_shares=cleaninnos/sum(cleaninnos)*100) %>% 
+       dplyr::rename(nuts2=nuts)  %>%
+       merge(nuts2,by.x="nuts2",by.y="nuts") %>%
+       mutate(covidOinnos=covidinnos/innos*100,innos_shares=innos/sum(innos)*100,cleanOinnos=cleaninnos/innos*100)  
+       
+
+
+
+
+nuts3dat=nuts3dat %>% merge(nuts2dat,by="nuts2")
+nuts3dat %>% write.csv("nuts3dat.csv")
+
+```
+
+
+
+# Clean comparative advantage around the world
+```{r,cache=TRUE,include=FALSE}
+
+library(dplyr)
+dfallclean=df1cat %>% filter(grepl("Clean",Category)) %>% distinct(fam_id) %>% mutate(allclean=1)
+#gnome_all=gnome_all %>% select(-allclean)
+gnome_all=gnome_all %>% left_join(dfallclean,by="fam_id") %>% mutate(allclean=ifelse(is.na(allclean),0,allclean),all=1)
+```
+
+
+```{r}
+rta=gnome_all %>% group_by(ccode) %>% summarise_at(vars(allclean,all),sum) %>% mutate(cleansh=allclean/all*100) %>% filter(is.na(ccode)!=T)
+                                                                     
+#quantile(rta$cleansh,0.90)  
+summary(rta$cleansh)
+
+qqq=quantile(rta$cleansh,0.80)
+rta=rta %>% mutate(cleanshw=ifelse(cleansh>  qqq,qqq, cleansh  ))
+
+rta %>% write.csv("rta.csv")
+
+
+```
+

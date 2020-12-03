@@ -3,6 +3,7 @@ title: "Ralf Martin"
 description: |
   Ralf Martin
 output_dir: "docs"
+include: ["briefs"]
 twitter:
   site: "@mondpanther"
 navbar:

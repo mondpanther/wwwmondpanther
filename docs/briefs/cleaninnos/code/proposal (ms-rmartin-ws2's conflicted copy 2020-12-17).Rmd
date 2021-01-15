@@ -1,0 +1,356 @@
+---
+title: "Industrial policy strategies for seizing clean growth opportunities in developping economies"
+description: |
+  Proposal for a research agenda
+author: "Ralf Martin"     
+date: "`r Sys.Date()`"
+output: distill::distill_article
+editor_options: 
+  chunk_output_type: inline
+---
+
+
+
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+Efforts for to transform the global economy from being mainly fossil fuel driven to a state with effectively net zero emissions will have to be mindful of the impact on economic growth. If the transition to clean compromises growth  the political will for pursuing any meaningful climate policy will be in short supply. Worse it could further fuel extremist political movements as we have seen in recent years with repercussions beyond climate impacts.
+This applies in developed economies but even more so in developing economies. It is neither morally fair nor practically feasible to keep these economies at the low levels of per capita income and emissions many of them find themselves in at the moment.
+
+At first glance, the need increase incomes would imply an inexorable trade-off between environmental and economic outcomes. Clearly, one potential strategy for development is to imitate leading economies including their reliance on cheap, tried and tested fossil fuel technologies. However, in ongoing research we have found that innovation spillovers for clean technologies are on the whole considerably larger for clean technologies than for dirty. Indeed, specific, clean technologies are among the most spillover intensive technology types that can be identified. This opens up the possibility that there is not really an inexorable trade-off but rather the space for an environmental and growth win-win with when transitioning to net zero carbon. However, because some of the potential wins arise via spillovers this will not happen via market forces alone. It also is important to note that not all clean technologies have the same external spillover benefit and not all technologies generate the same benefits to all countries.
+
+This raises the question if developing countries are particularly well placed to develop an industrial strategy around clean technologies. Preliminary evidence suggests that this could be the case. Below we plot the share of clean innovation in total innovation (as measured by global patent data from PATSTAT). We find that many developing countries have a relatively high shares of clean innovation which could be indicative of a comparative advantage in clean technologies. We find a similar result within the UK where more backward regions then tend to more clean innovation intensive.
+
+Could this be a coincidence or are there deeper structural reasons? The activity in peripheral regions is likely to be more dominated by recent market entrants. Entrants will have strong incentives to focus on new technologies if incumbents benefit from knowledge advantage in existing technologies and existing knowledge is not complementary with knowledge related to new technologies. Technologies might also vary in their level of entry costs. In this context it is instructive to see that COVID related technologies seem to be rather less associated with more backward regions withing the UK.
+
+Historically, some of the most spectacular growth stories were closely related to the emergence of new technological waves; e.g. the microelectronics in the case of Japan, Wireless and Networking Technologies in the case of Korea and China, web based business services and software in the case of India etc. 
+
+All of this calls for a research programme into if and how developing countries might be able to successfully ride the clean technology wave; not only or primarily as willing adopters of cutting edge technologies developed elsewhere but as leaders of the field.
+
+This will include theoretical into which characteristics of clean technologies might be particular suited in a developing country context. It will inclue
+
+This will include empirical work to measure and 
+
+
+
+
+```{r read data ,include=FALSE}
+library(dplyr)
+
+
+library(dbplyr)
+library(dplyr)
+
+library(readr)
+library(lubridate)
+
+
+nuts3dat=read.csv("nuts3dat.csv")
+rta=read.csv("rta.csv")
+
+
+```
+
+
+
+
+
+```{r scatter,echo=FALSE,eval=FALSE, include=FALSE}
+library(ggplot2)
+ggplot(rta,aes(x=all,y=cleanshw))+geom_point()+geom_smooth(method = "lm", se = T ) + theme_minimal()
+
+
+ggplot(rta,aes(x=log(1+all),y=cleanshw))+geom_point()+geom_smooth(method = "lm", se = T ) + theme_minimal()
+
+ggplot(rta,aes(x=log(all),y=cleansh))+geom_point()+geom_smooth(method = "lm", se = T ) + theme_minimal()
+
+
+lm(cleanshw~log(1+all),rta %>% filter(all>20)) %>%  summary()
+lm(cleanshw~all,rta %>% filter(all>20)) %>%  summary()
+
+```
+
+```{r prepare globe,include=FALSE}
+
+
+library(plotly)
+df <- read.csv('https://raw.githubusercontent.com/plotly/datasets/master/2014_world_gdp_with_codes.csv')
+df[,2] <- as.numeric(df[,2])
+df[,2] <- log(df[,2])
+
+
+clook=read.csv("https://www.dropbox.com/s/3hb2kol78zgb4h0/ccodelook.csv?dl=1")
+
+df=df %>% left_join(clook,by=c("CODE"="ccode3")) %>% left_join(rta %>% filter(all>0),by="ccode") 
+# appearance
+
+#Set country boundaries as light grey
+l <- list(color = toRGB("#d1d1d1"), width = 0.5)
+#Specify map projection and options
+g <- list(
+     showframe = FALSE,
+     showcoastlines = FALSE,
+     projection = list(type = 'orthographic'),
+     resolution = '100',
+     showcountries = TRUE,
+     countrycolor = '#d1d1d1',
+     showocean = TRUE,
+     oceancolor = '#c9d2e0',
+     showlakes = TRUE,
+     lakecolor = '#99c0db',
+     showrivers = TRUE,
+     rivercolor = '#99c0db')
+
+df=df %>% mutate(toplot=(cleanshw/( sum(allclean,na.rm=T)/sum(all,na.rm=T)*100)-1)*100)
+df=df %>% mutate(toplot=cleanshw)
+
+
+
+
+drsimonj_colors <- c(
+  `red`        = "#d11141",
+  `green`      = "#00b159",
+  `blue`       = "#00aedb",
+  `orange`     = "#f37735",
+  `yellow`     = "#ffc425",
+  `light grey` = "#cccccc",
+  `dark grey`  = "#8c8c8c")
+drsimonj_cols <- function(...) {
+  cols <- c(...)
+
+  if (is.null(cols))
+    return (drsimonj_colors)
+
+  drsimonj_colors[cols]
+}
+
+drsimonj_palettes <- list(
+  `main`  = drsimonj_cols("blue", "green", "yellow"),
+
+  `cool`  = drsimonj_cols("blue", "green"),
+
+  `hot`   = drsimonj_cols("yellow", "orange", "red"),
+
+  `mixed` = drsimonj_cols("blue", "green", "yellow", "orange", "red"),
+
+  `grey`  = drsimonj_cols("light grey", "dark grey")
+)
+drsimonj_pal <- function(palette = "main", reverse = FALSE, ...) {
+  pal <- drsimonj_palettes[[palette]]
+
+  if (reverse) pal <- rev(pal)
+
+  colorRampPalette(pal, ...)
+}
+
+
+spet=drsimonj_pal("cool")(20)
+
+#library(inlmisc)
+#spet=inlmisc::GetTolColors(34, blind = "tritan")
+library(jcolors)
+
+spet=jcolors('pal11')
+```
+
+
+```{r globeprep,  fig.cap="Share of clean in total innovation",include=FALSE,message=FALSE,echo=FALSE}
+#library(dichromat)
+library(shiny)
+
+p <- plot_geo(df) %>%
+     add_trace(z = ~toplot, color = ~(toplot), colors = spet,
+     text = ~COUNTRY, locations = ~CODE, marker = list(line = l)) %>%
+     colorbar(title = 'Share of Cleantech Innovaion in %') %>%
+     layout(title = '', geo = g)
+```
+
+
+```{r globe,  fig.cap="Share of clean in total innovation",echo=FALSE,message=FALSE}
+
+div(p)
+#print(p)
+
+```
+
+
+```{r Map command, include=FALSE,message=FALSE,echo=FALSE}
+library("RSQLite")
+library("sqldf")
+library(haven)
+library(plyr)
+library(doBy)
+library(maps)
+library(maptools)
+library(rgdal)
+
+
+NUTS3 <- readOGR(dsn =path.expand("../../Clean Growth Report 2017/code/R example/R example"), layer = "nuts3_withid")
+
+
+nuts2_map<-function(vvv,lll,geoid,fstring="%2.0f"){
+
+
+
+# Reading in NUTS3 shapefile (in UK grid format)
+  #C:\Users\Ralf Martin\Dropbox\Clean Growth Report 2017\code\R example\R example
+getwd()  
+
+
+
+
+
+
+# Joining shapefile and data
+
+index <- match(NUTS3$NUTS_ID, geoid)
+#length(index)
+#NUTS3$NUTS_ID[is.na(index)]
+#NUTS3$X2015 = NUTS3$ev_GB00t14
+
+
+#NUTS3$X2015 <- productivityUK[index, "X2015"]
+
+
+#summary(vvv)
+deciles=quantile(vvv, prob = c(0.1, 0.2, 0.3,0.4,0.5,0.6,0.7,0.8,0.9),na.rm=TRUE)
+#print(deciles)
+#length(NUTS3$NUTS_ID)
+NUTS3$X2015 <- vvv[index]
+
+
+# Defining colour options as a function
+
+library(RColorBrewer)
+clist=brewer.pal(10, 'PRGn')
+
+#clist=c("#053061","#2166ac","#4393c3","#92c5de","#d1e5f0","#fddbc7","#f4a582","#d6604d","#b2182b","#67001f")
+
+
+
+color_prod <- function(x,dec) {
+
+  
+  
+  if (is.na(x)) {
+    col <- "#ffffff"
+  }
+  else if (x > dec[9]) {
+    col <- clist[10]
+  }
+  else if (x > dec[8]) {
+    col <- clist[9]
+  }
+  else if (x > dec[7]) {
+    col <- clist[8]
+  }
+  else if (x > dec[6]) {
+    col <- clist[7]
+  }
+  else if (x > dec[5]) {
+    col <- clist[6]
+  }
+  else if (x > dec[4]) {
+    col <- clist[5]
+  }
+  else if (x > dec[3]) {
+    col <- clist[4]
+  }
+  else if (x > dec[2]) {
+    col <- clist[3]
+  }
+  else if (x > dec[1]) {
+    col <- clist[2]
+  }
+  else {
+    col <- clist[1]
+  }
+  return(col)
+}
+
+# Applying colour options
+NUTS3$col <- sapply(NUTS3$X2015, color_prod,dec=deciles)
+NUTS3$col[!is.na(index)]
+# Dropping non-UK cells
+# only use cells that have data - this is how we drop all other NUTS regions
+UKnuts3<-subset(NUTS3, !is.na(X2015))
+#UKnuts3<-NUTS3
+
+##### 2015 Productivity Map, UK, formatted ##################################
+
+# Defining the map plot
+par(mar=c(0,0,0,0), bg="white")
+plot(0:1, 0:1, type="n", xlab="", ylab="", axes=FALSE, asp=1)
+
+# Adding cloropleth map
+par(new=TRUE, plt=c(0, 1, 0.075, 1))
+plot(UKnuts3, col=UKnuts3$col, border=NA)
+
+  # Defining legend
+  par(new=TRUE, plt=c(0, 0.9, .03, .23))
+  plot(0:1, 0:1, type="n", xlab="", ylab="", asp=1, axes=FALSE)
+  col <- clist
+  breaks <- sprintf(fstring,deciles*1)
+  breaks
+  rect_width <- 2.5 / length(col)
+
+  xleft <- 0:(length(col)-1) * rect_width
+  ybottom <- rep(.25, length(col))
+  xright <- 1:length(col) * rect_width
+  ytop <- rep(.35, length(col))
+
+  # Adding legend to map
+  rect(xleft, ybottom, xright, ytop, col=col, border="#e0e0e0", lwd=.5)
+  text(1:(length(col)-1) * rect_width, .2, labels = breaks, cex=0.5,srt=0)    
+  text(1:1 * rect_width*5, 0.05, labels = lll, cex=0.5,srt=0)    
+
+
+
+#>>>>>>>    
+}
+
+
+
+
+```
+
+
+```{r draw clean innos map,echo=FALSE, include=FALSE,echo=FALSE,message=FALSE}
+
+
+#gl_clean=filter(globalshares,Category=="Grey+Clean")$inno_sh 
+#gl_covid= 
+
+nuts3dat=nuts3dat %>% mutate(cleanOinnos=(cleaninnos_shares/innos_shares-1)*100,covidOinnos=(covidinnos_shares/innos_shares-1)*100 )
+
+
+
+```
+
+
+
+```{r cleani,  fig.cap="Share of clean in total innovation", echo=FALSE, message=FALSE}
+nuts2_map(nuts3dat$cleanOinnos,"%",nuts3dat$nuts3,fstring="%2.2f")
+
+
+
+```
+
+```{r covi,  fig.cap="Share of COVID & COVID related in total innovation", echo=FALSE,message=FALSE}
+nuts2_map(nuts3dat$covidOinnos,"%",nuts3dat$nuts3,fstring="%2.2f")
+
+```
+
+```{r scatti,  fig.cap="Share of COVID & COVID related in total innovation", echo=FALSE,message=FALSE}
+library(ggplot2)
+ggplot(nuts3dat, aes(x=innos_shares))+geom_point(aes(y=covidOinnos,color="RTA Covid"))+
+   geom_point(aes(y=cleanOinnos,color="RTA Clean+Grey")) +theme_minimal()+
+   geom_smooth(method = "lm", se = T,aes(y=covidOinnos,color="RTA Covid")) +
+   geom_smooth(method = "lm", se = T,aes(y=cleanOinnos,color="RTA Clean+Grey"))+ylab("RTA")+xlab("Share of UK innovation")
+
+```
+

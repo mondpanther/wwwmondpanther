@@ -1,0 +1,296 @@
+---
+title: "Cleantech around the world"
+author: "Ralf Martin"     
+date: "`r Sys.Date()`"
+output: distill::distill_article
+editor_options: 
+  chunk_output_type: inline
+---
+
+
+<style>
+.caption {
+  font-size: .8em;
+}
+</style>
+
+
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+
+
+
+
+```{r read data ,include=FALSE}
+library(dplyr)
+
+
+library(dbplyr)
+library(dplyr)
+
+library(readr)
+library(lubridate)
+
+library(readr)
+nuts3dat=read.csv("nuts3dat.csv")
+
+
+#xlook=read_csv("https://www.dropbox.com/s/fidc1sr298imhku/LAU2_to_LAU1_to_NUTS3_to_NUTS2_to_NUTS1__December_2018__Lookup_in_United_Kingdom.csv?dl=1")
+#xlook=xlook %>% select(NUTS318CD,NUTS118NM,NUTS318NM,NUTS218CD,NUTS218NM,NUTS118CD,NUTS118NM) %>% distinct(NUTS318CD, .keep_all = T)
+xlook=nuts3dat %>% select(geo_code,nuts2) %>% distinct(geo_code,.keep_all = T)
+                                                       
+
+nutslook=read_csv("https://www.dropbox.com/s/4piv1p53hhloo5l/NUTS_Level_2_%28January_2015%29_Names_and_Codes_in_the_United_Kingdom.csv?dl=1")
+
+nuts2=nuts3dat %>% 
+      select(innos,nuts2,geo_code,covidinnos,cleaninnos, covidinnos_shares)%>%
+                   distinct(geo_code,.keep_all=TRUE)
+
+nuts2=nuts2 %>% mutate(cleanOinnos=cleaninnos/innos*100, covidOinnos=covidinnos/innos*100,innos_sh=innos/sum(innos,na.rm = TRUE)*100)
+
+#nuts2=nuts2 %>% left_join(nutslook,by=c("nuts2"="NUTS215CD")) 
+
+#nuts2=nuts2 %>% left_join(xlook,by=c("geo_code"="NUTS318CD")) 
+rta=read.csv("rta.csv")
+
+
+
+
+
+```
+
+
+
+
+
+```{r scatter,echo=FALSE,eval=FALSE, include=FALSE}
+library(ggplot2)
+ggplot(rta,aes(x=all,y=cleanshw))+geom_point()+geom_smooth(method = "lm", se = T ) + theme_minimal()
+
+
+ggplot(rta,aes(x=log(1+all),y=cleanshw))+geom_point()+geom_smooth(method = "lm", se = T ) + theme_minimal()
+
+ggplot(rta,aes(x=log(all),y=cleansh))+geom_point()+geom_smooth(method = "lm", se = T ) + theme_minimal()
+
+
+lm(cleanshw~log(1+all),rta %>% filter(all>20)) %>%  summary()
+lm(cleanshw~all,rta %>% filter(all>20)) %>%  summary()
+
+```
+
+```{r prepare globe,include=FALSE}
+
+
+library(plotly)
+df <- read.csv('https://raw.githubusercontent.com/plotly/datasets/master/2014_world_gdp_with_codes.csv')
+df[,2] <- as.numeric(df[,2])
+df[,2] <- log(df[,2])
+
+
+clook=read.csv("https://www.dropbox.com/s/3hb2kol78zgb4h0/ccodelook.csv?dl=1")
+
+df=df %>% left_join(clook,by=c("CODE"="ccode3")) %>% left_join(rta %>% filter(all>0),by="ccode") 
+# appearance
+
+#Set country boundaries as light grey
+l <- list(color = toRGB("#d1d1d1"), width = 0.5)
+#Specify map projection and options
+g <- list(
+     showframe = FALSE,
+     showcoastlines = FALSE,
+     projection = list(type = 'orthographic'),
+     resolution = '100',
+     showcountries = TRUE,
+     countrycolor = '#d1d1d1',
+     showocean = TRUE,
+     oceancolor = '#c9d2e0',
+     showlakes = TRUE,
+     lakecolor = '#99c0db',
+     showrivers = TRUE,
+     rivercolor = '#99c0db')
+
+df=df %>% mutate(toplot=(cleanshw/( sum(allclean,na.rm=T)/sum(all,na.rm=T)*100)-1)*100)
+df=df %>% mutate(toplot=cleanshw)
+
+
+
+
+drsimonj_colors <- c(
+  `red`        = "#d11141",
+  `green`      = "#00b159",
+  `blue`       = "#00aedb",
+  `orange`     = "#f37735",
+  `yellow`     = "#ffc425",
+  `light grey` = "#cccccc",
+  `dark grey`  = "#8c8c8c")
+drsimonj_cols <- function(...) {
+  cols <- c(...)
+
+  if (is.null(cols))
+    return (drsimonj_colors)
+
+  drsimonj_colors[cols]
+}
+
+drsimonj_palettes <- list(
+  `main`  = drsimonj_cols("blue", "green", "yellow"),
+
+  `cool`  = drsimonj_cols("blue", "green"),
+
+  `hot`   = drsimonj_cols("yellow", "orange", "red"),
+
+  `mixed` = drsimonj_cols("blue", "green", "yellow", "orange", "red"),
+
+  `grey`  = drsimonj_cols("light grey", "dark grey")
+)
+drsimonj_pal <- function(palette = "main", reverse = FALSE, ...) {
+  pal <- drsimonj_palettes[[palette]]
+
+  if (reverse) pal <- rev(pal)
+
+  colorRampPalette(pal, ...)
+}
+
+
+spet=drsimonj_pal("cool")(20)
+
+#library(inlmisc)
+#spet=inlmisc::GetTolColors(34, blind = "tritan")
+library(jcolors)
+
+spet=jcolors('pal11')
+```
+
+
+```{r globeprep,  fig.cap="Share of clean in total innovation",include=FALSE,message=FALSE,echo=FALSE}
+#library(dichromat)
+library(shiny)
+
+p <- plot_geo(df) %>%
+     add_trace(z = ~toplot, color = ~(toplot), colors = spet,
+     text = ~COUNTRY, locations = ~CODE, marker = list(line = l)) %>%
+     colorbar(title = 'Share of Cleantech Innovaion in %') %>%
+     layout(title = '', geo = g)
+```
+
+
+```{r,include=FALSE}
+library(knitr)
+knit_hooks$set(customcap= function(before, options, envir) {
+  if(!before) {
+    paste('<p class="caption"> (\\#fig:globe)',options$customcap,"</p>",sep="")
+    }
+    })
+```
+ 
+
+```{r globe,  customcap="Share of clean in total innovation (in %)",echo=FALSE}
+
+div(p)
+
+```
+
+
+<br>
+<br>
+
+```{r newmap,include=FALSE}
+
+
+#Clear the memory
+#rm(list=ls())
+#Download some important packages
+library(maps)
+library(mapdata)
+library(maptools)
+library(rgdal)
+library(ggmap)
+library(ggplot2)
+library(rgeos)
+library(broom)
+library(plyr)
+
+#install.packages('rgeos', type='source')
+#install.packages('rgdal', type='source')
+
+
+#Load the shapefile - make sure you change the filepath to where you saved the shapefiles
+#shapefile <- readOGR(dsn="NUTS_Level_2__January_2015__Boundaries-shp", layer="NUTS_Level_2__January_2015__Boundaries")
+shapefile <- readOGR(dsn="../../Clean Growth Report 2017/code/R example/R example", layer = "nuts3_withid")
+
+
+mapdata <- tidy(shapefile, region="NUTS_ID") #This might take a few minutes
+
+
+
+df <- mapdata %>% inner_join( xlook, by=c("id"="geo_code"))
+df <- df %>% left_join( nuts2, by=c("nuts2"="nuts2"))
+
+
+
+nuts2mapper=function(df,value,label){
+  #Create the heatmap using the ggplot2 package
+  
+  df['value']=df[value]
+  
+  gg <- ggplot() + geom_polygon(data = df, aes(x = long, y = lat, group = group, fill = value), color = NA, size = 0.1)
+  gg <- gg + scale_fill_gradient2(low = "black", mid = "blue", high = "green", na.value = "white") + labs(fill = label)
+  gg <- gg + coord_fixed(1)
+  gg <- gg + theme_minimal()
+  gg <- gg + theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(), )
+  gg <- gg + theme(axis.title.x=element_blank(), axis.text.x = element_blank(), axis.ticks.x = element_blank())
+  gg <- gg + theme(axis.title.y=element_blank(), axis.text.y = element_blank(), axis.ticks.y = element_blank())
+  #print(gg)
+  return(gg)
+}
+
+```
+
+
+
+```{r draw clean innos map,echo=FALSE, include=FALSE,echo=FALSE,message=FALSE}
+
+
+#gl_clean=filter(globalshares,Category=="Grey+Clean")$inno_sh 
+#gl_covid= 
+
+#nuts3dat=nuts3dat %>% mutate(cleanOinnos=(cleaninnos_shares/innos_shares-1)*100,covidOinnos=(covidinnos_shares/innos_shares-1)*100 )
+
+
+p1=nuts2mapper(df,value="cleanOinnos",label="% within area")+ theme(legend.key.size = unit(0.4, "cm"))
+p2=nuts2mapper(df,value="covidOinnos",label="% within area")+ theme(legend.key.size = unit(0.4, "cm"))
+p3=nuts2mapper(df,value="innos_sh",label="% of UK")+ theme(legend.key.size = unit(0.4, "cm"))
+
+#p1=nuts2_map(nuts3dat$cleanOinnos,  "%",nuts3dat$nuts3,fstring="%2.2f")
+#p2=nuts2_map(nuts3dat$covidOinnos,  "%",nuts3dat$nuts3,fstring="%2.2f")
+#p3=nuts2_map(nuts3dat$innos_shares, "%",nuts3dat$nuts3,fstring="%2.2f")
+library(cowplot)
+library(ggplot2)
+
+
+
+```
+
+
+```{r scatti,  fig.cap="Share of COVID & COVID related in total innovation", echo=FALSE,message=FALSE}
+library(ggplot2)
+p4=ggplot(nuts2, aes(x=innos_sh))+geom_point(aes(y=covidOinnos,color="Share Covid"))+
+   geom_point(aes(y=cleanOinnos,color="Share Clean")) +theme_minimal()+
+   geom_smooth(method = "lm", se = T,aes(y=covidOinnos,color="Share Covid")) +  labs(color = "") +
+   geom_smooth(method = "lm", se = T,aes(y=cleanOinnos,color="Share Clean"))+ylab("%")+xlab("Share of UK innovation in %")+
+   theme(legend.key.size = unit(0.4, "cm"))
+
+```
+
+
+
+```{r inni, fig.cap="Clean and COVID related innovation in the UK",echo=FALSE}
+plot_grid(p1, p2, p3,p4,labels=c("Cleantech Share","COVID related Share ", "Distribution of Innovation"),
+          label_size=10,nrow=2,ncol=2,rel_widths = c(1,1,1,1),rel_heights=c(1,1,1,1))
+```
+

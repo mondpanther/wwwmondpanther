@@ -14,27 +14,27 @@ knitr::opts_chunk$set(echo = FALSE)
 
 ## Academic Articles
 
-### Some Causal Effects of an Industrial Policy.
-Criscuolo, Chiara, Ralf Martin, Henry G. Overman, and John Van Reenen. (2019). American Economic Review, 109 (1): 48-85. [DOI: 10.1257/aer.20160034](https://www.aeaweb.org/articles?id=10.1257/aer.20160034) 
+### [Some Causal Effects of an Industrial Policy](https://www.aeaweb.org/articles?id=10.1257/aer.20160034)
+Criscuolo, Chiara, Ralf Martin, Henry G. Overman, and John Van Reenen. (2019). American Economic Review, 109 (1): 48-85.
 
 
-### Competition and norms: A self-defeating combination?
-Genevieve Alberts, Zeynep Gurguc, Pantelis Koutroumpis, Ralf Martin, Mirabelle Muûls, Tamaryn Napp (2016) [Energy Policy, Volume 96, September 2016, Pages 504-523, ISSN 0301-4215](http://dx.doi.org/10.1016/j.enpol.2016.06.001 ) 
+### [Competition and norms: A self-defeating combination?](http://dx.doi.org/10.1016/j.enpol.2016.06.001)
+Genevieve Alberts, Zeynep Gurguc, Pantelis Koutroumpis, Ralf Martin, Mirabelle Muûls, Tamaryn Napp (2016) Energy Policy, Volume 96, September 2016, Pages 504-523
 
-### The Impact of the European Union Emissions Trading Scheme on Regulated Firms: What Is the Evidence after Ten Years?
+### [The Impact of the European Union Emissions Trading Scheme on Regulated Firms: What Is the Evidence after Ten Years?](https://www.journals.uchicago.edu/doi/10.1093/reep/rev016)
 Ralf Martin, Mirabelle Muûls, and Ulrich J. Wagner (2016)  Review of Environmental Economics and Policy 10 (1): 129-148 doi:10.1093/reep/rev016
 
-### Carbon Taxes, Path Dependency, and Directed Technical Change: Evidence from the Auto Industry
-Philippe Aghion & Antoine Dechezleprêtre & David Hémous & Ralf Martin & John Van Reenen, (2016). Journal of Political Economy, University of Chicago Press, vol. 124(1) https://www.journals.uchicago.edu/doi/abs/10.1086/684581
+### [Carbon Taxes, Path Dependency, and Directed Technical Change: Evidence from the Auto Industry](https://www.journals.uchicago.edu/doi/abs/10.1086/684581)
+Philippe Aghion & Antoine Dechezleprêtre & David Hémous & Ralf Martin & John Van Reenen, (2016). Journal of Political Economy, University of Chicago Press, vol. 124(1) 
 
-### The impacts of the climate change levy on manufacturing: Evidence from microdata.
-Martin, R., de Preux, L. B., & Wagner, U. J. (2014). Journal of Public Economics.  Volume 117, September 2014, Pages 1–14. URL: http://tiny.cc/ag02yx
+### [The impacts of the climate change levy on manufacturing: Evidence from microdata](http://tiny.cc/ag02yx)
+Martin, R., de Preux, L. B., & Wagner, U. J. (2014). Journal of Public Economics.  Volume 117, September 2014, Pages 1–14. URL: 
 
-### On the Empirical Content of Carbon Leakage Criteria in the EU Emissions Trading Scheme. Ecological Economics
-Martin, R., Muuls, M., de Preux, L., & Wagner, U. (2014). Volume 105. September 2014, Pages 78-88. URL: http://tiny.cc/sh02yx 
+### [On the Empirical Content of Carbon Leakage Criteria in the EU Emissions Trading Scheme](http://tiny.cc/sh02yx) 
+Martin, R., Muuls, M., de Preux, L., & Wagner, U. (2014). Ecological Economics Volume 105. September 2014, Pages 78-88.  
 
-### Industry compensation under relocation risk: A firm-level analysis of the EU emissions trading scheme.
-Martin, R., Muuls, M., de Preux, L., & Wagner, U. (2014). American Economic Review, 104(8): 2482-2508.  URL: http://tiny.cc/53y2yx
+### [Industry compensation under relocation risk: A firm-level analysis of the EU emissions trading scheme](http://tiny.cc/53y2yx)
+Martin, R., Muuls, M., de Preux, L., & Wagner, U. (2014). American Economic Review, 104(8): 2482-2508.
 
 ### Anatomy of a Paradox: Management Practices, Organizational Structure and Energy Efficiency
 Ralf Martin, Mirabelle Muuls, Laure de Preux and Ulrich Wagner (2012), Journal of Environmental Economics and Management, Volume 63, Issue 2, March 2012, Pages 208–223
@@ -51,11 +51,11 @@ Chiara Criscuolo, Jonathan Haskel and Ralf Martin (2004), Oxford Review of Econo
 
 ## Working papers
 
-### Does pricing carbon mitigate climate change? Firm-level evidence from the European Union emissions trading scheme
-Jonathan Colmer, Ralf Martin, Mirabelle Muuls, Ulrich Wagner (2021). CEP Discussion Paper 1728 http://cep.lse.ac.uk/pubs/download/dp1728.pdf 
+### [Does pricing carbon mitigate climate change? Firm-level evidence from the European Union emissions trading scheme](http://cep.lse.ac.uk/pubs/download/dp1728.pdf)
+Jonathan Colmer, Ralf Martin, Mirabelle Muuls, Ulrich Wagner (2021). CEP Discussion Paper 1728  
 
-### Environmental Preferences and Technology Choices: Is Market Competition Clean or Dirty?
-Aghion, P., Bénabou, R., Martin, R., & Roulet, A. (2020).  NBER Working Paper 26921. https://www.nber.org/system/files/working_papers/w26921/w26921.pdf 
+### [Environmental Preferences and Technology Choices: Is Market Competition Clean or Dirty?](https://www.nber.org/system/files/working_papers/w26921/w26921.pdf)
+Aghion, P., Bénabou, R., Martin, R., & Roulet, A. (2020).  NBER Working Paper 26921.  
 
 ### Making Smart Meters Smarter
 Greer Gosnell, Ralf Martin, Mirabelle Muûls, Quentin Coutellier, Goran Strbac, Simon Tindermans (2019) CEP Discussion Paper 1602, http://cep.lse.ac.uk/pubs/download/dp1602.pdf

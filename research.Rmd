@@ -1,5 +1,5 @@
 ---
-title: "Selected Research Themes"
+title: "Research"
 description: |
 
 ---
@@ -7,6 +7,82 @@ description: |
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
 ```
+
+
+
+# Publications
+
+## Academic Articles
+
+### Some Causal Effects of an Industrial Policy.
+Criscuolo, Chiara, Ralf Martin, Henry G. Overman, and John Van Reenen. (2019). American Economic Review, 109 (1): 48-85. [DOI: 10.1257/aer.20160034](https://www.aeaweb.org/articles?id=10.1257/aer.20160034) 
+
+
+### Competition and norms: A self-defeating combination?
+Genevieve Alberts, Zeynep Gurguc, Pantelis Koutroumpis, Ralf Martin, Mirabelle Muûls, Tamaryn Napp (2016) [Energy Policy, Volume 96, September 2016, Pages 504-523, ISSN 0301-4215](http://dx.doi.org/10.1016/j.enpol.2016.06.001 ) 
+
+### The Impact of the European Union Emissions Trading Scheme on Regulated Firms: What Is the Evidence after Ten Years?
+Ralf Martin, Mirabelle Muûls, and Ulrich J. Wagner (2016)  Review of Environmental Economics and Policy 10 (1): 129-148 doi:10.1093/reep/rev016
+
+### Carbon Taxes, Path Dependency, and Directed Technical Change: Evidence from the Auto Industry
+Philippe Aghion & Antoine Dechezleprêtre & David Hémous & Ralf Martin & John Van Reenen, (2016). Journal of Political Economy, University of Chicago Press, vol. 124(1) https://www.journals.uchicago.edu/doi/abs/10.1086/684581
+
+### The impacts of the climate change levy on manufacturing: Evidence from microdata.
+Martin, R., de Preux, L. B., & Wagner, U. J. (2014). Journal of Public Economics.  Volume 117, September 2014, Pages 1–14. URL: http://tiny.cc/ag02yx
+
+### On the Empirical Content of Carbon Leakage Criteria in the EU Emissions Trading Scheme. Ecological Economics
+Martin, R., Muuls, M., de Preux, L., & Wagner, U. (2014). Volume 105. September 2014, Pages 78-88. URL: http://tiny.cc/sh02yx 
+
+### Industry compensation under relocation risk: A firm-level analysis of the EU emissions trading scheme.
+Martin, R., Muuls, M., de Preux, L., & Wagner, U. (2014). American Economic Review, 104(8): 2482-2508.  URL: http://tiny.cc/53y2yx
+
+### Anatomy of a Paradox: Management Practices, Organizational Structure and Energy Efficiency
+Ralf Martin, Mirabelle Muuls, Laure de Preux and Ulrich Wagner (2012), Journal of Environmental Economics and Management, Volume 63, Issue 2, March 2012, Pages 208–223
+
+### Modern management: Good for the environment or just hot air?
+Nick Bloom, Christos Genakos, Ralf Martin and Raffaella Sadun (2010), Economic Journal, Royal Economic Society, vol. 120(544), pages 551-572, 05. https://doi.org/10.1111/j.1468-0297.2010.02351.x 
+
+### Multinationals and US Productivity Leadership
+Chiara Criscuolo and Ralf Martin (2009), Review of Economics and Statistics, May 2009, 91(2): 263–281. 
+
+### Import Competition, Productivity, and Restructuring in UK Manufacturing
+Chiara Criscuolo, Jonathan Haskel and Ralf Martin (2004), Oxford Review of Economic Policy, Volume 20, Issue 3, Autumn 2004, pages 393-408. https://doi.org/10.1093/oxrep/grh023 
+
+
+## Working papers
+
+### Does pricing carbon mitigate climate change? Firm-level evidence from the European Union emissions trading scheme
+Jonathan Colmer, Ralf Martin, Mirabelle Muuls, Ulrich Wagner (2021). CEP Discussion Paper 1728 http://cep.lse.ac.uk/pubs/download/dp1728.pdf 
+
+### Environmental Preferences and Technology Choices: Is Market Competition Clean or Dirty?
+Aghion, P., Bénabou, R., Martin, R., & Roulet, A. (2020).  NBER Working Paper 26921. https://www.nber.org/system/files/working_papers/w26921/w26921.pdf 
+
+### Making Smart Meters Smarter
+Greer Gosnell, Ralf Martin, Mirabelle Muûls, Quentin Coutellier, Goran Strbac, Simon Tindermans (2019) CEP Discussion Paper 1602, http://cep.lse.ac.uk/pubs/download/dp1602.pdf
+
+### Do tax incentives for research increase firm innovation? An RD Design for R&D
+Antoine Dechezleprêtre, Elias Einiö, Ralf Martin, Kieu-Trang Nguyen (LSE and CEP), John Van Reenen (2015), CEP Discussion Paper. http://cep.lse.ac.uk/pubs/download/dp1413.pdf  
+
+### Knowledge Spillovers from Clean and Dirty Technologies
+Antoine Dechezleprêtre, Ralf Martin, Myra Mohnen (2014).  CEP Discussion Paper 1300. http://cep.lse.ac.uk/pubs/download/dp1300.pdf
+
+### Searching for carbon leaks in multinational companies.
+Antoine Dechezleprêtre, Caterina Gennaioli, Ralf Martin, and Mirabelle Muûls (2014).  Grantham Institute LSE Working Paper No 187. http://tiny.cc/daf2qx. R&R Journal of Environmental Economics and Management.
+
+### Productivity Spreads, Market Power Spreads and Trade
+Ralf Martin (2010) CEP Discussion Paper 965, http://cep.lse.ac.uk/pubs/download/dp0965.pdf.
+
+
+
+## Policy Papers
+
+
+
+### Sustainable Growth in the UK: Seizing opportunities from technological change and the transition to a low-carbon economy
+James Rydge, Ralf Martin and Anna Valero (2019) CEP Industrial Strategy Paper CEPIS07.
+
+
+# Research Topics
 
 ## Adoption of prosocial Technology
 

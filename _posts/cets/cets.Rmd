@@ -1,0 +1,304 @@
+---
+title: "Management practices and Environmental Regulation in China"
+description: |
+  Better managemened firms are responding more effectively
+author:
+  - name: Ralf Martin
+    url: https://mondpanther.github.io/wwwmondpanther/
+date: "`r Sys.Date()`"
+output:
+  distill::distill_article:
+    self_contained: true
+#    css: ../../webex.css
+#    includes:
+#      after_body: ../../webex.js
+categories:
+  - Climate Change
+  - Management
+  - ETS
+editor_options: 
+  chunk_output_type: inline
+---
+
+
+
+
+
+
+
+
+
+Recent literature has emphasized the importance of management practices for firm performance, including the environmental impact of businesses.
+Here we consider how variation in management quality affects the response of firms to environmental regulation, specifically the nascent Chinese Emission Trading System. We find that businesses that are better managed are more responsive to price incentives implied by carbon trading. More details [here](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3797466)
+
+
+
+```{r setup, include=FALSE,message=FALSE}
+knitr::opts_chunk$set(echo = FALSE, message=FALSE,warning=FALSE)
+
+library(haven)
+
+ets = read_dta("https://www.dropbox.com/s/r1e53jhba54xqnm/mcchinadata_forexploration_long.dta?dl=1")
+
+
+library(dplyr)
+
+
+```
+
+```{r include=FALSE,message=FALSE}
+library(knitr)
+#read_chunk("https://www.dropbox.com/s/aic10h7p1dozdr9/prepdata.R?dl=1")
+```
+
+```{r prep data,include=FALSE,message=FALSE}
+
+library(tidyr)
+library(magrittr)
+library(dplyr)
+ets %<>% mutate(lnelec=log(m312),
+                ln1Pelec=log(1+m312),
+                lncoal=log(m313),
+                ln1Pcoal=log(1+m313),
+                lnoil=log(m314),
+                ln1Poil=log(1+m314),
+                lnwater=log(m315),
+                ln1Pwater=log(1+m315),
+                elec=m312,
+                coal=m313,
+                oil=m314,
+                water=m315) %>% 
+                rowwise() %>% mutate(
+                zets_anticip=mean(c(zets2017, zets2_stg, zets2_tgh, zauct_allowce, zsanc_stg),na.rm=T))
+
+test=ets %>% select(zets_anticip)
+
+
+
+library(readr)
+#write_csv(ets,"../../Apps/Overleaf/McChinaETSdata/mcchinadata_forexploration_long.csv")
+# Figure out OK obs
+
+ets %<>% group_by(uniqid) %>% arrange(uniqid,year) %>% 
+         mutate(Lelec=dplyr::lag(elec),
+                okid=((elec>0&!is.na(elec))|
+                      (coal>0&!is.na(coal))|
+                      (oil>0&!is.na(oil))>0) )  
+
+#ets= ets %>% filter(elec>0 | (dplyr::lag(elec)==0 & elec==0) )  %>% ungroup()
+table(ets$nace)
+#test=ets %>% select(okid,lnelec,year,elec,coal,oil,water,uniqid,okid) %>% filter(okid==T)
+
+
+
+
+etsf=ets %>% filter(okid & fp_hubei==0
+                    ) %>% group_by(uniqid) %>% 
+     mutate(miny=min(year),maxy=max(year)) %>% 
+     filter( miny<2013 & maxy>=2013 & year<=2015 & year>=2007)
+
+etsf[is.na(etsf)]=NA
+
+#etsf %>% group_by(year) %>% summarize(mean(elec==0),mean(coal==0),n())
+test=etsf %>% select(zenvmgt_index_Opt4,zets_anticip,zets_rational,uniqid,year)
+
+etsf=etsf %>% mutate(preid=year<2013,postid=year>=2013)
+
+mmean=function(x)mean(x,na.rm=T)
+etsfpre=etsf %>% filter(year<2013) %>% group_by(uniqid,etsfirm) %>% 
+        summarise_at(vars(elec,coal,oil,water,zenvmgt_index_Opt4,zets_anticip,zets_rational),mmean)     
+
+grr  =function(x) ifelse(x+dplyr::lag(x)==0,0,(x-dplyr::lag(x))/(x+dplyr::lag(x))*2)
+dd=function(x) (x-dplyr::lag(x))
+dd1P=function(x) (log(1+x)-log(1+dplyr::lag(x)))
+
+etsby=etsf %>%    group_by(uniqid,preid,etsfirm,nace) %>% 
+        summarise_at(vars(elec,coal,oil,water,year),mmean)     %>% 
+        arrange(uniqid,-preid) %>% group_by(uniqid) %>%
+        mutate(grcoal=grr(coal),groil=grr(oil),grelec=grr(elec),grwater=grr(water),
+               ddcoal=dd(coal),ddoil=dd(oil),ddelec=dd(elec),ddwater=dd(water),
+               dd1Pcoal=dd1P(coal),dd1Poil=dd1P(oil),dd1Pelec=dd1P(elec),dd1Pwater=dd1P(water))
+        
+
+
+qs=function(x) {
+  ddd=etsfpre %>% ungroup()
+  qvar=x#[ddd$etsfirm==1]
+  cut(x, breaks = c(-1,as.vector(quantile(qvar,probs=c(.5,1) ,na.rm=T))),
+      labels=c("50","100"))
+}
+
+#aaa=quantile(etsfpre$oil,probs=c(.2,.6))
+#as.vector(aaa)
+#test=etsfpre %>% ungroup() %>%  mutate(tt=qs(oil))
+#gg=test %>% filter(tt=="100")
+
+etsfpre=etsfpre %>% ungroup() %>%  mutate(qoil=qs(oil),manage=qs(zenvmgt_index_Opt4),rational=qs(zets_rational), anticip =qs(zets_anticip),
+                           qcoal=qs(coal),
+                           qelec=qs(elec),
+                           qwater=qs(water)) %>% 
+                           select(uniqid,qcoal,qelec,qwater,qoil,manage,rational,anticip)
+
+etsf=etsf %>% inner_join(etsfpre,by="uniqid")
+
+```
+
+
+```{r more data prep, include=FALSE,message=FALSE}
+
+etsbyXpre=etsby %>% inner_join(etsfpre,by="uniqid")
+
+#etsbyX#
+etsf=etsf %>% mutate(inETS=(etsfirm==1 & year>=2013 & fp_hubei==0 ) | (etsfirm==1 & year>=2013 &fp_hubei==1 ))
+#names(etsf)
+#lm(coal~inETS+factor(year),etsf) %>% summary()
+
+library(fixest)
+
+df=etsf %>% select(preid , coal,inETS,uniqid,year,qcoal,qelec,qwater,qoil,oil,elec,water,manage,
+                   rational,anticip,
+                   ends_with("coal"),ends_with("oil") ,ends_with("elec"),
+                   ends_with("water"),
+                   etsfirm)
+df=do.call(data.frame,lapply(df, function(x) replace(x, is.infinite(x),NA)))
+#df= df %>% mutate()
+
+#df=df %>% filter(qcoal==100)
+table(df$year)
+
+df=df %>% group_by(uniqid) %>% mutate(miny=min(year),maxy=max(year),
+                                      inETSXtop=inETS*(qcoal=="100"),
+                                      inETS=as.numeric(inETS))
+df%<>%filter(miny<2013&maxy>=2013)
+
+df%<>%mutate(rationl=ifelse(etsfirm==0,0,rational),rationl=ifelse(anticip==0,0,anticip))
+
+```
+
+
+
+```{r prepare descriptive stats,include=FALSE,message=FALSE}
+obsdelta=etsbyXpre %>% filter(!is.na(grcoal)) %>%   group_by(etsfirm,manage)  %>% dplyr::summarise(nn=n())
+
+obs=df %>% filter(!is.na(coal)) %>%  group_by(etsfirm,manage) %>% dplyr::summarise(nn=n())
+
+firms=df %>% filter(!is.na(coal)) %>%  distinct(uniqid,.keep_all=T) %>%  
+     group_by(etsfirm,manage) %>% dplyr::summarise(nn=n())
+
+```
+
+
+
+```{r}
+set.seed(1206)
+
+q <- data.frame(p = rep(c("A","B"),each = 10,len = 30), 
+                a = rep(c(1,2,3),each = 10),
+                id = seq(30),
+                b = round(runif(30,10,20)),
+                c = round(runif(30,40,70)))
+library(tables)
+
+
+
+tab <- tabular((Factor(etsfirm)*Factor(manage)+1) ~ (N = 1) + (coal + oil + elec + water) * (mean + sd),
+               data = etsbyXpre %>% filter(preid))
+ttt1=tab[ tab[,1] > 0, ]
+
+library(kableExtra)
+library(Hmisc)
+
+dtable=function(fuel){
+  #fuel="coal"
+  qfuel=paste0("q",fuel)
+  nn=paste("n",fuel)
+  nm=paste("m",fuel)
+  
+  ff=etsbyXpre   %>% 
+     group_by(etsfirm,!!sym(qfuel)) %>% 
+     summarise( n=n(),
+                m=mean(!!sym(fuel)) )  
+     
+     
+}
+res=dtable("coal") %>% rename(ncoal=n,mcoal=m)
+res=bind_cols(res,dtable("oil")  %>% rename(noil=n,moil=m))
+res=bind_cols(res,dtable("elec") %>% rename(nelec=n,melec=m))
+res=bind_cols(res,dtable("water") %>% rename(nwater=n,mwater=m))
+
+
+```
+
+
+
+# A Grahpical Summary
+
+```{r,include=FALSE,echo=FALSE,warning=FALSE}
+
+library(ggplot2)
+library(ggridges)
+library(gridExtra)
+library(grid)
+library(png)
+#library(downloader)
+#library(grDevices)
+#library(plyr)
+
+#etsfirm=recode(factor(etsfirm),`0`="non ETS",
+                                              #`1`="ETS"),etsfirm=relevel(etsfirm,ref="non ETS"),
+
+etsbyXpre=etsbyXpre %>% mutate(etsfirm=factor(etsfirm))
+test=etsbyXpre%>%mutate(      etsfirm=relevel(etsfirm,ref="0"))
+
+etsbyXpre=test %>%   mutate(                 etsfirm=recode(etsfirm, 
+                                                 `0`  = "Non ETS",
+                                                 `1` = "ETS" ),
+                               manage=recode(manage, 
+                                                 `50`  = "Below Median",
+                                                 `100` = "Above Median" ))
+      
+#etsbyXpre <- within(etsbyXpre, etsfirm <- relevel(etsfirm, ref = "non ETS"))
+                               
+grpics=function(x,label=""){
+  etsbyXpre["xxx"]=etsbyXpre[x]
+  
+  mmn=mean(etsbyXpre$xxx)
+  mms=as.character(mmn)
+  
+  etsbyXpre %>%   ggplot() + xlab(label)+ ylab("Management Quality") +
+  scale_fill_discrete( name = "" , labels=) +
+  geom_density_ridges(  aes(x = xxx, y=manage,  fill = factor(etsfirm)),alpha=.3,scale=1.1) + 
+  theme_minimal()  + theme(legend.position="bottom")+ annotate("text", x=mmn, y=2, label= mms) 
+    
+  
+}
+
+
+
+p1=grpics("grcoal", label="Growth of Coal")
+p2=grpics("groil",  label="Growth of Oil")
+p3=grpics("grelec", label="Growth of Electricity")
+p4=grpics("grwater",label="Growth of Water")
+
+
+g_legend<-function(a.gplot){
+  tmp <- ggplot_gtable(ggplot_build(a.gplot))
+  leg <- which(sapply(tmp$grobs, function(x) x$name) == "guide-box")
+  legend <- tmp$grobs[[leg]]
+  return(legend)}
+
+mylegend<-g_legend(p1)
+```
+
+```{r densityplots,echo=FALSE,warning=FALSE}
+
+grid.arrange(arrangeGrob(p1 + theme(legend.position="none"),
+                         p2 + theme(legend.position="none"),
+                         p3 + theme(legend.position="none"),
+                         p4 + theme(legend.position="none"),
+                         nrow=2),
+             mylegend, nrow=2,heights=c(10, 1))
+
+
+```
+

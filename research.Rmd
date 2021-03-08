@@ -1,16 +1,39 @@
 ---
 title: "Research"
 description: |
+output:
+  distill::distill_article:
+    self_contained: false
+    css: webex.css    
+    includes:
+      after_body: webex.js
 
+    toc: true
+    toc_depth: 2
+    toc_float: TRUE
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
+library("webex")
+```
+
+```{r,evel=FALSE,message=FALSE}
+#this seems promising:
+  
+#  https://github.com/ijlyttle/codefolder
+
+#install.packages("devtools")
+#devtools::install_github("ijlyttle/codefolder")
+
+library(codefolder)
+
 ```
 
 
 
 # Publications
+
 
 ## Academic Articles
 
@@ -18,14 +41,22 @@ knitr::opts_chunk$set(echo = FALSE)
 Criscuolo, Chiara, Ralf Martin, Henry G. Overman, and John Van Reenen. (2019). American Economic Review, 109 (1): 48-85.
 
 
-### [Competition and norms: A self-defeating combination?](http://dx.doi.org/10.1016/j.enpol.2016.06.001)
-Genevieve Alberts, Zeynep Gurguc, Pantelis Koutroumpis, Ralf Martin, Mirabelle Muûls, Tamaryn Napp (2016) Energy Policy, Volume 96, September 2016, Pages 504-523
+### [Carbon Taxes, Path Dependency, and Directed Technical Change: Evidence from the Auto Industry](https://www.journals.uchicago.edu/doi/abs/10.1086/684581)
+Philippe Aghion & Antoine Dechezleprêtre & David Hémous & Ralf Martin & John Van Reenen, (2016). Journal of Political Economy, University of Chicago Press, vol. 124(1) 
+
 
 ### [The Impact of the European Union Emissions Trading Scheme on Regulated Firms: What Is the Evidence after Ten Years?](https://www.journals.uchicago.edu/doi/10.1093/reep/rev016)
 Ralf Martin, Mirabelle Muûls, and Ulrich J. Wagner (2016)  Review of Environmental Economics and Policy 10 (1): 129-148 doi:10.1093/reep/rev016
 
-### [Carbon Taxes, Path Dependency, and Directed Technical Change: Evidence from the Auto Industry](https://www.journals.uchicago.edu/doi/abs/10.1086/684581)
-Philippe Aghion & Antoine Dechezleprêtre & David Hémous & Ralf Martin & John Van Reenen, (2016). Journal of Political Economy, University of Chicago Press, vol. 124(1) 
+
+
+### [Competition and norms: A self-defeating combination?](http://dx.doi.org/10.1016/j.enpol.2016.06.001)
+Genevieve Alberts, Zeynep Gurguc, Pantelis Koutroumpis, Ralf Martin, Mirabelle Muûls, Tamaryn Napp (2016) Energy Policy, Volume 96, September 2016, Pages 504-523
+
+
+### [Industry compensation under relocation risk: A firm-level analysis of the EU emissions trading scheme](http://tiny.cc/53y2yx)
+Martin, R., Muuls, M., de Preux, L., & Wagner, U. (2014). American Economic Review, 104(8): 2482-2508.
+
 
 ### [The impacts of the climate change levy on manufacturing: Evidence from microdata](http://tiny.cc/ag02yx)
 Martin, R., de Preux, L. B., & Wagner, U. J. (2014). Journal of Public Economics.  Volume 117, September 2014, Pages 1–14. URL: 
@@ -33,8 +64,6 @@ Martin, R., de Preux, L. B., & Wagner, U. J. (2014). Journal of Public Economics
 ### [On the Empirical Content of Carbon Leakage Criteria in the EU Emissions Trading Scheme](http://tiny.cc/sh02yx) 
 Martin, R., Muuls, M., de Preux, L., & Wagner, U. (2014). Ecological Economics Volume 105. September 2014, Pages 78-88.  
 
-### [Industry compensation under relocation risk: A firm-level analysis of the EU emissions trading scheme](http://tiny.cc/53y2yx)
-Martin, R., Muuls, M., de Preux, L., & Wagner, U. (2014). American Economic Review, 104(8): 2482-2508.
 
 ### Anatomy of a Paradox: Management Practices, Organizational Structure and Energy Efficiency
 Ralf Martin, Mirabelle Muuls, Laure de Preux and Ulrich Wagner (2012), Journal of Environmental Economics and Management, Volume 63, Issue 2, March 2012, Pages 208–223
@@ -47,6 +76,7 @@ Chiara Criscuolo and Ralf Martin (2009), Review of Economics and Statistics, May
 
 ### Import Competition, Productivity, and Restructuring in UK Manufacturing
 Chiara Criscuolo, Jonathan Haskel and Ralf Martin (2004), Oxford Review of Economic Policy, Volume 20, Issue 3, Autumn 2004, pages 393-408. https://doi.org/10.1093/oxrep/grh023 
+
 
 
 ## Working papers

@@ -56,7 +56,15 @@ nuts2=nuts2 %>% mutate(cleanOinnos=cleaninnos/innos*100, covidOinnos=covidinnos/
 #nuts2=nuts2 %>% left_join(nutslook,by=c("nuts2"="NUTS215CD")) 
 
 #nuts2=nuts2 %>% left_join(xlook,by=c("geo_code"="NUTS318CD")) 
-rta=read.csv("rta.csv")
+
+
+```
+
+
+```{r,include=FALSE,echo=FALSE}
+library(dplyr)
+
+rta=read.csv("https://www.dropbox.com/s/3qyeyrq1a9g0nix/rta.csv?dl=1")
 
 
 
@@ -84,7 +92,7 @@ lm(cleanshw~all,rta %>% filter(all>20)) %>%  summary()
 ```
 
 ```{r prepare globe,include=FALSE}
-
+library(dplyr)
 
 library(plotly)
 df <- read.csv('https://raw.githubusercontent.com/plotly/datasets/master/2014_world_gdp_with_codes.csv')

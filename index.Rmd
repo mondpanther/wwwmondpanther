@@ -1,31 +1,11 @@
 ---
-title: "Welcome to my space in cyberspace"
-description: 
+title: "Latest musings..."
 site: distill::distill_website
+listing: posts
 ---
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = FALSE)
 
-# Learn more about creating websites with Distill at:
-# https://rstudio.github.io/distill/website.html
 
-# Learn more about publishing to GitHub Pages at:
-# https://rstudio.github.io/distill/publish_website.html#github-pages
 
-```
 
-I am an Associate Professor of Economics at [Imperial College Business School](https://www.imperial.ac.uk/people/r.martin), London (Europe). I also direct the Growth Programme at the [Centre for Economic Performance](http://cep.lse.ac.uk/_new/staff/person.asp?id=739) at the London School of Economics.
 
-In my research I focus on things that help to increase economic productivity without compromising the natural environment. I am also concerned about the effects and causes of online mis-information and the re-emergence of bigotism. Some of my other passions include cycling (particularly in London) and windsurfing.
-
-[Google Scholar Profile](https://scholar.google.com/citations?user=ssPVmxMAAAAJ&hl=en)  |  [On Twitter](https://twitter.com/mondpanther)
-
-```{r , include=FALSE, eval=FALSE, echo=FALSE}
-#<!--html_preserve-->
-
-#<a href="https://twitter.com/mondpanther?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-show-count="false">Follow @mondpanther</a><script async #src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-
-#<!--/html_preserve-->
-
-```

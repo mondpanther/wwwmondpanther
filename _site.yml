@@ -1,5 +1,5 @@
-name: "wwwdistill"
 title: "Ralf Martin"
+name: "ralfmartin"
 description: |
   Ralf Martin
 output_dir: "docs"
@@ -8,8 +8,12 @@ twitter:
   site: "@mondpanther"
 navbar:
   right:
-    - text: "Home"
+    - text: "Latest Musings"
       href: index.html
+    - text: "About"      
+      href: about.html
     - text: "Research"
       href: research.html
-output: distill::distill_article
+output: 
+  distill::distill_article
+  

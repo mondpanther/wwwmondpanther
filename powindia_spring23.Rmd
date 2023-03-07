@@ -355,7 +355,7 @@ ggarrange(p1, p2, p3, ncol=3, nrow=1)
 
 ### The anatomy of switch off events.....
 
-The figure shows the distribution of swithc 
+The figure below shows the distribution of power consumed as a switch off event progresses. 
 
 ```{r}
 #| echo: false

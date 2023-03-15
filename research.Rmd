@@ -19,14 +19,14 @@ library("webex")
 ```
 
 ```{r,evel=FALSE,message=FALSE}
-#this seems promising:
+#this seems promising:  
   
 #  https://github.com/ijlyttle/codefolder
 
 #install.packages("devtools")
 #devtools::install_github("ijlyttle/codefolder")
 
-library(codefolder)
+#library(codefolder)
 
 ```
 
@@ -36,6 +36,17 @@ library(codefolder)
 
 
 ## Academic Articles
+
+### [Do Tax Incentives Increase Firm Innovation? An RD Design for R&D, Patents, and Spillovers](https://www.aeaweb.org/articles?id=10.1257/pol.20200739&from=f)
+Antoine Dechezleprêtre, Elias Einiö, Ralf Martin, Kieu-Trang Nguyen, John Van Reenen, AMERICAN ECONOMIC JOURNAL: ECONOMIC POLICY (FORTHCOMING)
+
+### [Environmental Preferences and Technological Choices: Is Market Competition Clean or Dirty?](https://www.aeaweb.org/articles?id=10.1257/aeri.20210014)
+Philippe Aghion,,Roland Bénabou,,Ralf Martin,Alexandra Roulet,AMERICAN ECONOMIC REVIEW: INSIGHTS,VOL. 5, NO. 1, MARCH 2023
+
+### [Searching for carbon leaks in multinational companies.](https://www.sciencedirect.com/science/article/pii/S0095069621001406)
+Antoine Dechezleprêtre, Caterina Gennaioli, Ralf Martin, and Mirabelle Muûls (2022).  Journal of Environmental Economics and Management
+Volume 112, March 2022
+      
 
 ### [Some Causal Effects of an Industrial Policy](https://www.aeaweb.org/articles?id=10.1257/aer.20160034)
 Criscuolo, Chiara, Ralf Martin, Henry G. Overman, and John Van Reenen. (2019). American Economic Review, 109 (1): 48-85.
@@ -84,20 +95,13 @@ Chiara Criscuolo, Jonathan Haskel and Ralf Martin (2004), Oxford Review of Econo
 ### [Does pricing carbon mitigate climate change? Firm-level evidence from the European Union emissions trading scheme](http://cep.lse.ac.uk/pubs/download/dp1728.pdf)
 Jonathan Colmer, Ralf Martin, Mirabelle Muuls, Ulrich Wagner (2021). CEP Discussion Paper 1728  
 
-### [Environmental Preferences and Technology Choices: Is Market Competition Clean or Dirty?](https://www.nber.org/system/files/working_papers/w26921/w26921.pdf)
-Aghion, P., Bénabou, R., Martin, R., & Roulet, A. (2020).  NBER Working Paper 26921.  
 
 ### Making Smart Meters Smarter
 Greer Gosnell, Ralf Martin, Mirabelle Muûls, Quentin Coutellier, Goran Strbac, Simon Tindermans (2019) CEP Discussion Paper 1602, http://cep.lse.ac.uk/pubs/download/dp1602.pdf
 
-### Do tax incentives for research increase firm innovation? An RD Design for R&D
-Antoine Dechezleprêtre, Elias Einiö, Ralf Martin, Kieu-Trang Nguyen (LSE and CEP), John Van Reenen (2015), CEP Discussion Paper. http://cep.lse.ac.uk/pubs/download/dp1413.pdf  
-
 ### Knowledge Spillovers from Clean and Dirty Technologies
 Antoine Dechezleprêtre, Ralf Martin, Myra Mohnen (2014).  CEP Discussion Paper 1300. http://cep.lse.ac.uk/pubs/download/dp1300.pdf
 
-### Searching for carbon leaks in multinational companies.
-Antoine Dechezleprêtre, Caterina Gennaioli, Ralf Martin, and Mirabelle Muûls (2014).  Grantham Institute LSE Working Paper No 187. http://tiny.cc/daf2qx. R&R Journal of Environmental Economics and Management.
 
 ### Productivity Spreads, Market Power Spreads and Trade
 Ralf Martin (2010) CEP Discussion Paper 965, http://cep.lse.ac.uk/pubs/download/dp0965.pdf.

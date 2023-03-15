@@ -1,0 +1,274 @@
+---
+title:  MULAMA Roulette 
+subtitle: Monte Carlo Analysis of the MULAMA production function framework
+output: html_document
+runtime: shiny
+---
+
+
+
+
+
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+
+# Context
+
+Let's assume
+
+$$\mu_{it}=1+\alpha_{\mu,i}+\nu_{\mu,it}$$
+Normalizing the economy wide variables to 1 we can write demand as
+$$ Q_{it}=\Lambda_{it}^{\eta_{it}-1}P_{it}^{\eta_{it}} $$
+where
+$$
+\mu=\frac{1}{1-\frac{1}{\eta}}=\frac{\eta}{\eta-1}
+$$
+and 
+$$
+\eta=\frac{\mu}{\mu-1}
+$$
+Hence
+
+$$P=\Lambda^{\frac{\eta-1}{\eta}}Q^{-\frac{1}{\eta}}$$
+
+Firm level profits become
+
+
+
+$$V_{it}(K_{it})=\max_{L,M}\left\{ \Lambda_{it}^{\frac{1}{\mu}}Q_{it}^{\frac{1}{\mu_{it}}}-LW_{Lit}-MW_{Mit}\right\} $$
+First order conditions require:
+$$
+M=\frac{\alpha_M Q^{\frac{1}{\mu}}}{\mu W_M}\Lambda^{\frac{1}{\mu}}
+(\#eq:M)
+$$
+
+(for simplicity ignore firm and time subscripts)
+
+
+
+
+We can plug this into the production function
+$$
+Q=AK^{\alpha_{K}}L^{\alpha_{L}}\left(\frac{\alpha_{M}Q^{\frac{1}{\mu}}}{\mu W_{M}}\Lambda^{\frac{1}{\mu}}\right)^{\alpha_{M}}
+$$
+and solve for Q:
+
+$$
+Q^{*}=\left[AK^{\alpha_{K}}L^{\alpha_{L}}\left(\frac{\alpha_{M}}{W_{M}}\right)^{\alpha_{M}}\frac{\Lambda^{\frac{\alpha_{M}}{\mu}}}{\mu^{\alpha_{M}}}\right]^{\frac{\mu}{\mu-\alpha_{M}}}
+(\#eq:M)
+$$
+
+
+Also note that if capital and labour were flexible in the short run we would have
+$$
+L=\frac{\alpha_{L}Q^{\frac{1}{\mu}}}{\mu W_{L}}\Lambda^{\frac{1}{\mu}}
+$$
+
+$$
+K=\frac{\alpha_K Q^{\frac{1}{\mu}}}{\mu W_K}\Lambda^{\frac{1}{\mu}}
+(\#eq:K)
+$$
+where $W_K$ is the user cost of capital and $\alpha_K=\gamma-\alpha_L-\alpha_M$
+
+
+With this we can work out optimal output $Q^{FLEX}$ - the amount of output if all factors were flexible - as
+
+$$
+Q^{FLEX}=\left[A\left(\frac{\alpha_{L}}{W_{L}}\right)^{\alpha_{L}}\left(\frac{\alpha_{M}}{W_{M}}\right)^{\alpha_{M}}\left(\frac{\alpha_{K}}{W_{K}}\right)^{\alpha_{K}}\frac{\Lambda^{\frac{\alpha_{K}+\alpha_{L}+\alpha_{M}}{\mu}}}{\mu^{\alpha_{K}+\alpha_{L}+\alpha_{M}}}\right]^{\frac{\mu}{\mu-\alpha_{L}-\alpha_{M}-\alpha_{K}}}
+$$
+
+
+We assume that labor and capital evolve converging to the level consistent with flexible levels but with a random deviations $\nu_{L}$ and $\nu_{K}$ so that
+$$
+L=LAG\left(\frac{\alpha_{L}\left(Q^{FLEX}\right)^{\frac{1}{\mu}}}{\mu W_{L}}\Lambda^{\frac{1}{\mu}}\right)\times\exp\nu_{L}
+$$
+
+$$
+K=LAG\left(\frac{\alpha_{K}\left(Q^{FLEX}\right)^{\frac{1}{\mu}}}{\mu W_{K}}\Lambda^{\frac{1}{\mu}}\right)\times\exp\nu_{K}
+$$
+
+
+
+```{r, include=FALSE}
+
+
+#source("mulama_roulette_croupier.R")
+        firms=100
+        periods=10
+        
+        alphL=0.3
+        alphM=0.6
+        gam=1.2
+        
+        
+        signua=1/4
+        signulam=1/4
+        signumu=1/4
+        
+        sigalphmu=1
+        signuk=1
+        signul=1
+        
+        philam=.5
+        phia=.4
+        
+        repli=30
+        
+       source("mulama_roulette_croupier.R")
+
+
+
+```
+
+
+
+# Parameter setup
+
+```{r eruptions, echo=FALSE}
+#inputPanel
+fluidPage(
+
+    sliderInput("firms",
+                  "Number of firms",
+                  min = 10,
+                  max = 1000,
+                  value = firms),
+    
+    sliderInput("periods",
+                  "Number of periods",
+                  min = 2,
+                  max = 100,
+                  value = periods),
+    
+    sliderInput("alphL",
+                  "\\(\\alpha_L\\)",
+                  min = 0.01,
+                  max = 1,
+                  value = alphL),
+    sliderInput("alphM",
+                  "\\(\\alpha_M\\)",
+                  min = 0.01,
+                  max = 1,
+                  value = alphM),
+    
+    sliderInput("repli",
+                  "Replications",
+                  min = 1,
+                  max = 1000,
+                  value = 50)
+
+  
+)  
+
+
+#library(rlang)
+source("mulama_roulette_croupier.R")
+
+gamble=function(input){
+         # Collect the parameters
+
+
+  
+       firms=input$firms
+       periods=input$periods
+       alplhL=input$alphL
+       alplhM=input$alphM
+       repli=input$repli
+  
+       keys   <- c("firms", 
+                   "periods", 
+                   "alphL", 
+                   "alphM", 
+                   "gam", 
+                   "signua", 
+                   "signulam",
+                   "signumu",
+                   "sigalphmu",
+                   "signuk",
+                   "signul",
+                   "philam",
+                   "phia","repli")
+       values=c()
+       
+       for(kk in keys){
+         expr=paste0("values=c(values,",kk,")")
+         eval(parse(text=expr))
+         #print(expr)
+        }
+       
+       params <- setNames(as.list(values), keys)
+       
+       res=monte(params)
+       return(res)
+       #output$summary=renderText(res)
+  #output$distPlot <- renderPlot({
+  #  hist(rnorm(input$obs))
+  }
+#textf()
+
+#values <- reactiveValues(A=textf)
+
+renderText({
+  rr_df=gamble(input)
+  
+  library(ggplot2)
+  output$gam=renderPlot(rr_df %>% ggplot(aes(x=gam))+geom_density()+
+    geom_vline(xintercept = gam,         color = "blue", size=1.5)+
+      xlab(expression(gamma))+
+    theme_minimal())
+
+  output$alphM=renderPlot(rr_df %>% ggplot(aes(x=alphM))+geom_density()+
+    geom_vline(xintercept = alphM,       color = "blue", size=1.5)+
+    theme_minimal())
+  
+  output$alphL=renderPlot(rr_df %>% ggplot(aes(x=alphL))+geom_density()+
+    geom_vline(xintercept = alphL,       color = "blue", size=1.5)+
+    theme_minimal())
+  
+  summary(rr_df)
+
+})
+
+```
+
+# Monte Carlo Results
+
+## Returns to scale $\gamma$
+
+```{r,echo=FALSE}
+library(dplyr)
+library(shinycssloaders)
+plotOutput("gam")
+
+```
+
+
+## Elasticity of output w.r.t materials
+
+```{r}
+plotOutput("alphM")%>% withSpinner(color="#0dc5c1")
+
+```
+
+
+## Elasticity of output w.r.t labour
+
+```{r}
+plotOutput("alphL")%>% withSpinner(color="#0dc5c1")
+
+```
+
+
+```{r,echo=FALSE, message=FALSE}
+#library(DT)
+#DT::renderDataTable({vars })
+
+```
+
+
+
+

@@ -1,5 +1,26 @@
 [
   {
+    "path": "posts/lox/",
+    "title": "LOX Instruments",
+    "description": "Leave more than one Out and add eXtra controls",
+    "author": [
+      {
+        "name": "Ralf Martin",
+        "url": "https://mondpanther.github.io/wwwmondpanther/"
+      }
+    ],
+    "date": "2022-03-15",
+    "categories": [
+      "Climate Change",
+      "Management",
+      "Causal Identification"
+    ],
+    "contents": "\r\nSome thoughts and a web app on Leave Out Instruments: LOOvsLO\r\n\r\n\r\n\r\n\r\n",
+    "preview": "posts/lox/dens.png",
+    "last_modified": "2023-03-15T08:51:43+00:00",
+    "input_file": {}
+  },
+  {
     "path": "posts/scatfuture/",
     "title": "The Future of Scatterplots?",
     "description": {},

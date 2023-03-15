@@ -1,0 +1,30 @@
+---
+title: "LOX Instruments"
+description: |
+  Leave more than one Out and add eXtra controls
+author:
+  - name: Ralf Martin
+    url: https://mondpanther.github.io/wwwmondpanther/
+date: 03-15-2022
+output:
+  distill::distill_article:
+    self_contained: false
+categories:
+  - Climate Change
+  - Management
+  - Causal Identification
+preview: 'dens.png'
+    
+---
+
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+Some thoughts and a web app on Leave Out Instruments: [LOOvsLO](https://mondpanther.shinyapps.io/loovslo/)
+
+
+![](dens.png)

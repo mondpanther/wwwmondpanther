@@ -50,16 +50,17 @@ pre.numberSource code > span > a:first-child::before
   }
 pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
 div.sourceCode
-  {   }
+  { color: #00769e; background-color: #f1f3f5; }
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
+code span { color: #00769e; } /* Normal */
 code span.al { color: #ad0000; } /* Alert */
 code span.an { color: #5e5e5e; } /* Annotation */
-code span.at { color: #20794d; } /* Attribute */
+code span.at { color: #657422; } /* Attribute */
 code span.bn { color: #ad0000; } /* BaseN */
 code span.bu { } /* BuiltIn */
-code span.cf { color: #007ba5; } /* ControlFlow */
+code span.cf { color: #00769e; } /* ControlFlow */
 code span.ch { color: #20794d; } /* Char */
 code span.cn { color: #8f5902; } /* Constant */
 code span.co { color: #5e5e5e; } /* Comment */
@@ -73,17 +74,18 @@ code span.fl { color: #ad0000; } /* Float */
 code span.fu { color: #4758ab; } /* Function */
 code span.im { } /* Import */
 code span.in { color: #5e5e5e; } /* Information */
-code span.kw { color: #007ba5; } /* Keyword */
+code span.kw { color: #00769e; } /* Keyword */
 code span.op { color: #5e5e5e; } /* Operator */
-code span.ot { color: #007ba5; } /* Other */
+code span.ot { color: #00769e; } /* Other */
 code span.pp { color: #ad0000; } /* Preprocessor */
-code span.sc { color: #20794d; } /* SpecialChar */
+code span.sc { color: #5e5e5e; } /* SpecialChar */
 code span.ss { color: #20794d; } /* SpecialString */
 code span.st { color: #20794d; } /* String */
 code span.va { color: #111111; } /* Variable */
 code span.vs { color: #20794d; } /* VerbatimString */
 code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 </style>
+
 
   <!--radix_placeholder_meta_tags-->
   <title>Ralf Martin: Research</title>
@@ -453,7 +455,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 
   </style>
 
-  <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+  <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
   <link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet"/>
   <link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet"/>
   <script src="site_libs/headroom-0.9.4/headroom.min.js"></script>
@@ -784,6 +786,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   d-article table.gt_table td,
   d-article table.gt_table th {
     border-bottom: none;
+    font-size: 100%;
   }
 
   .html-widget {
@@ -1025,10 +1028,6 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
     position: relative;
     margin-bottom: 2.5em;
     margin-top: 1.5em;
-  }
-
-  .figure img {
-    width: 100%;
   }
 
   .figure .caption {
@@ -1860,7 +1859,22 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 
       // hoverable references
       $('span.citation[data-cites]').each(function() {
-        var refHtml = $('#ref-' + $(this).attr('data-cites')).html();
+        const citeChild = $(this).children()[0]
+        // Do not process if @xyz has been used without escaping and without bibliography activated
+        // https://github.com/rstudio/distill/issues/466
+        if (citeChild === undefined) return true
+
+        if (citeChild.nodeName == "D-FOOTNOTE") {
+          var fn = citeChild
+          $(this).html(fn.shadowRoot.querySelector("sup"))
+          $(this).id = fn.id
+          fn.remove()
+        }
+        var refs = $(this).attr('data-cites').split(" ");
+        var refHtml = refs.map(function(ref) {
+          // Could use CSS.escape too here, we insure backward compatibility in navigator
+          return "<p>" + $('div[id="ref-' + ref + '"]').html() + "</p>";
+        }).join("\n");
         window.tippy(this, {
           allowHTML: true,
           content: refHtml,
@@ -1871,6 +1885,31 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
           placement: 'bottom-start'
         });
       });
+
+      // fix footnotes in tables (#411)
+      // replacing broken distill.pub feature
+      $('table d-footnote').each(function() {
+        // we replace internal showAtNode methode which is triggered when hovering a footnote
+        this.hoverBox.showAtNode = function(node) {
+          // ported from https://github.com/distillpub/template/pull/105/files
+          calcOffset = function(elem) {
+              let x = elem.offsetLeft;
+              let y = elem.offsetTop;
+              // Traverse upwards until an `absolute` element is found or `elem`
+              // becomes null.
+              while (elem = elem.offsetParent && elem.style.position != 'absolute') {
+                  x += elem.offsetLeft;
+                  y += elem.offsetTop;
+              }
+
+              return { left: x, top: y };
+          }
+          // https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/offsetTop
+          const bbox = node.getBoundingClientRect();
+          const offset = calcOffset(node);
+          this.show([offset.left + bbox.width, offset.top + bbox.height]);
+        }
+      })
 
       // clear polling timer
       clearInterval(tid);
@@ -1970,6 +2009,8 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
     // mark non-body figures created by knitr chunks as 100% width
     $('.layout-chunk').each(function(i, val) {
       var figures = $(this).find('img, .html-widget');
+      // ignore leaflet img layers (#106)
+      figures = figures.filter(':not(img[class*="leaflet"])')
       if ($(this).attr('data-layout') !== "l-body") {
         figures.css('width', '100%');
       } else {
@@ -1992,7 +2033,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
     // get rid of index.html references in header
     if (window.location.protocol !== "file:") {
       $('.distill-site-header a[href]').each(function(i,val) {
-        $(this).attr('href', $(this).attr('href').replace("index.html", "./"));
+        $(this).attr('href', $(this).attr('href').replace(/^index[.]html/, "./"));
       });
     }
 
@@ -2031,7 +2072,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </script>
 
   <!--/radix_placeholder_distill-->
-  <script src="site_libs/header-attrs-2.7/header-attrs.js"></script>
+  <script src="site_libs/header-attrs-2.19/header-attrs.js"></script>
   <script src="site_libs/popper-2.6.0/popper.min.js"></script>
   <link href="site_libs/tippy-6.2.7/tippy.css" rel="stylesheet" />
   <link href="site_libs/tippy-6.2.7/tippy-light-border.css" rel="stylesheet" />
@@ -2088,19 +2129,19 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <nav class="l-text toc figcaption" id="TOC">
 <h3>Contents</h3>
 <ul>
-<li><a href="#publications">Publications</a>
+<li><a href="#publications" id="toc-publications">Publications</a>
 <ul>
-<li><a href="#academic-articles">Academic Articles</a></li>
-<li><a href="#working-papers">Working papers</a></li>
-<li><a href="#policy-papers">Policy Papers</a></li>
+<li><a href="#academic-articles" id="toc-academic-articles">Academic Articles</a></li>
+<li><a href="#working-papers" id="toc-working-papers">Working papers</a></li>
+<li><a href="#policy-papers" id="toc-policy-papers">Policy Papers</a></li>
 </ul></li>
-<li><a href="#research-topics">Research Topics</a>
+<li><a href="#research-topics" id="toc-research-topics">Research Topics</a>
 <ul>
-<li><a href="#adoption-of-prosocial-technology">Adoption of prosocial Technology</a></li>
-<li><a href="#design-and-evaluation-of-industrial-policy">Design and evaluation of Industrial Policy</a></li>
-<li><a href="#evaluation-of-climate-change-policy">Evaluation of Climate Change Policy</a></li>
-<li><a href="#what-determines-the-direction-of-innovation">What determines the direction of innovation?</a></li>
-<li><a href="#the-causes-and-consequence-of-online-mis-information">The causes and consequence of online mis-information</a></li>
+<li><a href="#adoption-of-prosocial-technology" id="toc-adoption-of-prosocial-technology">Adoption of prosocial Technology</a></li>
+<li><a href="#design-and-evaluation-of-industrial-policy" id="toc-design-and-evaluation-of-industrial-policy">Design and evaluation of Industrial Policy</a></li>
+<li><a href="#evaluation-of-climate-change-policy" id="toc-evaluation-of-climate-change-policy">Evaluation of Climate Change Policy</a></li>
+<li><a href="#what-determines-the-direction-of-innovation" id="toc-what-determines-the-direction-of-innovation">What determines the direction of innovation?</a></li>
+<li><a href="#the-causes-and-consequence-of-online-mis-information" id="toc-the-causes-and-consequence-of-online-mis-information">The causes and consequence of online mis-information</a></li>
 </ul></li>
 </ul>
 </nav>
@@ -2110,6 +2151,13 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 </div>
 <h1 id="publications">Publications</h1>
 <h2 id="academic-articles">Academic Articles</h2>
+<h3 id="do-tax-incentives-increase-firm-innovation-an-rd-design-for-rd-patents-and-spillovers"><a href="https://www.aeaweb.org/articles?id=10.1257/pol.20200739&amp;from=f">Do Tax Incentives Increase Firm Innovation? An RD Design for R&amp;D, Patents, and Spillovers</a></h3>
+<p>Antoine Dechezleprêtre, Elias Einiö, Ralf Martin, Kieu-Trang Nguyen, John Van Reenen, AMERICAN ECONOMIC JOURNAL: ECONOMIC POLICY (FORTHCOMING)</p>
+<h3 id="environmental-preferences-and-technological-choices-is-market-competition-clean-or-dirty"><a href="https://www.aeaweb.org/articles?id=10.1257/aeri.20210014">Environmental Preferences and Technological Choices: Is Market Competition Clean or Dirty?</a></h3>
+<p>Philippe Aghion,,Roland Bénabou,,Ralf Martin,Alexandra Roulet,AMERICAN ECONOMIC REVIEW: INSIGHTS,VOL. 5, NO. 1, MARCH 2023</p>
+<h3 id="searching-for-carbon-leaks-in-multinational-companies."><a href="https://www.sciencedirect.com/science/article/pii/S0095069621001406">Searching for carbon leaks in multinational companies.</a></h3>
+<p>Antoine Dechezleprêtre, Caterina Gennaioli, Ralf Martin, and Mirabelle Muûls (2022). Journal of Environmental Economics and Management
+Volume 112, March 2022</p>
 <h3 id="some-causal-effects-of-an-industrial-policy"><a href="https://www.aeaweb.org/articles?id=10.1257/aer.20160034">Some Causal Effects of an Industrial Policy</a></h3>
 <p>Criscuolo, Chiara, Ralf Martin, Henry G. Overman, and John Van Reenen. (2019). American Economic Review, 109 (1): 48-85.</p>
 <h3 id="carbon-taxes-path-dependency-and-directed-technical-change-evidence-from-the-auto-industry"><a href="https://www.journals.uchicago.edu/doi/abs/10.1086/684581">Carbon Taxes, Path Dependency, and Directed Technical Change: Evidence from the Auto Industry</a></h3>
@@ -2135,16 +2183,12 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <h2 id="working-papers">Working papers</h2>
 <h3 id="does-pricing-carbon-mitigate-climate-change-firm-level-evidence-from-the-european-union-emissions-trading-scheme"><a href="http://cep.lse.ac.uk/pubs/download/dp1728.pdf">Does pricing carbon mitigate climate change? Firm-level evidence from the European Union emissions trading scheme</a></h3>
 <p>Jonathan Colmer, Ralf Martin, Mirabelle Muuls, Ulrich Wagner (2021). CEP Discussion Paper 1728</p>
-<h3 id="environmental-preferences-and-technology-choices-is-market-competition-clean-or-dirty"><a href="https://www.nber.org/system/files/working_papers/w26921/w26921.pdf">Environmental Preferences and Technology Choices: Is Market Competition Clean or Dirty?</a></h3>
-<p>Aghion, P., Bénabou, R., Martin, R., &amp; Roulet, A. (2020). NBER Working Paper 26921.</p>
 <h3 id="making-smart-meters-smarter">Making Smart Meters Smarter</h3>
 <p>Greer Gosnell, Ralf Martin, Mirabelle Muûls, Quentin Coutellier, Goran Strbac, Simon Tindermans (2019) CEP Discussion Paper 1602, <a href="http://cep.lse.ac.uk/pubs/download/dp1602.pdf" class="uri">http://cep.lse.ac.uk/pubs/download/dp1602.pdf</a></p>
 <h3 id="do-tax-incentives-for-research-increase-firm-innovation-an-rd-design-for-rd">Do tax incentives for research increase firm innovation? An RD Design for R&amp;D</h3>
 <p>Antoine Dechezleprêtre, Elias Einiö, Ralf Martin, Kieu-Trang Nguyen (LSE and CEP), John Van Reenen (2015), CEP Discussion Paper. <a href="http://cep.lse.ac.uk/pubs/download/dp1413.pdf" class="uri">http://cep.lse.ac.uk/pubs/download/dp1413.pdf</a></p>
 <h3 id="knowledge-spillovers-from-clean-and-dirty-technologies">Knowledge Spillovers from Clean and Dirty Technologies</h3>
 <p>Antoine Dechezleprêtre, Ralf Martin, Myra Mohnen (2014). CEP Discussion Paper 1300. <a href="http://cep.lse.ac.uk/pubs/download/dp1300.pdf" class="uri">http://cep.lse.ac.uk/pubs/download/dp1300.pdf</a></p>
-<h3 id="searching-for-carbon-leaks-in-multinational-companies.">Searching for carbon leaks in multinational companies.</h3>
-<p>Antoine Dechezleprêtre, Caterina Gennaioli, Ralf Martin, and Mirabelle Muûls (2014). Grantham Institute LSE Working Paper No 187. <a href="http://tiny.cc/daf2qx" class="uri">http://tiny.cc/daf2qx</a>. R&amp;R Journal of Environmental Economics and Management.</p>
 <h3 id="productivity-spreads-market-power-spreads-and-trade">Productivity Spreads, Market Power Spreads and Trade</h3>
 <p>Ralf Martin (2010) CEP Discussion Paper 965, <a href="http://cep.lse.ac.uk/pubs/download/dp0965.pdf" class="uri">http://cep.lse.ac.uk/pubs/download/dp0965.pdf</a>.</p>
 <h2 id="policy-papers">Policy Papers</h2>

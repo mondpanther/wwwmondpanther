@@ -164,7 +164,7 @@ library(shiny)
 p <- plot_geo(df) %>%
      add_trace(z = ~toplot, color = ~(toplot), colors = spet,
      text = ~COUNTRY, locations = ~CODE, marker = list(line = l)) %>%
-     colorbar(title = 'Share of Cleantech Innovaion in %') %>%
+     colorbar(title = 'Share of Cleantech Innovation in %') %>%
      layout(title = '', geo = g)
 ```
 

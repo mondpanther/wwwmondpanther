@@ -78,8 +78,8 @@
     ],
     "contents": "\r\nWhich countries have a comparative advantage in clean technologies? The Figure below examines this by looking at the share of clean innovations in total innovation across countries (using PATSTAT patent data.). A surprising number of developing countries have a comparative advantage in clean teachnologies.\r\n\r\n\r\n\r\n\r\n\r\nFigure 1: Share of clean in total innovation (in %)\r\n\r\n\r\n\r\n\r\n\r\n",
     "preview": "posts/2021-03-03-cleanrta/rs.png",
-    "last_modified": "2023-02-28T23:46:13+00:00",
-    "input_file": {}
+    "last_modified": "2024-01-16T15:07:55+00:00",
+    "input_file": "cleanrta.knit.md"
   },
   {
     "path": "posts/schroedinger/",

@@ -37,6 +37,10 @@ knitr::opts_chunk$set(echo = FALSE)
 
 ## Academic Articles
 
+### [Does Pricing Carbon Mitigate Climate Change? Firm-Level Evidence from the European Union Emissions Trading Scheme](https://cep.lse.ac.uk/pubs/download/dp1728.pdf) 
+Jonathan Colmer, Ralf Martin, Mirabelle Muuls, Ulrich Wagner
+forthcoming in REVIEW OF ECONOMIC STUDIES.
+
 ### [Do Tax Incentives Increase Firm Innovation? An RD Design for R&D, Patents, and Spillovers](https://www.aeaweb.org/articles?id=10.1257/pol.20200739&from=f)
 Antoine Dechezleprêtre, Elias Einiö, Ralf Martin, Kieu-Trang Nguyen, John Van Reenen, AMERICAN ECONOMIC JOURNAL: ECONOMIC POLICY (FORTHCOMING)
 

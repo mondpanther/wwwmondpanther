@@ -1,5 +1,43 @@
 [
   {
+    "path": "posts/2024-03-04-opportunity/",
+    "title": "Growing green awareness gives eco-innovation a competitive edge",
+    "description": "Article in Financial Times",
+    "author": [
+      {
+        "name": "Ralf Martin",
+        "url": "https://mondpanther.github.io/wwwmondpanther/"
+      }
+    ],
+    "date": "2024-03-04",
+    "categories": [
+      "Climate Change",
+      "Innovation",
+      "Competition"
+    ],
+    "contents": "\r\nFirms do and should see climate change as a competitive opportunity, rather than a regulatory burden. Read my article in the Financial Times summarising research with Philippe Aghion, Roland Benabou and Alexandra Roulet.\r\nAm talking about the same paper in this VLOG produced by the ETH.\r\n\r\n\r\n\r\n\r\n",
+    "preview": "posts/2024-03-04-opportunity/tesla.png",
+    "last_modified": "2024-03-04T13:31:14+00:00",
+    "input_file": {}
+  },
+  {
+    "path": "posts/2024-03-04-virtualpowerplant/",
+    "title": "Building virtual power plants",
+    "description": "Generating electricity one smart device at a time.",
+    "author": [
+      {
+        "name": "Ralf Martin",
+        "url": "https://mondpanther.github.io/wwwmondpanther/"
+      }
+    ],
+    "date": "2024-03-04",
+    "categories": [],
+    "contents": "\r\nIt doesn’t matter how much power you consume, but when you consume it! - The POWBAL Project.\r\n\r\n\r\n\r\n",
+    "preview": {},
+    "last_modified": "2024-03-04T13:42:43+00:00",
+    "input_file": {}
+  },
+  {
     "path": "posts/lox/",
     "title": "LOX Instruments",
     "description": "Leave more than one Out and add eXtra controls",

@@ -9,6 +9,11 @@ date: 2024-03-04
 output:
   distill::distill_article:
     self_contained: false
+categories:
+  - Climate Change
+  - Electricity
+  - India
+preview: 'avatar.png'
 ---
 
 

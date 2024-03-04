@@ -31,11 +31,15 @@
       }
     ],
     "date": "2024-03-04",
-    "categories": [],
+    "categories": [
+      "Climate Change",
+      "Electricity",
+      "India"
+    ],
     "contents": "\r\nIt doesn’t matter how much power you consume, but when you consume it! - The POWBAL Project.\r\n\r\n\r\n\r\n",
-    "preview": {},
-    "last_modified": "2024-03-04T13:42:43+00:00",
-    "input_file": {}
+    "preview": "posts/2024-03-04-virtualpowerplant/avatar.png",
+    "last_modified": "2024-03-04T14:05:21+00:00",
+    "input_file": "virtualpowerplant.knit.md"
   },
   {
     "path": "posts/lox/",

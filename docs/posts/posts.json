@@ -17,7 +17,7 @@
     ],
     "contents": "\r\nSome thoughts and a web app on Leave Out Instruments: LOOvsLO\r\n\r\n\r\n\r\n\r\n",
     "preview": "posts/lox/dens.png",
-    "last_modified": "2023-03-15T08:51:43+00:00",
+    "last_modified": "2024-03-04T12:53:38+00:00",
     "input_file": {}
   },
   {
@@ -36,7 +36,7 @@
     ],
     "contents": "\r\n\r\n\r\n\r\n\r\n\r\n",
     "preview": {},
-    "last_modified": "2023-02-28T23:46:13+00:00",
+    "last_modified": "2024-03-04T12:53:38+00:00",
     "input_file": {}
   },
   {
@@ -57,7 +57,7 @@
     ],
     "contents": "\r\nRecent literature has emphasized the importance of management practices for firm performance, including the environmental impact of businesses. Here we consider how variation in management quality affects the response of firms to environmental regulation, specifically the nascent Chinese Emission Trading System. We find that businesses that are better managed are more responsive to price incentives implied by carbon trading. More details here\r\n\r\n\r\n\r\nA Grahpical Summary\r\n\r\n\r\n\r\n\r\n\r\n\r\n",
     "preview": "posts/cets/distill-preview.png",
-    "last_modified": "2023-02-28T23:46:13+00:00",
+    "last_modified": "2024-03-04T12:53:38+00:00",
     "input_file": {}
   },
   {
@@ -78,8 +78,8 @@
     ],
     "contents": "\r\nWhich countries have a comparative advantage in clean technologies? The Figure below examines this by looking at the share of clean innovations in total innovation across countries (using PATSTAT patent data.). A surprising number of developing countries have a comparative advantage in clean teachnologies.\r\n\r\n\r\n\r\n\r\n\r\nFigure 1: Share of clean in total innovation (in %)\r\n\r\n\r\n\r\n\r\n\r\n",
     "preview": "posts/2021-03-03-cleanrta/rs.png",
-    "last_modified": "2024-01-20T08:37:00+00:00",
-    "input_file": "cleanrta.knit.md"
+    "last_modified": "2024-03-04T12:53:38+00:00",
+    "input_file": {}
   },
   {
     "path": "posts/schroedinger/",
@@ -99,7 +99,7 @@
     ],
     "contents": "\r\nThe European Emissions Trading System (EU ETS) is often accused of two mutually exclusive concerns: On the one hand people complain that it endangers the competitiveness of regulated European companies who are competing with companies in un-regulated places abroad. On the other hand, people complain that the permit prices are too low to incentivise any meaningful emission reduction. While both cannot be right, they can actually both be wrong, which is a conclusion supported by our latest research, namely: the ETS has led to meaningful emission reductions but did so largely without affecting the competitiveness of regulated firms.\r\nWe find this using French firm level manufacturing data here. ETS regulated manufacturing firms have reduced emissions by 10% more than comparable non regulated firms. In addition we find that investment (in particular in efficiency improving investment) in those firms increased and output did not decline. Neither is there evidence that they outsourced carbon intensive production steps. This suggests that their competitiveness did not suffer and carbon did not “leak”.\r\n\r\n\r\n\r\n",
     "preview": "posts/schroedinger/etsplant.png",
-    "last_modified": "2023-02-28T23:46:13+00:00",
+    "last_modified": "2024-03-04T12:53:38+00:00",
     "input_file": {}
   }
 ]

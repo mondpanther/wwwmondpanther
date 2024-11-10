@@ -8,7 +8,7 @@ twitter:
   site: "@mondpanther"
 navbar:
   right:
-    - text: "Latest Musings"
+    - text: "Latest"
       href: index.html
     - text: "About"      
       href: about.html

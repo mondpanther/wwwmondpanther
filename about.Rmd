@@ -23,7 +23,7 @@ As of the academic year 2023/24 I am seconded to the economic research unit of t
 
 In my research I focus on things that help to increase economic productivity without compromising the natural environment. I am also concerned about the effects and causes of online mis-information and the re-emergence of bigotism. Some of my other passions include cycling (particularly in London) and windsurfing.
 
-[Google Scholar Profile](https://scholar.google.com/citations?user=ssPVmxMAAAAJ&hl=en)  |  [On Blue Sky](https://bsky.app/profile/mondpanther.bsky.social) | [LinkedIn](https://www.linkedin.com/in/ralf-martin-72269b1/) 
+[Google Scholar Profile](https://scholar.google.com/citations?user=ssPVmxMAAAAJ&hl=en)  |  [On Blue Sky](https://bsky.app/profile/mondpanther.bsky.social)| Please don't empower demagogues so refrain from X | [LinkedIn](https://www.linkedin.com/in/ralf-martin-72269b1/) 
 
 ```{r , include=FALSE, eval=FALSE, echo=FALSE}
 #<!--html_preserve-->

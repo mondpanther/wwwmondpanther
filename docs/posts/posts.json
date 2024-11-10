@@ -1,5 +1,22 @@
 [
   {
+    "path": "posts/ethvlog/",
+    "title": "Competition and clean innovation",
+    "description": "In discussion with Luca Baltensberger from ETH about our paper on Pro-social values, competition\nand innovation in clean technologies.",
+    "author": [
+      {
+        "name": "Ralf Martin",
+        "url": {}
+      }
+    ],
+    "date": "2024-11-10",
+    "categories": [],
+    "contents": "\r\nETH’s Luca Baltensberger was kind enough to sit down with me to discuss my study on Environmental Preferences and Technological Choices: Is Market Competition Clean or Dirty?. Youtube video [here].\r\n\r\n\r\n\r\n",
+    "preview": {},
+    "last_modified": "2024-11-10T14:54:01+01:00",
+    "input_file": {}
+  },
+  {
     "path": "posts/2024-03-04-opportunity/",
     "title": "Growing green awareness gives eco-innovation a competitive edge",
     "description": "Article in Financial Times",

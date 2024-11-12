@@ -15,13 +15,23 @@ knitr::opts_chunk$set(echo = FALSE)
 
 ```
 
+:::float-image 
+
+```{r out.width='300px', out.extra='style="float:right; padding:10px"', echo=FALSE}
+knitr::include_graphics("round.png")
+```
+
+
+
 I am a Professor of Economics at [Imperial College Business School](https://www.imperial.ac.uk/people/r.martin), London (Europe). I am also associated with Growth Programme at the [Centre for Economic Performance](http://cep.lse.ac.uk/_new/staff/person.asp?id=739) at the London School of Economics.
 
 I am the Principal Investigator of the [Productive & Inclusive Netzero Project (PRINZ, funded by the ESRC)](https://www.prinzproject.io/)
 
 As of the academic year 2023/24 I am seconded to the economic research unit of the [International Financial Corporation](https://www.ifc.org/en/about) (Part of the Worldbank) to develop a research programme on climate change and sustainability.
 
-In my research I focus on things that help to increase economic productivity without compromising the natural environment. I am also concerned about the effects and causes of online mis-information and the re-emergence of bigotism. Some of my other passions include cycling (particularly in London) and windsurfing.
+In my research I focus on things that help to increase economic productivity without compromising the natural environment. I am also concerned about the effects and causes of online mis-information and the re-emergence of bigotism. Some of my other passions include cycling (particularly in London) and wind & wingsurfing.
+ 
+:::
 
 [Google Scholar Profile](https://scholar.google.com/citations?user=ssPVmxMAAAAJ&hl=en)  |  [On Blue Sky](https://bsky.app/profile/mondpanther.bsky.social)| Please don't empower demagogues so refrain from X | [LinkedIn](https://www.linkedin.com/in/ralf-martin-72269b1/) 
 

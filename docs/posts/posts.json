@@ -1,7 +1,7 @@
 [
   {
     "path": "posts/ethvlog/",
-    "title": "Competition and clean innovation",
+    "title": "Competition and Clean Innovation",
     "description": "In discussion with Luca Baltensberger from ETH about our paper on Pro-social values, competition\nand innovation in clean technologies.",
     "author": [
       {
@@ -9,12 +9,12 @@
         "url": {}
       }
     ],
-    "date": "2024-11-10",
+    "date": "2024-11-12",
     "categories": [],
-    "contents": "\r\nETH’s Luca Baltensberger was kind enough to sit down with me to discuss my study on Environmental Preferences and Technological Choices: Is Market Competition Clean or Dirty?. Youtube video [here].\r\n\r\n\r\n\r\n",
+    "contents": "\r\nETH’s Luca Baltensberger was kind enough to sit down with me to discuss my study on Environmental Preferences and Technological Choices: Is Market Competition Clean or Dirty? Youtube video here.\r\n\r\n\r\n\r\n\r\n",
     "preview": {},
-    "last_modified": "2024-11-10T14:54:01+01:00",
-    "input_file": {}
+    "last_modified": "2024-11-12T08:18:02+01:00",
+    "input_file": "ethvlog.knit.md"
   },
   {
     "path": "posts/2024-03-04-opportunity/",

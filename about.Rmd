@@ -23,13 +23,13 @@ knitr::include_graphics("round.png")
 
 
 
-I am a Professor of Economics at [Imperial College Business School](https://www.imperial.ac.uk/people/r.martin), London (Europe). I am also associated with Growth Programme at the [Centre for Economic Performance](http://cep.lse.ac.uk/_new/staff/person.asp?id=739) at the London School of Economics.
+I am a Professor of Economics at [Imperial College Business School](https://www.imperial.ac.uk/people/r.martin), London (Europe). I am also an Associate with Growth Programme at the [Centre for Economic Performance](http://cep.lse.ac.uk/_new/staff/person.asp?id=739) at the London School of Economics.
 
 I am the Principal Investigator of the [Productive & Inclusive Netzero Project (PRINZ, funded by the ESRC)](https://www.prinzproject.io/)
 
-As of the academic year 2023/24 I am seconded to the economic research unit of the [International Financial Corporation](https://www.ifc.org/en/about) (Part of the Worldbank) to develop a research programme on climate change and sustainability.
+As of the academic year 2023/24 I am seconded to the economic research unit of the [International Finance Corporation](https://www.ifc.org/en/contact/profile/ralf-martin) (Part of the Worldbank) to develop a research programme on climate change and sustainability. For that I am based in the Worldbank Office in Paris.
 
-In my research I focus on things that help to increase economic productivity without compromising the natural environment. I am also concerned about the effects and causes of online mis-information and the re-emergence of bigotism. Some of my other passions include cycling (particularly in London) and wind & wingsurfing.
+In my research I focus on things that help to increase economic productivity without compromising the natural environment. I am also concerned about the effects and causes of online mis-information and the re-emergence of bigotism. Some of my other passions include cycling (particularly in London and Paris) and wind & wingsurfing.
  
 :::
 

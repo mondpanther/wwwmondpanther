@@ -1,0 +1,363 @@
+---
+title: "Did Low-Carbon Electricity Shield Countries from the Energy Price Shock?"
+description: |
+  Countries with higher shares of low-carbon electricity experienced smaller
+  price increases after the 2022 energy crisis. We quantify the relationship
+  using publicly available data.
+author:
+  - name: Ralf Martin
+    url: https://mondpanther.github.io/wwwmondpanther/
+date: 2026-03-27
+output:
+  distill::distill_article:
+    self_contained: false
+categories:
+  - Climate Change
+  - Energy
+  - Electricity Prices
+# preview: 'scatter_preview.png'
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(
+  echo = FALSE, message = FALSE, warning = FALSE,
+  fig.width = 8, fig.height = 5
+)
+options(repos = c(CRAN = "https://cloud.r-project.org"))
+```
+
+```{r packages, include=FALSE}
+pkgs <- c("dplyr", "tidyr", "readr", "lubridate", "ggplot2", "scales",
+          "stringr", "glue", "ggrepel", "plotly", "purrr", "crosstalk", "broom")
+for (p in pkgs) {
+  if (!requireNamespace(p, quietly = TRUE)) install.packages(p)
+  suppressPackageStartupMessages(library(p, character.only = TRUE))
+}
+theme_set(
+  theme_minimal(base_size = 13) +
+  theme(
+    plot.title = element_text(face = "bold", size = 15),
+    plot.subtitle = element_text(color = "grey40", size = 11),
+    panel.grid.minor = element_blank()
+  )
+)
+```
+
+When Russia's invasion of Ukraine sent European natural gas prices soaring in
+2022, wholesale electricity prices followed. But the shock did not hit every
+country equally. Countries that had invested heavily in low-carbon generation ---
+nuclear, hydro, wind, solar, geothermal, and bioenergy --- saw smaller and
+shorter-lived price increases than those still reliant on fossil fuels.
+
+This analysis uses publicly available data to quantify the relationship between
+a country's **pre-crisis low-carbon electricity share** and the **size of its
+price increase**.
+
+```{r download-data, include=FALSE}
+# --- Wholesale prices (Ember) ---
+ember_url <- paste0(
+  "https://files.ember-energy.org/public-downloads/price/outputs/",
+  "european_wholesale_electricity_price_data_monthly.csv"
+)
+prices_raw <- read_csv(ember_url, show_col_types = FALSE)
+nm <- names(prices_raw)
+names(prices_raw) <- c("country", "iso3", "date", "price_eur_mwh")[seq_along(nm)]
+
+prices <- prices_raw |>
+  mutate(
+    date = as.Date(date),
+    country = iconv(country, from = "UTF-8", to = "ASCII//TRANSLIT", sub = ""),
+    price = price_eur_mwh / 10
+  ) |>
+  filter(!is.na(price))
+
+# --- Generation mix (OWID) ---
+owid_url <- "https://owid-public.owid.io/data/energy/owid-energy-data.csv"
+energy_raw <- read_csv(owid_url, show_col_types = FALSE)
+
+european_isos <- c(
+  "ALB", "AND", "AUT", "BEL", "BGR", "BIH", "BLR", "CHE", "CYP", "CZE",
+  "DEU", "DNK", "ESP", "EST", "FIN", "FRA", "GBR", "GEO", "GRC", "HRV",
+  "HUN", "IRL", "ISL", "ITA", "KOS", "LTU", "LUX", "LVA", "MDA", "MKD",
+  "MLT", "MNE", "NLD", "NOR", "POL", "PRT", "ROU", "SRB", "SVK", "SVN",
+  "SWE", "TUR", "UKR"
+)
+
+gen_2019 <- energy_raw |>
+  filter(!is.na(iso_code), iso_code != "", !str_detect(iso_code, "^OWID_"),
+         iso_code %in% european_isos, year == 2019) |>
+  mutate(country = iconv(country, from = "UTF-8", to = "ASCII//TRANSLIT", sub = "")) |>
+  select(country, iso_code,
+         gas = gas_share_elec, coal = coal_share_elec,
+         nuclear = nuclear_share_elec, oil = oil_share_elec,
+         hydro = hydro_share_elec, wind = wind_share_elec,
+         solar = solar_share_elec, biofuel = biofuel_share_elec,
+         geothermal = other_renewables_share_elec_exc_biofuel) |>
+  rowwise() |>
+  mutate(renewx = sum(c_across(c(solar, wind, hydro, geothermal, biofuel, nuclear)),
+                      na.rm = TRUE)) |>
+  ungroup()
+
+gen_2010 <- energy_raw |>
+  filter(!is.na(iso_code), iso_code != "", !str_detect(iso_code, "^OWID_"),
+         iso_code %in% european_isos, year == 2010) |>
+  mutate(country = iconv(country, from = "UTF-8", to = "ASCII//TRANSLIT", sub = "")) |>
+  select(country, solar = solar_share_elec, wind = wind_share_elec,
+         hydro = hydro_share_elec,
+         geothermal = other_renewables_share_elec_exc_biofuel,
+         biofuel = biofuel_share_elec, nuclear = nuclear_share_elec) |>
+  rowwise() |>
+  mutate(renewx_2010 = sum(c_across(c(solar, wind, hydro, geothermal, biofuel, nuclear)),
+                           na.rm = TRUE)) |>
+  ungroup() |>
+  select(country, renewx_2010)
+
+annual_avg <- prices |>
+  mutate(year = year(date)) |>
+  group_by(country, year) |>
+  summarise(avg_price = mean(price, na.rm = TRUE), .groups = "drop")
+
+price_2019 <- annual_avg |> filter(year == 2019) |>
+  select(country, price_2019 = avg_price)
+
+avg_post <- annual_avg |>
+  filter(year >= 2023, year <= 2025) |>
+  group_by(country) |>
+  summarise(price_post = mean(avg_price, na.rm = TRUE), .groups = "drop")
+
+change <- price_2019 |>
+  inner_join(avg_post, by = "country") |>
+  filter(price_2019 > 0) |>
+  mutate(price_change = price_post - price_2019) |>
+  arrange(price_change)
+
+reg_data <- change |>
+  inner_join(gen_2019 |> select(country, renewx), by = "country") |>
+  filter(!is.na(renewx))
+```
+
+## The price shock across Europe
+
+The chart below shows monthly wholesale electricity prices for every European
+country in the Ember dataset. Use the dropdown to select specific countries, or
+view them all at once.
+
+```{r time-series-filter}
+sd_prices <- SharedData$new(prices, key = ~country, group = "ts_group")
+
+filter_select(
+  id = "country_filter",
+  label = "Select countries to highlight",
+  sharedData = sd_prices,
+  group = ~country,
+  multiple = TRUE
+)
+```
+
+```{r time-series-plot}
+plot_ly(sd_prices, x = ~date, y = ~price, color = ~country,
+        type = "scatter", mode = "lines", line = list(width = 1.3),
+        hovertemplate = "%{x|%b %Y}<br>%{y:.2f} c/kWh<extra>%{fullData.name}</extra>") |>
+  layout(
+    xaxis = list(title = ""),
+    yaxis = list(title = "Wholesale price (cents / kWh)"),
+    height = 400,
+    legend = list(orientation = "v", x = 1.02, y = 1, font = list(size = 8)),
+    hovermode = "x unified",
+    margin = list(t = 10)
+  ) |>
+  highlight(on = "plotly_click", off = "plotly_doubleclick",
+            persistent = TRUE, selectize = FALSE)
+```
+
+<aside>Source: Ember European Wholesale Electricity Price Data (monthly).</aside>
+
+## Who got hit hardest?
+
+To measure the lasting impact --- rather than just the 2022 spike --- we compare
+each country's **2019 average price** with its **average over 2023--2025**.
+
+```{r bar-chart}
+d_bar <- change |>
+  mutate(
+    country = factor(country, levels = country),
+    col = ifelse(price_change > 0, "#e74c3c", "#2980b9")
+  )
+
+plot_ly(d_bar, y = ~country, x = ~price_change,
+        type = "bar", orientation = "h",
+        marker = list(color = ~col),
+        text = ~paste0(ifelse(price_change > 0, "+", ""),
+                       round(price_change, 2), " c/kWh"),
+        textposition = "outside", textfont = list(size = 10),
+        hovertemplate = paste0(
+          "<b>%{y}</b><br>",
+          "Change: %{x:.2f} c/kWh<br>",
+          "2019: %{customdata[0]:.2f} c/kWh<br>",
+          "Avg 2023-25: %{customdata[1]:.2f} c/kWh<extra></extra>"
+        ),
+        customdata = ~cbind(price_2019, price_post)) |>
+  layout(
+    xaxis = list(title = "Price change (cents / kWh)"),
+    yaxis = list(title = "", categoryorder = "trace"),
+    height = max(380, nrow(d_bar) * 18),
+    margin = list(l = 120, r = 60),
+    showlegend = FALSE
+  )
+```
+
+<aside>Difference between the average wholesale price in 2023--2025 and the
+2019 baseline. Red = increase; blue = decrease.</aside>
+
+## The low-carbon advantage
+
+Is there a systematic relationship between a country's pre-crisis electricity
+mix and the size of its price shock? We measure each country's **low-carbon
+share** in 2019 --- the combined share of nuclear, hydro, wind, solar,
+geothermal, and bioenergy --- and plot it against the price change.
+
+```{r scatter-plot, fig.width=9, fig.height=6.5}
+fit <- lm(price_change ~ renewx, data = reg_data)
+s   <- summary(fit)
+r2  <- round(s$r.squared, 3)
+slope <- round(coef(fit)[2], 4)
+se_slope <- round(s$coefficients[2, 2], 4)
+
+slope_sign <- ifelse(slope < 0, "", "+")
+slope_label <- glue("Slope: {slope_sign}{slope} c/kWh per pp  (SE = {se_slope})")
+
+ggplot(reg_data, aes(renewx, price_change)) +
+  geom_smooth(method = "lm", se = TRUE, colour = "#e67e22", fill = "#e67e22",
+              alpha = 0.15, linewidth = 1.2) +
+  geom_point(colour = "#2980b9", size = 3, alpha = 0.85,
+             shape = 21, fill = "#2980b9", stroke = 0.5) +
+  ggrepel::geom_text_repel(
+    aes(label = country),
+    size = 3.2, colour = "#2c3e50",
+    max.overlaps = Inf,
+    box.padding = 0.4,
+    point.padding = 0.3,
+    segment.color = "grey70",
+    segment.size = 0.3,
+    min.segment.length = 0.2,
+    seed = 42
+  ) +
+  annotate("text",
+    x = max(reg_data$renewx) * 0.97,
+    y = max(reg_data$price_change) * 0.95,
+    label = slope_label,
+    hjust = 1, size = 4, colour = "#e67e22", fontface = "bold"
+  ) +
+  annotate("text",
+    x = max(reg_data$renewx) * 0.97,
+    y = max(reg_data$price_change) * 0.85,
+    label = glue("R\u00b2 = {r2}"),
+    hjust = 1, size = 3.8, colour = "#e67e22"
+  ) +
+  labs(
+    x = "Low-carbon electricity share in 2019 (%)",
+    y = "Price change: 2019 vs avg 2023\u20132025 (cents / kWh)"
+  )
+```
+
+&copy; Ralf Martin
+
+> For every additional percentage point of low-carbon electricity in 2019, the
+> post-crisis price increase was **`r round(coef(fit)[2], 3)` cents/kWh
+> smaller** on average.
+
+## Regression results
+
+```{r regression-table}
+broom::tidy(fit, conf.int = TRUE) |>
+  mutate(across(where(is.numeric), ~round(.x, 4))) |>
+  knitr::kable(
+    col.names = c("Term", "Estimate", "Std. Error", "t", "p-value",
+                  "CI low (2.5%)", "CI high (97.5%)"),
+    caption = glue("OLS: price change ~ low-carbon share. N = {nrow(reg_data)}, R\u00b2 = {r2}, Adj. R\u00b2 = {round(s$adj.r.squared, 3)}")
+  )
+```
+
+## What if countries hadn't expanded low-carbon power?
+
+Between 2010 and 2019 many European countries significantly increased their
+low-carbon electricity share. Using the regression slope, we ask: **how much
+higher would the post-crisis price increase have been if each country had stayed
+at its 2010 low-carbon share?**
+
+```{r counterfactual}
+slope_est <- coef(fit)[2]
+
+cf <- reg_data |>
+  inner_join(gen_2010, by = "country") |>
+  filter(!is.na(renewx_2010)) |>
+  mutate(
+    renewx_gain    = renewx - renewx_2010,
+    price_saving   = renewx_gain * slope_est,
+    counterfactual = price_change - price_saving
+  ) |>
+  arrange(desc(renewx_gain))
+```
+
+```{r counterfactual-scatter, fig.width=9, fig.height=6.5}
+ggplot(cf, aes(renewx_gain, price_saving)) +
+  geom_point(colour = "#27ae60", size = 3, alpha = 0.85,
+             shape = 21, fill = "#27ae60", stroke = 0.5) +
+  ggrepel::geom_text_repel(
+    aes(label = country),
+    size = 3.2, colour = "#2c3e50",
+    max.overlaps = Inf,
+    box.padding = 0.4,
+    point.padding = 0.3,
+    segment.color = "grey70",
+    segment.size = 0.3,
+    min.segment.length = 0.2,
+    seed = 42
+  ) +
+  labs(
+    x = "Increase in low-carbon share, 2010 to 2019 (pp)",
+    y = "Implied price saving (cents / kWh)"
+  )
+```
+
+<aside>The x-axis shows how much the low-carbon share grew between 2010 and
+2019; the y-axis shows the implied reduction in the post-crisis price
+increase.</aside>
+
+```{r counterfactual-bar}
+cf_long <- cf |>
+  select(country, Actual = price_change, Counterfactual = counterfactual) |>
+  arrange(Actual) |>
+  mutate(country = factor(country, levels = country)) |>
+  pivot_longer(cols = c(Actual, Counterfactual),
+               names_to = "scenario", values_to = "change")
+
+plot_ly(cf_long, y = ~country, x = ~change, color = ~scenario,
+        type = "bar", orientation = "h",
+        colors = c("Actual" = "#2980b9", "Counterfactual" = "#e74c3c"),
+        hovertemplate = paste0("<b>%{y}</b><br>",
+                               "%{fullData.name}: %{x:.2f} c/kWh<extra></extra>")) |>
+  layout(
+    barmode = "group",
+    xaxis = list(title = "Price change (cents / kWh)"),
+    yaxis = list(title = "", categoryorder = "trace"),
+    height = max(380, n_distinct(cf$country) * 20),
+    margin = list(l = 120),
+    legend = list(x = 0.7, y = 0.05, bgcolor = "rgba(255,255,255,0.8)")
+  )
+```
+
+<aside>Blue = actual price change. Red = counterfactual if the country had
+stayed at its 2010 low-carbon share.</aside>
+
+## Data & methodology
+
+| Item | Detail |
+|------|--------|
+| **Prices** | Ember European Wholesale Electricity Price Data (monthly) |
+| **Generation mix** | Our World in Data / Ember + Energy Institute |
+| **Price unit** | Euro-cents per kWh |
+| **Base year** | 2019 (pre-pandemic, pre-crisis) |
+| **Comparison** | Average of 2023--2025 |
+| **Low-carbon share** | Nuclear + hydro + wind + solar + geothermal + bioenergy |
+| **Method** | OLS regression of price change on 2019 low-carbon share |

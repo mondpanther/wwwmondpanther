@@ -139,7 +139,7 @@ reg_data <- change |>
 ## The price shock across Europe
 
 The chart below shows monthly wholesale electricity prices for every European
-country in the Ember dataset. Use the dropdown to select specific countries, or
+country in the Ember dataset. Looking at wholesale prices is useful to understand the true impact on generation costs. Many countries imposed price ceilings or provided subsidies to end users which distort retail prices. Use the dropdown to select specific countries, or
 view them all at once.
 
 ```{r time-series-filter}
@@ -349,6 +349,79 @@ plot_ly(cf_long, y = ~country, x = ~change, color = ~scenario,
 
 <aside>Blue = actual price change. Red = counterfactual if the country had
 stayed at its 2010 low-carbon share.</aside>
+
+## Total annual savings from low-carbon expansion
+
+How much money did countries save by expanding their low-carbon electricity
+share between 2010 and 2019? We take the implied per-kWh price saving from
+the regression (slope &times; gain in low-carbon share) and multiply it by actual
+electricity demand in each of 2023, 2024, and 2025.
+
+```{r cost-saving}
+# Get electricity demand for 2023-2025 (in TWh)
+demand_post <- energy_raw |>
+  filter(!is.na(iso_code), iso_code != "", !str_detect(iso_code, "^OWID_"),
+         iso_code %in% european_isos, year %in% 2023:2025) |>
+  mutate(country = iconv(country, from = "UTF-8", to = "ASCII//TRANSLIT", sub = "")) |>
+  select(country, iso_code, year, demand_twh = electricity_demand) |>
+  filter(!is.na(demand_twh))
+
+saving_yearly <- cf |>
+  select(country, price_saving) |>
+  cross_join(tibble(year = 2023:2025)) |>
+  left_join(demand_post, by = c("country", "year")) |>
+  filter(!is.na(demand_twh)) |>
+  mutate(saving_bn = price_saving * demand_twh / 100)
+
+saving_df <- saving_yearly |>
+  group_by(country) |>
+  summarise(
+    avg_saving_bn = mean(saving_bn, na.rm = TRUE),
+    n_years = n(),
+    .groups = "drop"
+  ) |>
+  arrange(avg_saving_bn) |>
+  mutate(country = factor(country, levels = country))
+
+total_saving <- round(sum(saving_df$avg_saving_bn, na.rm = TRUE), 1)
+
+saving_df <- saving_df |>
+  mutate(col = ifelse(avg_saving_bn < 0, "#27ae60", "#e74c3c"))
+
+plot_ly(saving_df, y = ~country, x = ~avg_saving_bn,
+        type = "bar", orientation = "h",
+        marker = list(color = ~col),
+        text = ~paste0(round(avg_saving_bn, 2), " bn EUR"),
+        textposition = "outside", textfont = list(size = 11),
+        hovertemplate = paste0(
+          "<b>%{y}</b><br>",
+          "Annual saving: %{x:.2f} bn EUR<extra></extra>"
+        )) |>
+  layout(
+    xaxis = list(title = "Annual saving from low-carbon expansion (billion EUR)"),
+    yaxis = list(title = "", categoryorder = "trace"),
+    height = max(380, n_distinct(saving_df$country) * 20),
+    margin = list(l = 120, r = 80, b = 100),
+    showlegend = FALSE,
+    annotations = list(
+      list(
+        text = paste0(
+          "Implied saving = regression slope \u00d7 low-carbon gain (2010\u20132019) ",
+          "\u00d7 actual demand (avg 2023\u20132025).<br>",
+          "Green = saved; red = lost. ",
+          "Total: \u20ac", abs(total_saving), "bn/year saved."
+        ),
+        xref = "paper", yref = "paper",
+        x = 0, y = -0.15, showarrow = FALSE,
+        font = list(size = 10, color = "#7f8c8d"),
+        xanchor = "left"
+      )
+    )
+  )
+```
+
+<aside>Each bar shows the estimated annual saving from expanding low-carbon
+generation between 2010 and 2019, multiplied by actual demand in 2023--2025.</aside>
 
 ## Data & methodology
 

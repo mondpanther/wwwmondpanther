@@ -1,5 +1,26 @@
 [
   {
+    "path": "posts/2026-05-05-higglo/",
+    "title": "HiGGlo: Visualising Innovation and Knowledge Spillovers",
+    "description": "A new tool to map innovations and the direct and indirect knowledge\nspillovers between them.",
+    "author": [
+      {
+        "name": "Ralf Martin",
+        "url": "https://mondpanther.github.io/wwwmondpanther/"
+      }
+    ],
+    "date": "2026-05-05",
+    "categories": [
+      "Innovation",
+      "Knowledge Spillovers",
+      "Green Tech"
+    ],
+    "contents": "\r\nI’ve launched HiGGlo – a new tool to visualise\r\ninnovations and the direct and indirect knowledge spillovers between them.\r\nAs a first illustration, the map below shows the 1000 Green Tech innovations\r\nfrom developing countries that generate the highest value spillovers:\r\n\r\nA random sample of the spillovers they generate directly:\r\n\r\n…and indirectly:\r\n\r\nExplore the tool here: HiGGlo.\r\n\r\n\r\n\r\n",
+    "preview": "posts/2026-05-05-higglo/higglo-overview.jpg",
+    "last_modified": "2026-05-05T08:05:22+01:00",
+    "input_file": "higglo.knit.md"
+  },
+  {
     "path": "posts/2026-03-27-low-carbon-electricity-prices/",
     "title": "Did Low-Carbon Electricity Shield Countries from the Energy Price Shock?",
     "description": "Countries with higher shares of low-carbon electricity experienced smaller\nprice increases after the 2022 energy crisis. We quantify the relationship\nusing publicly available data.",

@@ -42,6 +42,28 @@
     "input_file": "low-carbon-electricity-prices.knit.md"
   },
   {
+    "path": "posts/2026-03-24-spillovers-from-science/",
+    "title": "Spillovers from Science",
+    "description": "A new working paper introduces Science Rank -- an indicator of the commercial\nvalue of patents that build on academic research.",
+    "author": [
+      {
+        "name": "Ralf Martin",
+        "url": "https://mondpanther.github.io/wwwmondpanther/"
+      }
+    ],
+    "date": "2026-03-24",
+    "categories": [
+      "Science",
+      "Innovation",
+      "Knowledge Spillovers",
+      "Universities"
+    ],
+    "contents": "\r\nA new working paper – Spillovers from Science\r\n– with Anna Valero, Arjun Shah and Dennis Verhoeven introduces Science Rank:\r\na new indicator that uses the combined patent and paper citation network to\r\nassign a share of the private value of patented inventions to the scientific\r\npapers they build upon.\r\nWe can think of this as an estimate of the value of knowledge spillovers from\r\nacademic research to commercial patents.\r\nWe document a number of stylised facts:\r\n1. The US generates the largest amount of spillovers\r\nThe US produces the largest amount of spillovers overall and the second highest\r\non average – after Switzerland.\r\n\r\n2. Retention rates differ sharply across countries\r\nTotal spillovers from science vary across countries, and so does the share that\r\nis retained within the borders of a country: the retention rate is nearly 70%\r\nin the US whereas it is below 20% in most other countries. An outlier is South\r\nKorea with a retention rate of 30%.\r\n\r\n3. Developing-country research is greener\r\nWhile developing countries typically generate lower amounts of spillovers\r\noverall, a larger share of their spillovers support clean tech innovation.\r\n\r\n4. Local universities matter for local innovators\r\nMany universities in developing countries, while generating lower spillovers on\r\na global level, tend to generate relatively high spillovers for innovations by\r\ndeveloping-country innovators.\r\n\r\nImplications\r\nWhile we need further evidence to draw strong causal conclusions, these results\r\nare consistent with the idea that further development of research universities\r\nin developing countries could help generate more innovation – and thus\r\neconomic growth and employment – for firms in developing countries.\r\nRead the full paper:\r\nSpillovers from Science (CEP Discussion Paper).\r\n\r\n\r\n\r\n",
+    "preview": "posts/2026-03-24-spillovers-from-science/sfs-totals.jpg",
+    "last_modified": "2026-05-05T08:46:54+01:00",
+    "input_file": "spillovers-from-science.knit.md"
+  },
+  {
     "path": "posts/powbaltata/",
     "title": "Shifting power demand can reduce emissions and costs",
     "description": "Research in collaboration with TATA Power shows that shifting power consumption over time can\nreduce emissions and costs from power production.",

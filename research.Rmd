@@ -37,15 +37,29 @@ knitr::opts_chunk$set(echo = FALSE)
 
 ## Academic Articles
 
-### [Does Pricing Carbon Mitigate Climate Change? Firm-Level Evidence from the European Union Emissions Trading Scheme](https://cep.lse.ac.uk/pubs/download/dp1728.pdf) 
-Jonathan Colmer, Ralf Martin, Mirabelle Muuls, Ulrich Wagner
-forthcoming in REVIEW OF ECONOMIC STUDIES.
+### [New frontiers in research on industrial decarbonization](https://www.science.org/doi/10.1126/science.adw0145)
+Kenneth T. Gillingham, Lint Barrage, Sarah Armitage, Dallas Burtraw, Jonathan Colmer, Laure de Preux, Ralf Martin, et al. (2025). *Science*, 390(6771), 338--340.
 
-### [Do Tax Incentives Increase Firm Innovation? An RD Design for R&D, Patents, and Spillovers](https://www.aeaweb.org/articles?id=10.1257/pol.20200739&from=f)
-Antoine Dechezleprêtre, Elias Einiö, Ralf Martin, Kieu-Trang Nguyen, John Van Reenen, AMERICAN ECONOMIC JOURNAL: ECONOMIC POLICY (FORTHCOMING)
+### [Firm Markups and the Economic Value of Innovation](https://doi.org/10.1016/j.ijindorg.2025.103186)
+Ralf Martin, Juan Sanchez Mosquera, Catherine Thomas, Dennis Verhoeven (2025). *International Journal of Industrial Organization*, 103186.
+
+### [Does Pricing Carbon Mitigate Climate Change? Firm-Level Evidence from the European Union Emissions Trading Scheme](https://academic.oup.com/restud/article-abstract/92/3/1625/7700216)
+Jonathan Colmer, Ralf Martin, Mirabelle Muûls, Ulrich J. Wagner (2025). *Review of Economic Studies*, 92(3), 1625--1660.
+
+### [Managerial and Financial Barriers to the Green Transition](https://doi.org/10.1287/mnsc.2022.00772)
+Ralph De Haas, Ralf Martin, Mirabelle Muûls, Helena Schweiger (2025). *Management Science*, 71(4), 2890--2921.
+
+### [Management Practices and Climate Policy in China](https://www.journals.uchicago.edu/doi/10.1086/729753)
+Suk Koo Yong, Ulrich J. Wagner, Peiyao Shen, Laure de Preux, Mirabelle Muûls, Ralf Martin, Jing Cao (2024). *Journal of the Association of Environmental and Resource Economists*, 11(5).
+
+### [Do Tax Incentives Increase Firm Innovation? An RD Design for R&D, Patents, and Spillovers](https://www.aeaweb.org/articles?id=10.1257/pol.20200739)
+Antoine Dechezleprêtre, Elias Einiö, Ralf Martin, Kieu-Trang Nguyen, John Van Reenen (2023). *American Economic Journal: Economic Policy*, 15(4), 486--521.
+
+### [Unraveling Firms: Demand, Productivity and Markups Heterogeneity](https://academic.oup.com/ej/article-abstract/133/654/2251/7068525)
+Emanuele Forlani, Ralf Martin, Giordano Mion, Mirabelle Muûls (2023). *The Economic Journal*, 133(654), 2251--2302.
 
 ### [Environmental Preferences and Technological Choices: Is Market Competition Clean or Dirty?](https://www.aeaweb.org/articles?id=10.1257/aeri.20210014)
-Philippe Aghion,,Roland Bénabou,,Ralf Martin,Alexandra Roulet,AMERICAN ECONOMIC REVIEW: INSIGHTS,VOL. 5, NO. 1, MARCH 2023
+Philippe Aghion, Roland Bénabou, Ralf Martin, Alexandra Roulet (2023). *American Economic Review: Insights*, 5(1), March 2023.
 
 ### [Searching for carbon leaks in multinational companies.](https://www.sciencedirect.com/science/article/pii/S0095069621001406)
 Antoine Dechezleprêtre, Caterina Gennaioli, Ralf Martin, and Mirabelle Muûls (2022).  Journal of Environmental Economics and Management
@@ -96,25 +110,46 @@ Chiara Criscuolo, Jonathan Haskel and Ralf Martin (2004), Oxford Review of Econo
 
 ## Working papers
 
-### [Does pricing carbon mitigate climate change? Firm-level evidence from the European Union emissions trading scheme](http://cep.lse.ac.uk/pubs/download/dp1728.pdf)
-Jonathan Colmer, Ralf Martin, Mirabelle Muuls, Ulrich Wagner (2021). CEP Discussion Paper 1728  
+### [Spillovers from Science](https://cep.lse.ac.uk/_new/publications/abstract.asp?index=12101)
+Ralf Martin, Arjun Shah, Anna Valero, Dennis Verhoeven (2026). CEP Discussion Paper.
 
+### Building Virtual Power Plants: Incentives and Automation for Demand-Side Flexibility
+Shefali Khanna, Ralf Martin, Mirabelle Muûls (2025). SSRN Working Paper 5089649. <https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5089649>
+
+### The Effects of Carbon Pricing Along the Production Network
+Ralf Martin, Mirabelle Muûls, Thomas Stoerk (2024). NBB Working Paper.
+
+### Knowledge Spillovers from Clean Innovation: A Tradeoff between Growth and Climate?
+Dennis Verhoeven, Ralf Martin (2024).
+
+### Shifting Household Power Demand Across Time: Incentives and Automation
+Shefali Khanna, Ralf Martin, Mirabelle Muûls (2024). Working Paper, Imperial College London.
 
 ### Making Smart Meters Smarter
-Greer Gosnell, Ralf Martin, Mirabelle Muûls, Quentin Coutellier, Goran Strbac, Simon Tindermans (2019) CEP Discussion Paper 1602, http://cep.lse.ac.uk/pubs/download/dp1602.pdf
+Greer Gosnell, Ralf Martin, Mirabelle Muûls, Quentin Coutellier, Goran Strbac, Simon Tindermans (2019) CEP Discussion Paper 1602, <http://cep.lse.ac.uk/pubs/download/dp1602.pdf>
 
 ### Knowledge Spillovers from Clean and Dirty Technologies
-Antoine Dechezleprêtre, Ralf Martin, Myra Mohnen (2014).  CEP Discussion Paper 1300. http://cep.lse.ac.uk/pubs/download/dp1300.pdf
+Antoine Dechezleprêtre, Ralf Martin, Myra Mohnen (2014).  CEP Discussion Paper 1300. <http://cep.lse.ac.uk/pubs/download/dp1300.pdf>
 
 
 ### Productivity Spreads, Market Power Spreads and Trade
-Ralf Martin (2010) CEP Discussion Paper 965, http://cep.lse.ac.uk/pubs/download/dp0965.pdf.
+Ralf Martin (2010) CEP Discussion Paper 965, <http://cep.lse.ac.uk/pubs/download/dp0965.pdf>.
 
 
 
 ## Policy Papers
 
+### Pathways to a Productive and Inclusive Net Zero
+Pierre Andres, Chiara Cavaglia, Sam Fankhauser, Ilona Ilin, François Lafond, Federica Marotta, Ralf Martin, et al. (2026). CEP Report.
 
+### Innovation in Green Technologies: An Opportunity for Businesses in Low and Middle Income Countries?
+Ralf Martin, Chiara Criscuolo, Gaia de Rochambeau, S. A. Edet, E. Fuli, et al. (2025). International Finance Corporation (IFC).
+
+### Foreign Direct Investment and Development
+Stefania Garetto, Nina Pavcnik, Natalia Ramondo, Vanessa Alviarez, Jingting Fan, Nitya Pandalai-Nayar, et al. -- including Ralf Martin (2025). *VoxDevLit*, 13(1).
+
+### [The Green Industrial Policy Matrix: Informing an Industrial Strategy for Clean Energy Technologies](https://cep.lse.ac.uk/_new/publications/abstract.asp?index=11078)
+Pierre Andres, Ralf Martin, Mark Read, Esin Serin, Arjun Shah, Anna Valero (2024). CEP Report.
 
 ### Sustainable Growth in the UK: Seizing opportunities from technological change and the transition to a low-carbon economy
 James Rydge, Ralf Martin and Anna Valero (2019) CEP Industrial Strategy Paper CEPIS07.

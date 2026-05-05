@@ -1,0 +1,40 @@
+---
+title: "HiGGlo: Visualising Innovation and Knowledge Spillovers"
+description: |
+  A new tool to map innovations and the direct and indirect knowledge
+  spillovers between them.
+author:
+  - name: Ralf Martin
+    url: https://mondpanther.github.io/wwwmondpanther/
+date: 2026-05-05
+output:
+  distill::distill_article:
+    self_contained: false
+categories:
+  - Innovation
+  - Knowledge Spillovers
+  - Green Tech
+preview: 'higglo-overview.jpg'
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+I've launched **[HiGGlo](https://tinyurl.com/higglo)** -- a new tool to visualise
+innovations and the direct and indirect knowledge spillovers between them.
+
+As a first illustration, the map below shows the **1000 Green Tech innovations
+from developing countries that generate the highest value spillovers**:
+
+![](higglo-overview.jpg)
+
+A random sample of the spillovers they generate **directly**:
+
+![](higglo-direct.jpg)
+
+...and **indirectly**:
+
+![](higglo-indirect.jpg)
+
+Explore the tool here: **[HiGGlo](https://tinyurl.com/higglo)**.

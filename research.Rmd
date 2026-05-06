@@ -41,7 +41,7 @@ knitr::opts_chunk$set(echo = FALSE)
 Kenneth T. Gillingham, Lint Barrage, Sarah Armitage, Dallas Burtraw, Jonathan Colmer, Laure de Preux, Ralf Martin, et al. (2025). *Science*, 390(6771), 338--340.
 
 ### [Firm Markups and the Economic Value of Innovation](https://doi.org/10.1016/j.ijindorg.2025.103186)
-Ralf Martin, Juan Sanchez Mosquera, Catherine Thomas, Dennis Verhoeven (2025). *International Journal of Industrial Organization*, 103186.
+Ralf Martin, Jenniffer Sanchez Mosquera, Catherine Thomas, Dennis Verhoeven (2025). *International Journal of Industrial Organization*, 103186.
 
 ### [Does Pricing Carbon Mitigate Climate Change? Firm-Level Evidence from the European Union Emissions Trading Scheme](https://academic.oup.com/restud/article-abstract/92/3/1625/7700216)
 Jonathan Colmer, Ralf Martin, Mirabelle Muûls, Ulrich J. Wagner (2025). *Review of Economic Studies*, 92(3), 1625--1660.

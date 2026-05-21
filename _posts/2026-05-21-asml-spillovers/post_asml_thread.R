@@ -138,6 +138,49 @@ delete_post <- function(sess, at_uri) {
   invisible(at_uri)
 }
 
+# Replace the most recent post whose text contains `match_substring`:
+# delete the existing one, then re-post `new_text` (optionally with
+# images) into the SAME thread slot by reusing the deleted post's
+# reply.root / reply.parent. Saves you from nuking and rebuilding the
+# whole thread when one post needs a tiny edit.
+replace_recent_post <- function(sess, match_substring, new_text,
+                                 image_paths = character(0),
+                                 image_alts  = character(0),
+                                 lookback = 50L) {
+  feed <- request(paste0(PDS, "/xrpc/app.bsky.feed.getAuthorFeed")) |>
+    req_url_query(actor = sess$did, limit = lookback) |>
+    req_headers(Authorization = paste("Bearer", sess$accessJwt)) |>
+    req_perform() |>
+    resp_body_json()
+
+  hit <- NULL
+  for (entry in feed$feed) {
+    txt <- entry$post$record$text %||% ""
+    if (grepl(match_substring, txt, fixed = TRUE)) { hit <- entry; break }
+  }
+  if (is.null(hit))
+    stop("No recent post matching '", match_substring,
+         "' in last ", lookback, " feed entries.")
+
+  cat("Match found:\n  URI :", hit$post$uri, "\n")
+  cat("  Text:", substr(hit$post$record$text, 1, 80),
+      if (nchar(hit$post$record$text) > 80) "..." else "", "\n")
+
+  reply <- hit$post$record$reply   # may be NULL for the thread root
+
+  cat("Deleting...\n")
+  delete_post(sess, hit$post$uri)
+
+  cat("Re-posting corrected version...\n")
+  res <- create_post(sess, new_text,
+                      image_paths = image_paths,
+                      image_alts  = image_alts,
+                      root   = if (!is.null(reply)) reply$root   else NULL,
+                      parent = if (!is.null(reply)) reply$parent else NULL)
+  cat("New URI:", res$uri, "\n")
+  invisible(res)
+}
+
 create_post <- function(sess, text, image_paths = character(0),
                          image_alts = character(0),
                          root = NULL, parent = NULL) {

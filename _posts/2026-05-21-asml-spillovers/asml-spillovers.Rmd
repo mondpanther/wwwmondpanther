@@ -24,7 +24,7 @@ knitr::opts_chunk$set(echo = FALSE)
 
 There is a [fascinating story about ASML](https://www.worksinprogress.news/p/how-asml-took-over-the-world?utm_source=%2Finbox&utm_medium=reader2) in *Works in Progress* that traces how a tiny Eindhoven spin-out came to dominate one of the most consequential technologies of our time.
 
-A complementary way to look at ASML is through the lens of **knowledge spillovers** — the value that the firm's innovations create for *other* innovators down the line. Using the [Innovation Strategy Explorer](https://tinyurl.com/iseapp), we can put a number on this.
+A complementary way to look at ASML is through the lens of **knowledge spillovers** — the value that the firm's innovations create for *other* innovators down the line. Using the [Innovation Strategy Explorer](http://www.prinzproject.io/iseapp), we can put a number on this.
 
 ### ASML generates large global spillovers — but Qualcomm's are even larger
 
@@ -82,4 +82,4 @@ ASML creates **more localised spillovers within the Netherlands** — even if ma
 
 ASML is a remarkable global champion, but its quieter contribution may be how much of its knowledge gets recycled *within* the Netherlands. Whether that comes from industrial strategy, local engineering culture, or just the gravitational pull of a single hub town remains an open question — but the data are now public enough to start asking it.
 
-Explore the underlying data yourself with **[the Innovation Strategy Explorer](https://tinyurl.com/iseapp)** and the citation-network viewer **[HiGGlo](https://tinyurl.com/higglo)**.
+Explore the underlying data yourself with **[the Innovation Strategy Explorer](http://www.prinzproject.io/iseapp)** and the citation-network viewer **[HiGGlo](https://tinyurl.com/higglo)**.

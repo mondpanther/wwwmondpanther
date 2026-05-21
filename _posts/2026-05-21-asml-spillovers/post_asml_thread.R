@@ -254,7 +254,7 @@ thread <- list(
       "Full write-up with interactive charts and HiGGlo deep-links:\n",
       "https://mondpanther.github.io/wwwmondpanther/posts/2026-05-21-asml-spillovers/\n\n",
       "Tools:\n",
-      "• ISE → https://tinyurl.com/iseapp\n",
+      "• ISE → http://www.prinzproject.io/iseapp\n",
       "• HiGGlo → https://tinyurl.com/higglo"),
     images = character(0),
     alts   = character(0)

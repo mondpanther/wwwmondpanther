@@ -44,7 +44,7 @@ The picture **reverses sharply** when we restrict the spillover benefits to *oth
 
 ### Why?
 
-Successful industrial strategy? Greater commitment by a local firm to its local innovation ecosystem? A more effective revolving door of local engineers and scientists? It's unclear at this stage — but you can see the pattern from space using **[HiGGlo](https://tinyurl.com/higglo)**, the citation-network viewer.
+Successful industrial strategy? Greater commitment by a local firm to its local innovation ecosystem? A more effective revolving door of local engineers and scientists? It's unclear at this stage — but you can see the pattern from "space" using **[HiGGlo](https://tinyurl.com/higglo)**, the friendly citation-network viewer.
 
 The **direct and indirect citation network of Qualcomm** is dense and globally distributed:
 

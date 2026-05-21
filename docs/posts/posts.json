@@ -18,8 +18,8 @@
     ],
     "contents": "\nThere is a fascinating story about ASML in Works in Progress that traces how a tiny Eindhoven spin-out came to dominate one of the most consequential technologies of our time.\nA complementary way to look at ASML is through the lens of knowledge spillovers — the value that the firm’s innovations create for other innovators down the line. Using the Innovation Strategy Explorer, we can put a number on this.\nASML generates large global spillovers — but Qualcomm’s are even larger\nASML innovations generate roughly $16 million in average global spillovers per patent family. That is well above the average Dutch patent. It is also, perhaps surprisingly, well below the average Qualcomm innovation that involves Dutch innovators:\n\nInteractive version.\nThe Dutch picture reverses the ranking\nThe picture reverses sharply when we restrict the spillover benefits to other Dutch innovators only. Now ASML — together with neighbouring Eindhoven-region firms ASM International and Philips — dominates:\n\nInteractive version.\nWhy?\nSuccessful industrial strategy? Greater commitment by a local firm to its local innovation ecosystem? A more effective revolving door of local engineers and scientists? It’s unclear at this stage — but you can see the pattern from “space” using HiGGlo, the friendly citation-network viewer.\nThe direct and indirect citation network of Qualcomm is dense and globally distributed:\n\nQualcomm — global citation network\n\n\nASML — global citation network\n\n\nInteractive (Qualcomm)\n\n\nInteractive (ASML)\n\nASML creates more localised spillovers within the Netherlands — even if many of these are indirect (the lighter, multi-hop edges in HiGGlo):\n\nASML — local spillovers\n\n\nQualcomm — local spillovers\n\n\n\n\n\nTake-away\nASML is a remarkable global champion, but its quieter contribution may be how much of its knowledge gets recycled within the Netherlands. Whether that comes from industrial strategy, local engineering culture, or just the gravitational pull of a single hub town remains an open question — but the data are now public enough to start asking it.\nExplore the underlying data yourself with the Innovation Strategy Explorer and the citation-network viewer HiGGlo.\n\n\n\n",
     "preview": "posts/2026-05-21-asml-spillovers/asml-global-spillovers.png",
-    "last_modified": "2026-05-21T13:01:18+01:00",
-    "input_file": "asml-spillovers.knit.md"
+    "last_modified": "2026-05-21T13:26:52+01:00",
+    "input_file": {}
   },
   {
     "path": "posts/2026-05-05-higglo/",
@@ -37,9 +37,9 @@
       "Knowledge Spillovers",
       "Green Tech"
     ],
-    "contents": "\r\nI’ve launched HiGGlo – a new tool to visualise\r\ninnovations and the direct and indirect knowledge spillovers between them.\r\nAs a first illustration, the map below shows the 1000 Green Tech innovations\r\nfrom developing countries that generate the highest value spillovers:\r\n\r\nA random sample of the spillovers they generate directly:\r\n\r\n…and indirectly:\r\n\r\nExplore the tool here: HiGGlo.\r\n\r\n\r\n\r\n",
+    "contents": "\nI’ve launched HiGGlo – a new tool to visualise\ninnovations and the direct and indirect knowledge spillovers between them.\nAs a first illustration, the map below shows the 1000 Green Tech innovations\nfrom developing countries that generate the highest value spillovers:\n\nA random sample of the spillovers they generate directly:\n\n…and indirectly:\n\nExplore the tool here: HiGGlo.\n\n\n\n",
     "preview": "posts/2026-05-05-higglo/higglo-overview.jpg",
-    "last_modified": "2026-05-05T08:05:23+01:00",
+    "last_modified": "2026-05-21T12:50:31+01:00",
     "input_file": {}
   },
   {
@@ -58,9 +58,9 @@
       "Energy",
       "Electricity Prices"
     ],
-    "contents": "\r\nWhen Russia’s invasion of Ukraine sent European natural gas prices soaring in\r\n2022, wholesale electricity prices followed. But the shock did not hit every\r\ncountry equally. Countries that had invested heavily in low-carbon generation —\r\nnuclear, hydro, wind, solar, geothermal, and bioenergy — saw smaller and\r\nshorter-lived price increases than those still reliant on fossil fuels.\r\nThis analysis uses publicly available data to quantify the relationship between\r\na country’s pre-crisis low-carbon electricity share and the size of its\r\nprice increase.\r\nThe price shock across Europe\r\nThe chart below shows monthly wholesale electricity prices for every European\r\ncountry in the Ember dataset. Use the dropdown to select specific countries, or\r\nview them all at once.\r\n\r\n\r\nSelect countries to highlight\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\nSource: Ember European Wholesale Electricity Price Data (monthly).\r\nWho got hit hardest?\r\nTo measure the lasting impact — rather than just the 2022 spike — we compare\r\neach country’s 2019 average price with its average over 2023–2025.\r\n\r\n\r\n\r\n\r\nDifference between the average wholesale price in 2023–2025 and the\r\n2019 baseline. Red = increase; blue = decrease.\r\nThe low-carbon advantage\r\nIs there a systematic relationship between a country’s pre-crisis electricity\r\nmix and the size of its price shock? We measure each country’s low-carbon\r\nshare in 2019 — the combined share of nuclear, hydro, wind, solar,\r\ngeothermal, and bioenergy — and plot it against the price change.\r\n\r\n\r\n\r\n© Ralf Martin\r\n\r\nFor every additional percentage point of low-carbon electricity in 2019, the\r\npost-crisis price increase was -0.033 cents/kWh\r\nsmaller on average.\r\n\r\nRegression results\r\n\r\nTable 1: OLS: price change ~ low-carbon share. N = 29, R² = 0.207, Adj. R² = 0.177\r\nTerm\r\nEstimate\r\nStd. Error\r\nt\r\np-value\r\nCI low (2.5%)\r\nCI high (97.5%)\r\n(Intercept)\r\n6.4001\r\n0.7976\r\n8.0243\r\n0.0000\r\n4.7636\r\n8.0367\r\nrenewx\r\n-0.0329\r\n0.0124\r\n-2.6533\r\n0.0132\r\n-0.0583\r\n-0.0075\r\n\r\nWhat if countries hadn’t expanded low-carbon power?\r\nBetween 2010 and 2019 many European countries significantly increased their\r\nlow-carbon electricity share. Using the regression slope, we ask: how much\r\nhigher would the post-crisis price increase have been if each country had stayed\r\nat its 2010 low-carbon share?\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\nThe x-axis shows how much the low-carbon share grew between 2010 and\r\n2019; the y-axis shows the implied reduction in the post-crisis price\r\nincrease.\r\n\r\n\r\n\r\n\r\nBlue = actual price change. Red = counterfactual if the country had\r\nstayed at its 2010 low-carbon share.\r\nTotal annual savings from low-carbon expansion\r\nHow much money did countries save by expanding their low-carbon electricity\r\nshare between 2010 and 2019? We take the implied per-kWh price saving from\r\nthe regression (slope × gain in low-carbon share) and multiply it by actual\r\nelectricity demand in each of 2023, 2024, and 2025.\r\n\r\n\r\n\r\n\r\nEach bar shows the estimated annual saving from expanding low-carbon\r\ngeneration between 2010 and 2019, multiplied by actual demand in 2023–2025.\r\nData & methodology\r\nItem\r\nDetail\r\nPrices\r\nEmber European Wholesale Electricity Price Data (monthly)\r\nGeneration mix\r\nOur World in Data / Ember + Energy Institute\r\nPrice unit\r\nEuro-cents per kWh\r\nBase year\r\n2019 (pre-pandemic, pre-crisis)\r\nComparison\r\nAverage of 2023–2025\r\nLow-carbon share\r\nNuclear + hydro + wind + solar + geothermal + bioenergy\r\nMethod\r\nOLS regression of price change on 2019 low-carbon share\r\n\r\n\r\n\r\n",
+    "contents": "\nWhen Russia’s invasion of Ukraine sent European natural gas prices soaring in\n2022, wholesale electricity prices followed. But the shock did not hit every\ncountry equally. Countries that had invested heavily in low-carbon generation —\nnuclear, hydro, wind, solar, geothermal, and bioenergy — saw smaller and\nshorter-lived price increases than those still reliant on fossil fuels.\nThis analysis uses publicly available data to quantify the relationship between\na country’s pre-crisis low-carbon electricity share and the size of its\nprice increase.\nThe price shock across Europe\nThe chart below shows monthly wholesale electricity prices for every European\ncountry in the Ember dataset. Use the dropdown to select specific countries, or\nview them all at once.\n\n\nSelect countries to highlight\n\n\n\n\n\n\n\n\nSource: Ember European Wholesale Electricity Price Data (monthly).\nWho got hit hardest?\nTo measure the lasting impact — rather than just the 2022 spike — we compare\neach country’s 2019 average price with its average over 2023–2025.\n\n\n\n\nDifference between the average wholesale price in 2023–2025 and the\n2019 baseline. Red = increase; blue = decrease.\nThe low-carbon advantage\nIs there a systematic relationship between a country’s pre-crisis electricity\nmix and the size of its price shock? We measure each country’s low-carbon\nshare in 2019 — the combined share of nuclear, hydro, wind, solar,\ngeothermal, and bioenergy — and plot it against the price change.\n\n\n\n© Ralf Martin\n\nFor every additional percentage point of low-carbon electricity in 2019, the\npost-crisis price increase was -0.033 cents/kWh\nsmaller on average.\n\nRegression results\n\nTable 1: OLS: price change ~ low-carbon share. N = 29, R² = 0.207, Adj. R² = 0.177\nTerm\nEstimate\nStd. Error\nt\np-value\nCI low (2.5%)\nCI high (97.5%)\n(Intercept)\n6.4001\n0.7976\n8.0243\n0.0000\n4.7636\n8.0367\nrenewx\n-0.0329\n0.0124\n-2.6533\n0.0132\n-0.0583\n-0.0075\n\nWhat if countries hadn’t expanded low-carbon power?\nBetween 2010 and 2019 many European countries significantly increased their\nlow-carbon electricity share. Using the regression slope, we ask: how much\nhigher would the post-crisis price increase have been if each country had stayed\nat its 2010 low-carbon share?\n\n\n\n\n\n\n\nThe x-axis shows how much the low-carbon share grew between 2010 and\n2019; the y-axis shows the implied reduction in the post-crisis price\nincrease.\n\n\n\n\nBlue = actual price change. Red = counterfactual if the country had\nstayed at its 2010 low-carbon share.\nTotal annual savings from low-carbon expansion\nHow much money did countries save by expanding their low-carbon electricity\nshare between 2010 and 2019? We take the implied per-kWh price saving from\nthe regression (slope × gain in low-carbon share) and multiply it by actual\nelectricity demand in each of 2023, 2024, and 2025.\n\n\n\n\nEach bar shows the estimated annual saving from expanding low-carbon\ngeneration between 2010 and 2019, multiplied by actual demand in 2023–2025.\nData & methodology\nItem\nDetail\nPrices\nEmber European Wholesale Electricity Price Data (monthly)\nGeneration mix\nOur World in Data / Ember + Energy Institute\nPrice unit\nEuro-cents per kWh\nBase year\n2019 (pre-pandemic, pre-crisis)\nComparison\nAverage of 2023–2025\nLow-carbon share\nNuclear + hydro + wind + solar + geothermal + bioenergy\nMethod\nOLS regression of price change on 2019 low-carbon share\n\n\n\n",
     "preview": "posts/2026-03-27-low-carbon-electricity-prices/low-carbon-electricity-prices_files/figure-html5/scatter-plot-1.png",
-    "last_modified": "2026-03-28T15:54:07+00:00",
+    "last_modified": "2026-05-21T12:50:31+01:00",
     "input_file": {}
   },
   {
@@ -80,9 +80,9 @@
       "Knowledge Spillovers",
       "Universities"
     ],
-    "contents": "\r\nA new working paper – Spillovers from Science\r\n– with Anna Valero, Arjun Shah and Dennis Verhoeven introduces Science Rank:\r\na new indicator that uses the combined patent and paper citation network to\r\nassign a share of the private value of patented inventions to the scientific\r\npapers they build upon.\r\nWe can think of this as an estimate of the value of knowledge spillovers from\r\nacademic research to commercial patents.\r\nWe document a number of stylised facts:\r\n1. The US generates the largest amount of spillovers\r\nThe US produces the largest amount of spillovers overall and the second highest\r\non average – after Switzerland.\r\n\r\n2. Retention rates differ sharply across countries\r\nTotal spillovers from science vary across countries, and so does the share that\r\nis retained within the borders of a country: the retention rate is nearly 70%\r\nin the US whereas it is below 20% in most other countries. An outlier is South\r\nKorea with a retention rate of 30%.\r\n\r\n3. Developing-country research is greener\r\nWhile developing countries typically generate lower amounts of spillovers\r\noverall, a larger share of their spillovers support clean tech innovation.\r\n\r\n4. Local universities matter for local innovators\r\nMany universities in developing countries, while generating lower spillovers on\r\na global level, tend to generate relatively high spillovers for innovations by\r\ndeveloping-country innovators.\r\n\r\nImplications\r\nWhile we need further evidence to draw strong causal conclusions, these results\r\nare consistent with the idea that further development of research universities\r\nin developing countries could help generate more innovation – and thus\r\neconomic growth and employment – for firms in developing countries.\r\nRead the full paper:\r\nSpillovers from Science (CEP Discussion Paper).\r\n\r\n\r\n\r\n",
+    "contents": "\nA new working paper – Spillovers from Science\n– with Anna Valero, Arjun Shah and Dennis Verhoeven introduces Science Rank:\na new indicator that uses the combined patent and paper citation network to\nassign a share of the private value of patented inventions to the scientific\npapers they build upon.\nWe can think of this as an estimate of the value of knowledge spillovers from\nacademic research to commercial patents.\nWe document a number of stylised facts:\n1. The US generates the largest amount of spillovers\nThe US produces the largest amount of spillovers overall and the second highest\non average – after Switzerland.\n\n2. Retention rates differ sharply across countries\nTotal spillovers from science vary across countries, and so does the share that\nis retained within the borders of a country: the retention rate is nearly 70%\nin the US whereas it is below 20% in most other countries. An outlier is South\nKorea with a retention rate of 30%.\n\n3. Developing-country research is greener\nWhile developing countries typically generate lower amounts of spillovers\noverall, a larger share of their spillovers support clean tech innovation.\n\n4. Local universities matter for local innovators\nMany universities in developing countries, while generating lower spillovers on\na global level, tend to generate relatively high spillovers for innovations by\ndeveloping-country innovators.\n\nImplications\nWhile we need further evidence to draw strong causal conclusions, these results\nare consistent with the idea that further development of research universities\nin developing countries could help generate more innovation – and thus\neconomic growth and employment – for firms in developing countries.\nRead the full paper:\nSpillovers from Science (CEP Discussion Paper).\n\n\n\n",
     "preview": "posts/2026-03-24-spillovers-from-science/sfs-totals.jpg",
-    "last_modified": "2026-05-05T08:46:55+01:00",
+    "last_modified": "2026-05-21T12:50:31+01:00",
     "input_file": {}
   },
   {
@@ -97,9 +97,9 @@
     ],
     "date": "2024-11-18",
     "categories": [],
-    "contents": "\r\nWith increasing amounts of electricity generation from renewable sources such as solar and wind, there is increasing variation in both the emissions and costs of power production over narrow periods of time; e.g. over the course of a day.\r\nThis offers an opportunity to reduce both the cost and carbon intensity of power production if there is sufficient flexibility on the demand side of electricity market.\r\nIn a project joint with TATA power we have been offering Wifi enabled power switches to over 1000 Tata power household customers in Mumbai and Delhi along with financial incentives to participate in the scheme. Users could choose which devices to connect to the switches and most decided to connect an air conditioning unit.\r\nWe then explored how households responded to (random) remotely triggered switch off events of the connected devices. Households could always override these events but were incentivized not to.\r\nOur research indicates that on average we can succesfully reduce overall household energy demand by 8% for short periods of time, 30 minute intervals say. This increases to over 15% particularly during more energy intensive afternoon and evening hours.\r\nFurther, we examine what would happen if we used this tool to strategically switch off people’s devices at times when (marginal) carbon emissions are highest - which often coincides with periods where generation costs are high as well. Thus by doing so we can reduce both emissions as well as overall costs of generation. Comparing this to the costs of installing these devices - which are around $25 - we can compute a carbon mitigation cost figure: i.e. how much do we have to spend to avoid a ton of CO2 emissions. It turns out that because cost savings from shifting consumption are a lot higher than the cost of installation for most households, that implies a negative cost of carbon mitigation: more than $75 for some housholds; i.e. for every ton of CO2 saved, we also save up $75 via lower generation costs.\r\nWe also examine the emission reduction scale if a scheme like this would be rolled out among all smart meter customers of TATA in Mumbai and Delhi: over a 5 year period this could save us much as 85 thousand tons of CO2; i.e. approximately the equivalent of 85K transatlantic flights per passenger.\r\nFurther details in our joint briefing with Tata Power\r\n\r\n\r\n\r\n\r\n",
+    "contents": "\nWith increasing amounts of electricity generation from renewable sources such as solar and wind, there is increasing variation in both the emissions and costs of power production over narrow periods of time; e.g. over the course of a day.\nThis offers an opportunity to reduce both the cost and carbon intensity of power production if there is sufficient flexibility on the demand side of electricity market.\nIn a project joint with TATA power we have been offering Wifi enabled power switches to over 1000 Tata power household customers in Mumbai and Delhi along with financial incentives to participate in the scheme. Users could choose which devices to connect to the switches and most decided to connect an air conditioning unit.\nWe then explored how households responded to (random) remotely triggered switch off events of the connected devices. Households could always override these events but were incentivized not to.\nOur research indicates that on average we can succesfully reduce overall household energy demand by 8% for short periods of time, 30 minute intervals say. This increases to over 15% particularly during more energy intensive afternoon and evening hours.\nFurther, we examine what would happen if we used this tool to strategically switch off people’s devices at times when (marginal) carbon emissions are highest - which often coincides with periods where generation costs are high as well. Thus by doing so we can reduce both emissions as well as overall costs of generation. Comparing this to the costs of installing these devices - which are around $25 - we can compute a carbon mitigation cost figure: i.e. how much do we have to spend to avoid a ton of CO2 emissions. It turns out that because cost savings from shifting consumption are a lot higher than the cost of installation for most households, that implies a negative cost of carbon mitigation: more than $75 for some housholds; i.e. for every ton of CO2 saved, we also save up $75 via lower generation costs.\nWe also examine the emission reduction scale if a scheme like this would be rolled out among all smart meter customers of TATA in Mumbai and Delhi: over a 5 year period this could save us much as 85 thousand tons of CO2; i.e. approximately the equivalent of 85K transatlantic flights per passenger.\nFurther details in our joint briefing with Tata Power\n\n\n\n\n",
     "preview": "posts/powbaltata/miticost.png",
-    "last_modified": "2024-11-18T15:50:24+00:00",
+    "last_modified": "2026-05-21T12:50:31+01:00",
     "input_file": {}
   },
   {
@@ -114,9 +114,9 @@
     ],
     "date": "2024-11-12",
     "categories": [],
-    "contents": "\r\nETH’s Luca Baltensberger was kind enough to sit down with me to discuss my study on Environmental Preferences and Technological Choices: Is Market Competition Clean or Dirty? Youtube video here.\r\n\r\n\r\n\r\n\r\n",
+    "contents": "\nETH’s Luca Baltensberger was kind enough to sit down with me to discuss my study on Environmental Preferences and Technological Choices: Is Market Competition Clean or Dirty? Youtube video here.\n\n\n\n\n",
     "preview": "posts/ethvlog/sshot.png",
-    "last_modified": "2024-11-12T07:48:51+00:00",
+    "last_modified": "2026-05-21T12:50:31+01:00",
     "input_file": {}
   },
   {
@@ -135,9 +135,9 @@
       "Innovation",
       "Competition"
     ],
-    "contents": "\r\nFirms do and should see climate change as a competitive opportunity, rather than a regulatory burden. Read my article in the Financial Times summarising research with Philippe Aghion, Roland Benabou and Alexandra Roulet.\r\nAm talking about the same paper in this VLOG produced by the ETH.\r\n\r\n\r\n\r\n\r\n",
+    "contents": "\nFirms do and should see climate change as a competitive opportunity, rather than a regulatory burden. Read my article in the Financial Times summarising research with Philippe Aghion, Roland Benabou and Alexandra Roulet.\nAm talking about the same paper in this VLOG produced by the ETH.\n\n\n\n\n",
     "preview": "posts/2024-03-04-opportunity/tesla.png",
-    "last_modified": "2024-11-08T13:21:49+00:00",
+    "last_modified": "2026-05-21T12:50:31+01:00",
     "input_file": {}
   },
   {
@@ -156,9 +156,9 @@
       "Electricity",
       "India"
     ],
-    "contents": "\r\nIt doesn’t matter how much power you consume, but when you consume it! - The POWBAL Project.\r\n\r\n\r\n\r\n",
+    "contents": "\nIt doesn’t matter how much power you consume, but when you consume it! - The POWBAL Project.\n\n\n\n",
     "preview": "posts/2024-03-04-virtualpowerplant/avatar.png",
-    "last_modified": "2024-11-08T13:21:49+00:00",
+    "last_modified": "2026-05-21T12:50:31+01:00",
     "input_file": {}
   },
   {
@@ -177,9 +177,9 @@
       "Management",
       "Causal Identification"
     ],
-    "contents": "\r\nSome thoughts and a web app on Leave Out Instruments: LOOvsLO\r\n\r\n\r\n\r\n\r\n",
+    "contents": "\nSome thoughts and a web app on Leave Out Instruments: LOOvsLO\n\n\n\n\n",
     "preview": "posts/lox/dens.png",
-    "last_modified": "2023-03-15T10:16:37+00:00",
+    "last_modified": "2026-05-21T12:50:31+01:00",
     "input_file": {}
   },
   {
@@ -196,9 +196,9 @@
     "categories": [
       "Data Visualisation"
     ],
-    "contents": "\r\n\r\n\r\n\r\n\r\n\r\n",
+    "contents": "\n\n\n\n\n\n",
     "preview": {},
-    "last_modified": "2021-04-29T10:48:12+01:00",
+    "last_modified": "2026-05-21T12:50:31+01:00",
     "input_file": {}
   },
   {
@@ -217,9 +217,9 @@
       "Management",
       "ETS"
     ],
-    "contents": "\r\nRecent literature has emphasized the importance of management practices for firm performance, including the environmental impact of businesses. Here we consider how variation in management quality affects the response of firms to environmental regulation, specifically the nascent Chinese Emission Trading System. We find that businesses that are better managed are more responsive to price incentives implied by carbon trading. More details here\r\n\r\n\r\n\r\nA Grahpical Summary\r\n\r\n\r\n\r\n\r\n\r\n\r\n",
+    "contents": "\nRecent literature has emphasized the importance of management practices for firm performance, including the environmental impact of businesses. Here we consider how variation in management quality affects the response of firms to environmental regulation, specifically the nascent Chinese Emission Trading System. We find that businesses that are better managed are more responsive to price incentives implied by carbon trading. More details here\n\n\n\nA Grahpical Summary\n\n\n\n\n\n\n",
     "preview": "posts/cets/distill-preview.png",
-    "last_modified": "2021-03-05T09:40:47+00:00",
+    "last_modified": "2026-05-21T12:50:31+01:00",
     "input_file": {}
   },
   {
@@ -238,9 +238,9 @@
       "Climate Change",
       "Development"
     ],
-    "contents": "\r\nWhich countries have a comparative advantage in clean technologies? The Figure below examines this by looking at the share of clean innovations in total innovation across countries (using PATSTAT patent data.). A surprising number of developing countries have a comparative advantage in clean teachnologies.\r\n\r\n\r\n\r\n\r\n\r\nFigure 1: Share of clean in total innovation (in %)\r\n\r\n\r\n\r\n\r\n\r\n",
+    "contents": "\nWhich countries have a comparative advantage in clean technologies? The Figure below examines this by looking at the share of clean innovations in total innovation across countries (using PATSTAT patent data.). A surprising number of developing countries have a comparative advantage in clean teachnologies.\n\n\n\n\n\nFigure 1: Share of clean in total innovation (in %)\n\n\n\n\n\n",
     "preview": "posts/2021-03-03-cleanrta/rs.png",
-    "last_modified": "2024-01-20T08:37:02+00:00",
+    "last_modified": "2026-05-21T12:50:31+01:00",
     "input_file": {}
   },
   {
@@ -259,9 +259,9 @@
       "Climate Change",
       "Carbon Leakage"
     ],
-    "contents": "\r\nThe European Emissions Trading System (EU ETS) is often accused of two mutually exclusive concerns: On the one hand people complain that it endangers the competitiveness of regulated European companies who are competing with companies in un-regulated places abroad. On the other hand, people complain that the permit prices are too low to incentivise any meaningful emission reduction. While both cannot be right, they can actually both be wrong, which is a conclusion supported by our latest research, namely: the ETS has led to meaningful emission reductions but did so largely without affecting the competitiveness of regulated firms.\r\nWe find this using French firm level manufacturing data here. ETS regulated manufacturing firms have reduced emissions by 10% more than comparable non regulated firms. In addition we find that investment (in particular in efficiency improving investment) in those firms increased and output did not decline. Neither is there evidence that they outsourced carbon intensive production steps. This suggests that their competitiveness did not suffer and carbon did not “leak”.\r\n\r\n\r\n\r\n",
+    "contents": "\nThe European Emissions Trading System (EU ETS) is often accused of two mutually exclusive concerns: On the one hand people complain that it endangers the competitiveness of regulated European companies who are competing with companies in un-regulated places abroad. On the other hand, people complain that the permit prices are too low to incentivise any meaningful emission reduction. While both cannot be right, they can actually both be wrong, which is a conclusion supported by our latest research, namely: the ETS has led to meaningful emission reductions but did so largely without affecting the competitiveness of regulated firms.\nWe find this using French firm level manufacturing data here. ETS regulated manufacturing firms have reduced emissions by 10% more than comparable non regulated firms. In addition we find that investment (in particular in efficiency improving investment) in those firms increased and output did not decline. Neither is there evidence that they outsourced carbon intensive production steps. This suggests that their competitiveness did not suffer and carbon did not “leak”.\n\n\n\n",
     "preview": "posts/schroedinger/etsplant.png",
-    "last_modified": "2021-03-06T11:26:47+00:00",
+    "last_modified": "2026-05-21T12:50:31+01:00",
     "input_file": {}
   }
 ]

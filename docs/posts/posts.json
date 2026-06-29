@@ -15,9 +15,9 @@
       "R&D",
       "Emerging Economies"
     ],
-    "contents": "\nThere is the widespread perception that not much R&D happens in developing\ncountries, with the exception of perhaps China. Indeed, many have been\nsurprised by the recent rise of China as an innovation superpower.\nHowever, innovation happens in many emerging and developing economies (EMDE).\nI built a new tool to keep track of R&D labs in EMDE that are associated with\npatented innovation or that appear in the JRC scoreboard list of the biggest\nR&D investing companies.\nExplore the tool here: EMDER.\n\n\n\n",
-    "preview": {},
-    "last_modified": "2026-06-29T12:03:18+01:00",
+    "contents": "\nThere is the widespread perception that not much R&D happens in developing\ncountries, with the exception of perhaps China. Indeed, many have been\nsurprised by the recent rise of China as an innovation superpower.\nHowever, innovation happens in many emerging and developing economies (EMDE).\nI built a new tool to keep track of R&D labs in EMDE that are associated with\npatented innovation or that appear in the JRC scoreboard list of the biggest\nR&D investing companies.\nR&D labs across emerging and developing economies tracked by EMDER.Explore the tool here: EMDER.\n\n\n\n",
+    "preview": "posts/2026-06-29-emder/emder-map.png",
+    "last_modified": "2026-06-29T12:40:07+01:00",
     "input_file": "emder.knit.md"
   },
   {

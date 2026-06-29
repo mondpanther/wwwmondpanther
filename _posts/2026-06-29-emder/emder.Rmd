@@ -15,6 +15,7 @@ categories:
   - Innovation
   - R&D
   - Emerging Economies
+preview: 'emder-map.png'
 ---
 
 ```{r setup, include=FALSE}
@@ -29,5 +30,7 @@ However, innovation happens in many emerging and developing economies (EMDE).
 I built a new tool to keep track of R&D labs in EMDE that are associated with
 patented innovation or that appear in the JRC scoreboard list of the biggest
 R&D investing companies.
+
+![R&D labs across emerging and developing economies tracked by EMDER.](emder-map.png)
 
 Explore the tool here: **[EMDER](https://mondpanther.github.io/kevceinsights/mnc-rd-labs-map.html)**.

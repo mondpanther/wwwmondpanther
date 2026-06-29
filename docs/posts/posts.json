@@ -1,5 +1,26 @@
 [
   {
+    "path": "posts/2026-06-29-emder/",
+    "title": "New data tool: EMDE research lab tracker (EMDER)",
+    "description": "A new tool to keep track of R&D labs in emerging and developing economies\nthat are associated with patented innovation or that appear in the JRC\nscoreboard list of the biggest R&D investing companies.",
+    "author": [
+      {
+        "name": "Ralf Martin",
+        "url": "https://mondpanther.github.io/wwwmondpanther/"
+      }
+    ],
+    "date": "2026-06-29",
+    "categories": [
+      "Innovation",
+      "R&D",
+      "Emerging Economies"
+    ],
+    "contents": "\nThere is the widespread perception that not much R&D happens in developing\ncountries, with the exception of perhaps China. Indeed, many have been\nsurprised by the recent rise of China as an innovation superpower.\nHowever, innovation happens in many emerging and developing economies (EMDE).\nI built a new tool to keep track of R&D labs in EMDE that are associated with\npatented innovation or that appear in the JRC scoreboard list of the biggest\nR&D investing companies.\nExplore the tool here: EMDER.\n\n\n\n",
+    "preview": {},
+    "last_modified": "2026-06-29T12:03:18+01:00",
+    "input_file": "emder.knit.md"
+  },
+  {
     "path": "posts/2026-05-21-asml-spillovers/",
     "title": "ASML and the Geography of Knowledge Spillovers",
     "description": "ASML generates large global spillovers — but the much smaller Dutch-only\nspillover picture tells a more interesting story.",

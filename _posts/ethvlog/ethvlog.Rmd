@@ -5,8 +5,12 @@ description: |
   and innovation in clean technologies.
 author:
   - name: Ralf Martin
-date: "`r Sys.Date()`"
+date: 2024-11-12
 output: distill::distill_article
+categories:
+  - Innovation
+  - Climate Change
+  - Competition
 preview: sshot.png
 ---
 

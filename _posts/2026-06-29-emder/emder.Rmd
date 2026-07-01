@@ -1,5 +1,5 @@
 ---
-title: "New data tool: EMDE research lab tracker (EMDER)"
+title: "New data tool: EMDERLT — the Emerging and Developing Economies Research Lab Tracker"
 description: |
   A new tool to keep track of R&D labs in emerging and developing economies
   that are associated with patented innovation or that appear in the JRC
@@ -31,6 +31,6 @@ I built a new tool to keep track of R&D labs in EMDE that are associated with
 patented innovation or that appear in the JRC scoreboard list of the biggest
 R&D investing companies.
 
-![R&D labs across emerging and developing economies tracked by EMDER.](emder-map.png)
+![R&D labs across emerging and developing economies tracked by EMDERLT.](emder-map.png)
 
-Explore the tool here: **[EMDER](https://mondpanther.github.io/kevceinsights/mnc-rd-labs-map.html)**.
+Explore the tool here: **[EMDERLT](https://mondpanther.github.io/kevceinsights/mnc-rd-labs-map.html)**.

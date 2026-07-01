@@ -1,7 +1,7 @@
 [
   {
     "path": "posts/2026-06-29-emder/",
-    "title": "New data tool: EMDE research lab tracker (EMDER)",
+    "title": "New data tool: EMDERLT — the Emerging and Developing Economies Research Lab Tracker",
     "description": "A new tool to keep track of R&D labs in emerging and developing economies\nthat are associated with patented innovation or that appear in the JRC\nscoreboard list of the biggest R&D investing companies.",
     "author": [
       {
@@ -15,10 +15,10 @@
       "R&D",
       "Emerging Economies"
     ],
-    "contents": "\nThere is the widespread perception that not much R&D happens in developing\ncountries, with the exception of perhaps China. Indeed, many have been\nsurprised by the recent rise of China as an innovation superpower.\nHowever, innovation happens in many emerging and developing economies (EMDE).\nI built a new tool to keep track of R&D labs in EMDE that are associated with\npatented innovation or that appear in the JRC scoreboard list of the biggest\nR&D investing companies.\nR&D labs across emerging and developing economies tracked by EMDER.Explore the tool here: EMDER.\n\n\n\n",
+    "contents": "\nThere is the widespread perception that not much R&D happens in developing\ncountries, with the exception of perhaps China. Indeed, many have been\nsurprised by the recent rise of China as an innovation superpower.\nHowever, innovation happens in many emerging and developing economies (EMDE).\nI built a new tool to keep track of R&D labs in EMDE that are associated with\npatented innovation or that appear in the JRC scoreboard list of the biggest\nR&D investing companies.\nR&D labs across emerging and developing economies tracked by EMDERLT.Explore the tool here: EMDERLT.\n\n\n\n",
     "preview": "posts/2026-06-29-emder/emder-map.png",
-    "last_modified": "2026-06-29T12:40:07+01:00",
-    "input_file": "emder.knit.md"
+    "last_modified": "2026-06-30T00:15:09+02:00",
+    "input_file": {}
   },
   {
     "path": "posts/2026-05-21-asml-spillovers/",
@@ -39,7 +39,7 @@
     ],
     "contents": "\nThere is a fascinating story about ASML in Works in Progress that traces how a tiny Eindhoven spin-out came to dominate one of the most consequential technologies of our time.\nA complementary way to look at ASML is through the lens of knowledge spillovers — the value that the firm’s innovations create for other innovators down the line. Using the Innovation Strategy Explorer, we can put a number on this.\nASML generates large global spillovers — but Qualcomm’s are even larger\nASML innovations generate roughly $16 million in average global spillovers per patent family. That is well above the average Dutch patent. It is also, perhaps surprisingly, well below the average Qualcomm innovation that involves Dutch innovators:\n\nInteractive version.\nThe Dutch picture reverses the ranking\nThe picture reverses sharply when we restrict the spillover benefits to other Dutch innovators only. Now ASML — together with neighbouring Eindhoven-region firms ASM International and Philips — dominates:\n\nInteractive version.\nWhy?\nSuccessful industrial strategy? Greater commitment by a local firm to its local innovation ecosystem? A more effective revolving door of local engineers and scientists? It’s unclear at this stage — but you can see the pattern from “space” using HiGGlo, the friendly citation-network viewer.\nThe direct and indirect citation network of Qualcomm is dense and globally distributed:\n\nQualcomm — global citation network\n\n\nASML — global citation network\n\n\nInteractive (Qualcomm)\n\n\nInteractive (ASML)\n\nASML creates more localised spillovers within the Netherlands — even if many of these are indirect (the lighter, multi-hop edges in HiGGlo):\n\nQualcomm — local spillovers\n\n\nASML — local spillovers\n\n\n\n\n\nTake-away\nASML is a remarkable global champion, but its quieter contribution may be how much of its knowledge gets recycled within the Netherlands. Whether that comes from industrial strategy, local engineering culture, or just the gravitational pull of a single hub town remains an open question — but the data are now public enough to start asking it.\nExplore the underlying data yourself with the Innovation Strategy Explorer and the citation-network viewer HiGGlo.\n\n\n\n",
     "preview": "posts/2026-05-21-asml-spillovers/asml-global-spillovers.png",
-    "last_modified": "2026-05-21T13:27:28+01:00",
+    "last_modified": "2026-05-21T14:27:28+02:00",
     "input_file": {}
   },
   {
@@ -60,7 +60,7 @@
     ],
     "contents": "\nI’ve launched HiGGlo – a new tool to visualise\ninnovations and the direct and indirect knowledge spillovers between them.\nAs a first illustration, the map below shows the 1000 Green Tech innovations\nfrom developing countries that generate the highest value spillovers:\n\nA random sample of the spillovers they generate directly:\n\n…and indirectly:\n\nExplore the tool here: HiGGlo.\n\n\n\n",
     "preview": "posts/2026-05-05-higglo/higglo-overview.jpg",
-    "last_modified": "2026-05-21T12:50:31+01:00",
+    "last_modified": "2026-05-21T13:50:31+02:00",
     "input_file": {}
   },
   {
@@ -81,7 +81,7 @@
     ],
     "contents": "\nWhen Russia’s invasion of Ukraine sent European natural gas prices soaring in\n2022, wholesale electricity prices followed. But the shock did not hit every\ncountry equally. Countries that had invested heavily in low-carbon generation —\nnuclear, hydro, wind, solar, geothermal, and bioenergy — saw smaller and\nshorter-lived price increases than those still reliant on fossil fuels.\nThis analysis uses publicly available data to quantify the relationship between\na country’s pre-crisis low-carbon electricity share and the size of its\nprice increase.\nThe price shock across Europe\nThe chart below shows monthly wholesale electricity prices for every European\ncountry in the Ember dataset. Use the dropdown to select specific countries, or\nview them all at once.\n\n\nSelect countries to highlight\n\n\n\n\n\n\n\n\nSource: Ember European Wholesale Electricity Price Data (monthly).\nWho got hit hardest?\nTo measure the lasting impact — rather than just the 2022 spike — we compare\neach country’s 2019 average price with its average over 2023–2025.\n\n\n\n\nDifference between the average wholesale price in 2023–2025 and the\n2019 baseline. Red = increase; blue = decrease.\nThe low-carbon advantage\nIs there a systematic relationship between a country’s pre-crisis electricity\nmix and the size of its price shock? We measure each country’s low-carbon\nshare in 2019 — the combined share of nuclear, hydro, wind, solar,\ngeothermal, and bioenergy — and plot it against the price change.\n\n\n\n© Ralf Martin\n\nFor every additional percentage point of low-carbon electricity in 2019, the\npost-crisis price increase was -0.033 cents/kWh\nsmaller on average.\n\nRegression results\n\nTable 1: OLS: price change ~ low-carbon share. N = 29, R² = 0.207, Adj. R² = 0.177\nTerm\nEstimate\nStd. Error\nt\np-value\nCI low (2.5%)\nCI high (97.5%)\n(Intercept)\n6.4001\n0.7976\n8.0243\n0.0000\n4.7636\n8.0367\nrenewx\n-0.0329\n0.0124\n-2.6533\n0.0132\n-0.0583\n-0.0075\n\nWhat if countries hadn’t expanded low-carbon power?\nBetween 2010 and 2019 many European countries significantly increased their\nlow-carbon electricity share. Using the regression slope, we ask: how much\nhigher would the post-crisis price increase have been if each country had stayed\nat its 2010 low-carbon share?\n\n\n\n\n\n\n\nThe x-axis shows how much the low-carbon share grew between 2010 and\n2019; the y-axis shows the implied reduction in the post-crisis price\nincrease.\n\n\n\n\nBlue = actual price change. Red = counterfactual if the country had\nstayed at its 2010 low-carbon share.\nTotal annual savings from low-carbon expansion\nHow much money did countries save by expanding their low-carbon electricity\nshare between 2010 and 2019? We take the implied per-kWh price saving from\nthe regression (slope × gain in low-carbon share) and multiply it by actual\nelectricity demand in each of 2023, 2024, and 2025.\n\n\n\n\nEach bar shows the estimated annual saving from expanding low-carbon\ngeneration between 2010 and 2019, multiplied by actual demand in 2023–2025.\nData & methodology\nItem\nDetail\nPrices\nEmber European Wholesale Electricity Price Data (monthly)\nGeneration mix\nOur World in Data / Ember + Energy Institute\nPrice unit\nEuro-cents per kWh\nBase year\n2019 (pre-pandemic, pre-crisis)\nComparison\nAverage of 2023–2025\nLow-carbon share\nNuclear + hydro + wind + solar + geothermal + bioenergy\nMethod\nOLS regression of price change on 2019 low-carbon share\n\n\n\n",
     "preview": "posts/2026-03-27-low-carbon-electricity-prices/low-carbon-electricity-prices_files/figure-html5/scatter-plot-1.png",
-    "last_modified": "2026-05-21T12:50:31+01:00",
+    "last_modified": "2026-05-21T13:50:31+02:00",
     "input_file": {}
   },
   {
@@ -103,7 +103,7 @@
     ],
     "contents": "\nA new working paper – Spillovers from Science\n– with Anna Valero, Arjun Shah and Dennis Verhoeven introduces Science Rank:\na new indicator that uses the combined patent and paper citation network to\nassign a share of the private value of patented inventions to the scientific\npapers they build upon.\nWe can think of this as an estimate of the value of knowledge spillovers from\nacademic research to commercial patents.\nWe document a number of stylised facts:\n1. The US generates the largest amount of spillovers\nThe US produces the largest amount of spillovers overall and the second highest\non average – after Switzerland.\n\n2. Retention rates differ sharply across countries\nTotal spillovers from science vary across countries, and so does the share that\nis retained within the borders of a country: the retention rate is nearly 70%\nin the US whereas it is below 20% in most other countries. An outlier is South\nKorea with a retention rate of 30%.\n\n3. Developing-country research is greener\nWhile developing countries typically generate lower amounts of spillovers\noverall, a larger share of their spillovers support clean tech innovation.\n\n4. Local universities matter for local innovators\nMany universities in developing countries, while generating lower spillovers on\na global level, tend to generate relatively high spillovers for innovations by\ndeveloping-country innovators.\n\nImplications\nWhile we need further evidence to draw strong causal conclusions, these results\nare consistent with the idea that further development of research universities\nin developing countries could help generate more innovation – and thus\neconomic growth and employment – for firms in developing countries.\nRead the full paper:\nSpillovers from Science (CEP Discussion Paper).\n\n\n\n",
     "preview": "posts/2026-03-24-spillovers-from-science/sfs-totals.jpg",
-    "last_modified": "2026-05-21T12:50:31+01:00",
+    "last_modified": "2026-05-21T13:50:31+02:00",
     "input_file": {}
   },
   {
@@ -117,10 +117,15 @@
       }
     ],
     "date": "2024-11-18",
-    "categories": [],
+    "categories": [
+      "Climate Change",
+      "Electricity",
+      "Energy",
+      "India"
+    ],
     "contents": "\nWith increasing amounts of electricity generation from renewable sources such as solar and wind, there is increasing variation in both the emissions and costs of power production over narrow periods of time; e.g. over the course of a day.\nThis offers an opportunity to reduce both the cost and carbon intensity of power production if there is sufficient flexibility on the demand side of electricity market.\nIn a project joint with TATA power we have been offering Wifi enabled power switches to over 1000 Tata power household customers in Mumbai and Delhi along with financial incentives to participate in the scheme. Users could choose which devices to connect to the switches and most decided to connect an air conditioning unit.\nWe then explored how households responded to (random) remotely triggered switch off events of the connected devices. Households could always override these events but were incentivized not to.\nOur research indicates that on average we can succesfully reduce overall household energy demand by 8% for short periods of time, 30 minute intervals say. This increases to over 15% particularly during more energy intensive afternoon and evening hours.\nFurther, we examine what would happen if we used this tool to strategically switch off people’s devices at times when (marginal) carbon emissions are highest - which often coincides with periods where generation costs are high as well. Thus by doing so we can reduce both emissions as well as overall costs of generation. Comparing this to the costs of installing these devices - which are around $25 - we can compute a carbon mitigation cost figure: i.e. how much do we have to spend to avoid a ton of CO2 emissions. It turns out that because cost savings from shifting consumption are a lot higher than the cost of installation for most households, that implies a negative cost of carbon mitigation: more than $75 for some housholds; i.e. for every ton of CO2 saved, we also save up $75 via lower generation costs.\nWe also examine the emission reduction scale if a scheme like this would be rolled out among all smart meter customers of TATA in Mumbai and Delhi: over a 5 year period this could save us much as 85 thousand tons of CO2; i.e. approximately the equivalent of 85K transatlantic flights per passenger.\nFurther details in our joint briefing with Tata Power\n\n\n\n\n",
     "preview": "posts/powbaltata/miticost.png",
-    "last_modified": "2026-05-21T12:50:31+01:00",
+    "last_modified": "2026-07-01T22:05:00+02:00",
     "input_file": {}
   },
   {
@@ -134,10 +139,14 @@
       }
     ],
     "date": "2024-11-12",
-    "categories": [],
+    "categories": [
+      "Innovation",
+      "Climate Change",
+      "Competition"
+    ],
     "contents": "\nETH’s Luca Baltensberger was kind enough to sit down with me to discuss my study on Environmental Preferences and Technological Choices: Is Market Competition Clean or Dirty? Youtube video here.\n\n\n\n\n",
     "preview": "posts/ethvlog/sshot.png",
-    "last_modified": "2026-05-21T12:50:31+01:00",
+    "last_modified": "2026-07-01T22:04:58+02:00",
     "input_file": {}
   },
   {
@@ -158,7 +167,7 @@
     ],
     "contents": "\nFirms do and should see climate change as a competitive opportunity, rather than a regulatory burden. Read my article in the Financial Times summarising research with Philippe Aghion, Roland Benabou and Alexandra Roulet.\nAm talking about the same paper in this VLOG produced by the ETH.\n\n\n\n\n",
     "preview": "posts/2024-03-04-opportunity/tesla.png",
-    "last_modified": "2026-05-21T12:50:31+01:00",
+    "last_modified": "2026-05-21T13:50:31+02:00",
     "input_file": {}
   },
   {
@@ -179,7 +188,7 @@
     ],
     "contents": "\nIt doesn’t matter how much power you consume, but when you consume it! - The POWBAL Project.\n\n\n\n",
     "preview": "posts/2024-03-04-virtualpowerplant/avatar.png",
-    "last_modified": "2026-05-21T12:50:31+01:00",
+    "last_modified": "2026-05-21T13:50:31+02:00",
     "input_file": {}
   },
   {
@@ -200,7 +209,7 @@
     ],
     "contents": "\nSome thoughts and a web app on Leave Out Instruments: LOOvsLO\n\n\n\n\n",
     "preview": "posts/lox/dens.png",
-    "last_modified": "2026-05-21T12:50:31+01:00",
+    "last_modified": "2026-05-21T13:50:31+02:00",
     "input_file": {}
   },
   {
@@ -219,7 +228,7 @@
     ],
     "contents": "\n\n\n\n\n\n",
     "preview": {},
-    "last_modified": "2026-05-21T12:50:31+01:00",
+    "last_modified": "2026-05-21T13:50:31+02:00",
     "input_file": {}
   },
   {
@@ -240,7 +249,7 @@
     ],
     "contents": "\nRecent literature has emphasized the importance of management practices for firm performance, including the environmental impact of businesses. Here we consider how variation in management quality affects the response of firms to environmental regulation, specifically the nascent Chinese Emission Trading System. We find that businesses that are better managed are more responsive to price incentives implied by carbon trading. More details here\n\n\n\nA Grahpical Summary\n\n\n\n\n\n\n",
     "preview": "posts/cets/distill-preview.png",
-    "last_modified": "2026-05-21T12:50:31+01:00",
+    "last_modified": "2026-05-21T13:50:31+02:00",
     "input_file": {}
   },
   {
@@ -261,7 +270,7 @@
     ],
     "contents": "\nWhich countries have a comparative advantage in clean technologies? The Figure below examines this by looking at the share of clean innovations in total innovation across countries (using PATSTAT patent data.). A surprising number of developing countries have a comparative advantage in clean teachnologies.\n\n\n\n\n\nFigure 1: Share of clean in total innovation (in %)\n\n\n\n\n\n",
     "preview": "posts/2021-03-03-cleanrta/rs.png",
-    "last_modified": "2026-05-21T12:50:31+01:00",
+    "last_modified": "2026-05-21T13:50:31+02:00",
     "input_file": {}
   },
   {
@@ -282,7 +291,7 @@
     ],
     "contents": "\nThe European Emissions Trading System (EU ETS) is often accused of two mutually exclusive concerns: On the one hand people complain that it endangers the competitiveness of regulated European companies who are competing with companies in un-regulated places abroad. On the other hand, people complain that the permit prices are too low to incentivise any meaningful emission reduction. While both cannot be right, they can actually both be wrong, which is a conclusion supported by our latest research, namely: the ETS has led to meaningful emission reductions but did so largely without affecting the competitiveness of regulated firms.\nWe find this using French firm level manufacturing data here. ETS regulated manufacturing firms have reduced emissions by 10% more than comparable non regulated firms. In addition we find that investment (in particular in efficiency improving investment) in those firms increased and output did not decline. Neither is there evidence that they outsourced carbon intensive production steps. This suggests that their competitiveness did not suffer and carbon did not “leak”.\n\n\n\n",
     "preview": "posts/schroedinger/etsplant.png",
-    "last_modified": "2026-05-21T12:50:31+01:00",
+    "last_modified": "2026-05-21T13:50:31+02:00",
     "input_file": {}
   }
 ]

@@ -5,8 +5,13 @@ description: |
   reduce emissions and costs from power production.
 author:
   - name: Ralf Martin
-date: "`r Sys.Date()`"
+date: 2024-11-18
 output: distill::distill_article
+categories:
+  - Climate Change
+  - Electricity
+  - Energy
+  - India
 preview: miticost.png
 ---
 

@@ -2,8 +2,12 @@ title: "Ralf Martin"
 name: "ralfmartin"
 description: |
   Ralf Martin
+google_analytics: "G-Q04C57850"
 output_dir: "docs"
 include: ["briefs"]
+collections:
+  posts:
+    categories: true
 twitter:
   site: "@mondpanther"
 navbar:

@@ -2,7 +2,7 @@ title: "Ralf Martin"
 name: "ralfmartin"
 description: |
   Ralf Martin
-google_analytics: "G-Q04C57850"
+google_analytics: "G-Q04C57850T"
 output_dir: "docs"
 include: ["briefs"]
 collections:

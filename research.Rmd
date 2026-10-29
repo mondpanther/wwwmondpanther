@@ -110,8 +110,17 @@ Chiara Criscuolo, Jonathan Haskel and Ralf Martin (2004), Oxford Review of Econo
 
 ## Working papers
 
+### [Thin Markets, Thick Subsidies: Local Competition and the Incidence of Heat-Pump Grants](https://cep.lse.ac.uk/_new/publications/abstract.asp?index=12663)
+Shefali Khanna, Ralf Martin, Florian Münch, Aurélien Saussay (2026). CEP Discussion Paper 2227. <https://cep.lse.ac.uk/pubs/download/dp2227.pdf>
+
+### [Innovation Partnerships for Development Along Green Value Chains](https://cep.lse.ac.uk/_new/publications/abstract.asp?index=12648)
+Samuel Asuquo Edet, Ralf Martin, Trang Thu Tran, Dennis Verhoeven, Golvine de Rochambeau (2026). CEP Discussion Paper 2223. <https://cep.lse.ac.uk/pubs/download/dp2223.pdf>
+
+### [Measuring the Prevalence and Direction of Innovation: A Pilot Approach Using LLMs](https://cep.lse.ac.uk/_new/publications/abstract.asp?index=12572)
+Prashant Garg, Peter John Lambert, Ralf Martin, Denis Medvedev (2026). CEP Discussion Paper 2216. <https://cep.lse.ac.uk/pubs/download/dp2216.pdf>
+
 ### [Spillovers from Science](https://cep.lse.ac.uk/_new/publications/abstract.asp?index=12101)
-Ralf Martin, Arjun Shah, Anna Valero, Dennis Verhoeven (2026). CEP Discussion Paper.
+Ralf Martin, Arjun Shah, Anna Valero, Dennis Verhoeven (2026). CEP Discussion Paper 2165. <https://cep.lse.ac.uk/pubs/download/dp2165.pdf>
 
 ### Building Virtual Power Plants: Incentives and Automation for Demand-Side Flexibility
 Shefali Khanna, Ralf Martin, Mirabelle Muûls (2025). SSRN Working Paper 5089649. <https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5089649>

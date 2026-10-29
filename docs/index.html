@@ -109,7 +109,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   <!--radix_placeholder_rmarkdown_metadata-->
 
   <script type="text/json" id="radix-rmarkdown-metadata">
-  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","site","listing"]}},"value":[{"type":"character","attributes":{},"value":["Latest"]},{"type":"character","attributes":{},"value":["distill::distill_website"]},{"type":"character","attributes":{},"value":["posts"]}]}
+  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","site","listing","output"]}},"value":[{"type":"character","attributes":{},"value":["Latest"]},{"type":"character","attributes":{},"value":["distill::distill_website"]},{"type":"character","attributes":{},"value":["posts"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["includes"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["after_body"]}},"value":[{"type":"character","attributes":{},"value":["relabel_categories.html"]}]}]}]}]}
   </script>
   <!--/radix_placeholder_rmarkdown_metadata-->
   <!--radix_placeholder_navigation_in_header-->
@@ -2098,7 +2098,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </script>
 
   <!--/radix_placeholder_distill-->
-  <script src="site_libs/header-attrs-2.31/header-attrs.js"></script>
+  <script src="site_libs/header-attrs-2.32/header-attrs.js"></script>
   <script src="site_libs/popper-2.6.0/popper.min.js"></script>
   <link href="site_libs/tippy-6.2.7/tippy.css" rel="stylesheet" />
   <link href="site_libs/tippy-6.2.7/tippy-light-border.css" rel="stylesheet" />
@@ -2741,6 +2741,15 @@ and innovation in clean technologies.</p>
 </div>
 
 
+<script>
+// distill hard-codes an "Articles" entry at the top of the categories sidebar
+// as the show-all-posts filter. Keep its href (the filter script keys on it)
+// and relabel it.
+document.addEventListener("DOMContentLoaded", function () {
+  document.querySelectorAll('.categories li > a[href="#category:Articles"]')
+    .forEach(function (a) { a.textContent = "All posts"; });
+});
+</script>
 <!--radix_placeholder_site_after_body-->
 <!--/radix_placeholder_site_after_body-->
 <!--radix_placeholder_appendices-->

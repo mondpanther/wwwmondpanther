@@ -2,6 +2,10 @@
 title: "Latest"
 site: distill::distill_website
 listing: posts
+output:
+  distill::distill_article:
+    includes:
+      after_body: relabel_categories.html
 ---
 
 

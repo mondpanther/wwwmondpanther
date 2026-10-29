@@ -1,5 +1,27 @@
 [
   {
+    "path": "posts/2026-10-29-thin-markets-thick-subsidies/",
+    "title": "Thin Markets, Thick Subsidies: what happened when the UK raised its heat-pump grant",
+    "description": "New paper: the 2023 increase in the Boiler Upgrade Scheme grant raised\nheat-pump installations by 24%, brought more installers into local markets\nand lowered prices on top of the grant. Households saved more than the\ngovernment spent.",
+    "author": [
+      {
+        "name": "Ralf Martin",
+        "url": "https://mondpanther.github.io/wwwmondpanther/"
+      }
+    ],
+    "date": "2026-10-29",
+    "categories": [
+      "Climate",
+      "Energy",
+      "Competition",
+      "Policy"
+    ],
+    "contents": "\nHeat pumps are central to cutting carbon emissions from buildings and to\nmaking the UK less exposed to fossil-fuel price shocks. Yet the Boiler Upgrade\nScheme – the grant that successive governments have kept and expanded to\nsubsidise heat-pump installations – has been heavily criticised. Critics\nargued it was mostly a transfer of taxpayers’ money: to households who would\nhave bought a heat pump anyway, and to installers who would simply raise their\nprices and pocket the grant.\nIn a new CEP discussion paper –\nThin Markets, Thick Subsidies: Local Competition and the Incidence of\nHeat-Pump Grants – Shefali Khanna, Florian Münch, Aurélien\nSaussay and I find the opposite.\nOn 23 October 2023 the grant for an air-source heat pump in England and Wales\nrose from £5,000 to £7,500. Scotland, which runs its own scheme, saw no\nchange. Comparing 260,000 certified installations in Northern England and\nScotland before and after the change lets us isolate the effect of the larger\ngrant.\nGap in log monthly heat-pump installations between England and Scotland, by month relative to October 2023. Effects build up over the first six months as new installers enter.Installations rose by 24%. The increase raised monthly installations by\nabout a quarter relative to Scotland, with no sign of a pre-existing trend,\nadding roughly 7,200 heat pumps in Northern England alone over the following\n20 months.\nInstallers did not pocket the money. Installation costs fell by about\n£830, so households saved more than the extra £2,500. Part of that came from\na shift to smaller, more efficient heat pumps, but even for the same installer\nfitting the same model, prices fell by at least £200 – and by more in areas\nwith more competition.\nBigger local markets attracted new installers and drew existing ones from\nfurther afield. The number of installers active in a neighbourhood in a given\nmonth rose by about a fifth, and the distance between installations and\ninstallers’ bases increased. The extra competition pushed prices down, and\nboth the installation and the price response were larger where the local\ninstaller market was already thick before the policy.\nGood value for public money. Counting the carbon savings, each £1 of\npublic money spent on the grant increase delivered about £2.10 in benefits (a\nmarginal value of public funds of 2.1), rising to 2.5 in the most competitive\nmarkets.\nThe policy lesson: grant size and installer market thickness are complements,\nnot substitutes. Demand subsidies for clean technologies work best alongside\nmeasures that bring more installers into local markets – training,\ncertification and entry support.\nPaper: Thin Markets, Thick Subsidies: Local Competition and the\nIncidence of Heat-Pump Grants, CEP Discussion Paper 2227\n(PDF). Play with the entry model behind the competition result in the\ninteractive version.\n\n\n\n",
+    "preview": "posts/2026-10-29-thin-markets-thick-subsidies/event_study_social.png",
+    "last_modified": "2026-10-29T10:57:44+00:00",
+    "input_file": "thin-markets-thick-subsidies.knit.md"
+  },
+  {
     "path": "posts/2026-06-29-emder/",
     "title": "New data tool: EMDERLT — the Emerging and Developing Economies Research Lab Tracker",
     "description": "A new tool to keep track of R&D labs in emerging and developing economies\nthat are associated with patented innovation or that appear in the JRC\nscoreboard list of the biggest R&D investing companies.",

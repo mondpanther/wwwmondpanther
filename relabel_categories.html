@@ -1,0 +1,9 @@
+<script>
+// distill hard-codes an "Articles" entry at the top of the categories sidebar
+// as the show-all-posts filter. Keep its href (the filter script keys on it)
+// and relabel it.
+document.addEventListener("DOMContentLoaded", function () {
+  document.querySelectorAll('.categories li > a[href="#category:Articles"]')
+    .forEach(function (a) { a.textContent = "All posts"; });
+});
+</script>
